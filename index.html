@@ -110,6 +110,7 @@ b.hl{font-weight:400;color:var(--accent)}
 .pl-l input[type=range]{width:140px;accent-color:var(--teal)}
 .btn.sm{padding:2px 10px;font-size:.9rem;vertical-align:2px}
 .btn.playing{background:var(--orange);border-color:var(--orange);color:#fff}
+.btn.loading{opacity:.75;cursor:progress}.btn.loading::after{content:" 載入音色…";font-size:.85em}
 g.rn.on rect{stroke:var(--text);stroke-width:3}
 details.basic{margin:22px 0;border:1px solid var(--border);border-radius:12px;padding:6px 14px}
 details.basic summary{cursor:pointer;padding:6px 0;color:var(--text2)}
@@ -242,7 +243,7 @@ details.basic summary{cursor:pointer;padding:6px 0;color:var(--text2)}
     <label class="pl-l">速度 <input type="range" id="rockBpm" min="40" max="140" step="2"> <span id="rockBpmVal"></span> BPM</label>
     <label class="pl-l"><input type="checkbox" id="rockBack" checked> 伴奏和弦</label>
   </div>
-  <p class="muted">試聽是瀏覽器即時合成的吉他（不是錄音），每位吉他手的音色不同：Slash 是 Les Paul 中破音，推弦慢、揉弦寬而慢；松本孝弘是中頻厚、滑順的破音，推弦快而準、揉弦均勻；Eric Johnson 是乾淨圓潤、起音柔和的「小提琴音色」，揉弦窄而快。先放慢到 60% 跟著唱，再跟著彈。手機請先關掉靜音模式。</p>
+  <p class="muted">試聽用的是<b>真實電吉他取樣</b>（第一次按播放會先下載約 1 MB 的音色，按鈕會顯示「載入音色…」），推弦、滑音、揉弦是把取樣的音高即時推動做出來的，再經過破音、音箱等化、延遲與殘響。每位吉他手的音色不同：Slash 是 Les Paul 中破音、中頻厚，推弦慢、揉弦寬而慢；松本孝弘是延音長、滑順的破音，加一點延遲，推弦快而準、揉弦均勻；Eric Johnson 是溫暖、起音柔和的「小提琴音色」，揉弦窄而快。伴奏是乾淨電吉他刷和弦。先放慢到 60% 跟著唱，再跟著彈。iPhone 請先關掉靜音模式。再按一次正在播放的按鈕可以停止。<span id="smpNote"></span><br><span style="font-size:.85em">吉他取樣：FluidR3_GM SoundFont（Frank Wen 等），經 <a href="https://github.com/gleitz/midi-js-soundfonts" target="_blank" rel="noopener">gleitz/midi-js-soundfonts</a> 轉檔，授權 <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="noopener">CC BY 3.0</a>。</span></p>
   <p class="muted">這段 solo 用到的指板位置（音名；紫色是借來的音）：</p>
   <div class="figure scroll" id="rockNeck"></div>
   <div id="rockList"></div>
@@ -1026,7 +1027,7 @@ function rockDots(solo){const seen=new Map();solo.phrases.forEach(ph=>{const key
 function plainRock(tokens){return tokens.map(t=>{if(t[0]==="@")return t;let s=t.replace(/~/g,"").replace(/:.*$/,"");if(s==="r")return "r:8";
  return s.split("+").map(p=>{const m=RNOTE.exec(p);if(!m)return p;const f=m[4]==="b"||m[4]==="pb"?(m[4]==="pb"?+m[3]:+m[5]):+m[3];return m[2]+f;}).join("+")+":8";});}
 // ===== 試聽：Karplus-Strong 撥弦合成（含推弦、滑音、揉弦） =====
-const AUD={ctx:null,src:null,raf:0,on:null,btn:null};
+const AUD={ctx:null,src:null,srcs:null,out:null,raf:0,on:null,btn:null,tok:null,end:0,unlocked:false};
 function rockEvents(solo,phIdx,bpm){const spb=60/bpm,ev=[],chs=[];let off=0;
  phIdx.forEach(pi=>{const ph=solo.phrases[pi],items=parseRock(ph.tokens,"a");let end=0;
   items.forEach((it,i)=>{const t=(off+it.pos)*spb;if(it.ch)chs.push({t,b:off+it.pos,name:it.ch});ev.push({t,d:it.dur*spb,it,pi,i});end=it.pos+it.dur;});
@@ -1076,20 +1077,119 @@ function synthRock(solo,phIdx,bpm,withBack,SR){SR=SR||32000;const TN=TONE[solo.s
    lpL+=TN.lp*((Math.tanh(sl*TN.dr+TN.asy)-th0)*gOut-lpL);lp2+=TN.lp*(lpL-lp2);lpB+=.3*(sb-lpB);out[n0+k]=lp2+lpB*.7;}}
  let pk=0;for(let i=0;i<len;i++)pk=Math.max(pk,Math.abs(out[i]));if(pk>0){const gn=.85/pk;for(let i=0;i<len;i++)out[i]*=gn;}
  return{data:out,SR,ev,lead0,peak:pk};}
-function rockStop(){if(AUD.src){try{AUD.src.stop();}catch(e){}AUD.src=null;}cancelAnimationFrame(AUD.raf);document.querySelectorAll("g.rn.on").forEach(g=>g.classList.remove("on"));if(AUD.btn){AUD.btn.classList.remove("playing");AUD.btn=null;}}
-function rockPlay(solo,phIdx,tabIds,btn,bpmO){rockStop();const C=window.AudioContext||window.webkitAudioContext;if(!C){alert("這個瀏覽器不支援播放");return;}
- if(!AUD.ctx)AUD.ctx=new C();const ctx=AUD.ctx;if(ctx.state==="suspended")ctx.resume();
+// ===== 試聽：真實電吉他取樣（FluidR3_GM，CC BY 3.0）＋推弦／滑音／揉弦自動化 + 效果鏈；載入失敗時退回合成 =====
+const SMP={base:"samples/",cdn:"https://gleitz.github.io/midi-js-soundfonts/FluidR3_GM/",notes:[],inst:{},loading:{},failed:false};for(let m=40;m<92;m+=3)SMP.notes.push(m);
+const NOTE_FN=["C","Db","D","Eb","E","F","Gb","G","Ab","A","Bb","B"];
+function smpName(m){return NOTE_FN[m%12]+(Math.floor(m/12)-1);}
+function smpFetch(u){return fetch(u).then(r=>{if(!r.ok)throw new Error(r.status);return r.arrayBuffer();});}
+function smpDecode(ctx,ab){return new Promise((res,rej)=>{const p=ctx.decodeAudioData(ab,res,rej);if(p&&p.then)p.then(res,rej);});}
+function smpLoad(ctx,inst){if(SMP.inst[inst])return Promise.resolve(SMP.inst[inst]);if(SMP.loading[inst])return SMP.loading[inst];
+ const p=Promise.all(SMP.notes.map(m=>smpFetch(SMP.base+inst+"/"+smpName(m)+".mp3").catch(()=>smpFetch(SMP.cdn+inst+"-mp3/"+smpName(m)+".mp3")).then(ab=>smpDecode(ctx,ab)).then(b=>[m,b])))
+  .then(a=>{const o={};a.forEach(([m,b])=>{o[m]=b;});SMP.inst[inst]=o;return o;});
+ SMP.loading[inst]=p.catch(e=>{delete SMP.loading[inst];throw e;});return SMP.loading[inst];}
+// 每位吉他手的音色預設
+const GTR={
+ _:{inst:"overdriven_guitar",drive:1.6,hp:90,mid:[800,1,3],lp:4800,comp:-24,att:.004,rel:.09,dly:[0,0,0],rev:.16,vd:.38,vr:5.6,vo:.25,bg:.14,lvl:1},
+ "Slash":{inst:"overdriven_guitar",drive:2.4,hp:85,mid:[750,.9,5],lp:5200,comp:-24,att:.003,rel:.09,dly:[0,0,0],rev:.15,vd:.5,vr:4.6,vo:.35,bg:.2,lvl:1},
+ "松本孝弘":{inst:"distortion_guitar",drive:1.5,hp:100,mid:[1100,1,3],lp:4400,comp:-32,att:.006,rel:.16,dly:[.75,.3,.2],rev:.22,vd:.42,vr:5.8,vo:.18,bg:.09,lvl:.95},
+ "Eric Johnson":{inst:"overdriven_guitar",drive:1.3,hp:110,mid:[520,.8,3],lp:2800,comp:-32,att:.028,rel:.18,dly:[1,.28,.22],rev:.26,vd:.18,vr:6.8,vo:.2,bg:.12,lvl:1.15}};
+const BACK_INST="electric_guitar_clean";
+function smpCurve(ctx,k){const n=2048,c=new Float32Array(n),th=Math.tanh(k);for(let i=0;i<n;i++){const x=i/(n-1)*2-1;c[i]=Math.tanh(k*x)/th;}return c;}
+function smpIR(ctx,sec){const L=Math.floor(ctx.sampleRate*sec),ir=ctx.createBuffer(2,L,ctx.sampleRate);
+ for(let c=0;c<2;c++){const d=ir.getChannelData(c);let lp=0;for(let i=0;i<L;i++){const t=i/ctx.sampleRate;lp+=.35*((Math.random()*2-1)-lp);d[i]=t<.012?0:lp*Math.exp(-t*4.2);}}return ir;}
+// 建立效果鏈：lead → 壓縮（延音）→ 破音 → 低切／中頻／高切（音箱）→ 延遲 + 殘響；伴奏走乾淨聲道
+function smpChain(ctx,P,spb){const N={};const out=ctx.createGain();out.gain.value=.9;
+ const lim=ctx.createDynamicsCompressor();lim.threshold.value=-6;lim.knee.value=4;lim.ratio.value=12;lim.attack.value=.002;lim.release.value=.15;out.connect(lim);lim.connect(ctx.destination);
+ const lead=ctx.createGain();lead.gain.value=1.4;const comp=ctx.createDynamicsCompressor();comp.threshold.value=P.comp;comp.knee.value=10;comp.ratio.value=5;comp.attack.value=.004;comp.release.value=.25;
+ const pre=ctx.createGain();pre.gain.value=1;const ws=ctx.createWaveShaper();ws.curve=smpCurve(ctx,P.drive);ws.oversample="2x";
+ const hp=ctx.createBiquadFilter();hp.type="highpass";hp.frequency.value=P.hp;hp.Q.value=.7;
+ const mid=ctx.createBiquadFilter();mid.type="peaking";mid.frequency.value=P.mid[0];mid.Q.value=P.mid[1];mid.gain.value=P.mid[2];
+ const lp1=ctx.createBiquadFilter();lp1.type="lowpass";lp1.frequency.value=P.lp;lp1.Q.value=.6;const lp2=ctx.createBiquadFilter();lp2.type="lowpass";lp2.frequency.value=P.lp*1.25;lp2.Q.value=.5;
+ const lo=ctx.createGain();lo.gain.value=.55*P.lvl;
+ lead.connect(comp);comp.connect(pre);pre.connect(ws);ws.connect(hp);hp.connect(mid);mid.connect(lp1);lp1.connect(lp2);lp2.connect(lo);lo.connect(out);
+ const rv=ctx.createConvolver();rv.buffer=smpIR(ctx,1.4);const rw=ctx.createGain();rw.gain.value=P.rev;lo.connect(rv);rv.connect(rw);rw.connect(out);
+ if(P.dly[2]>0){const d=ctx.createDelay(1.5);d.delayTime.value=Math.min(.6,P.dly[0]*spb);const fb=ctx.createGain();fb.gain.value=P.dly[1];const dl=ctx.createBiquadFilter();dl.type="lowpass";dl.frequency.value=2500;const dw=ctx.createGain();dw.gain.value=P.dly[2];
+  lo.connect(d);d.connect(dl);dl.connect(fb);fb.connect(d);dl.connect(dw);dw.connect(out);dw.connect(rv);}
+ const back=ctx.createGain();back.gain.value=.6;const bh=ctx.createBiquadFilter();bh.type="highpass";bh.frequency.value=110;const bl=ctx.createBiquadFilter();bl.type="lowpass";bl.frequency.value=3800;
+ back.connect(bh);bh.connect(bl);bl.connect(out);const bs=ctx.createGain();bs.gain.value=.12;bl.connect(bs);bs.connect(rv);
+ N.lead=lead;N.back=back;N.out=out;return N;}
+// 排程：同一套推弦／滑音／揉弦曲線，改用取樣 + playbackRate 自動化
+function smpSched(ctx,solo,phIdx,bpm,withBack,t0){const P=GTR[solo.style]||GTR._;const {ev,chs,beats,spb}=rockEvents(solo,phIdx,bpm);
+ const S=SMP.inst[P.inst],SB=SMP.inst[BACK_INST];const N=smpChain(ctx,P,spb);const lead0=.25,srcs=[];
+ const pickBuf=(set,m)=>{let best=SMP.notes[0];for(const n of SMP.notes)if(Math.abs(n-m)<Math.abs(best-m))best=n;return[best,set[best]];};
+ // 1) 事件 → 音符清單
+ const notes=[];const cur={};const curPitch={};let lastEnd=0;
+ ev.forEach(e=>{const it=e.it,T0=lead0+e.t,D=e.d;
+  if(it.rest){Object.keys(cur).forEach(s=>{const n=cur[s];if(n.end>T0)n.end=T0+.04;delete cur[s];});return;}
+  const pickAny=it.notes.some(n=>!n.tech)||it.notes.length>1;
+  if(pickAny)Object.keys(cur).forEach(s=>{if(!it.notes.some(n=>n.s==+s)){const n=cur[s];n.end=Math.min(n.end,T0+P.rel);}});
+  it.notes.forEach(n=>{const m0=MIDI_OPEN[n.s]+n.f,m1=n.t!=null?MIDI_OPEN[n.s]+n.t:m0;const prevM=curPitch[n.s]!=null?curPitch[n.s]:m0;let fn,endM=m0,vs=.12,bend=true;
+   const g=Math.min(P.bg,D*.45);
+   if(n.kind==="b"&&!n.rel){fn=t=>m0+(m1-m0)*Math.min(1,t/g);endM=m1;vs=g+.05;}
+   else if(n.kind==="b"){const g2=Math.min(.12,D*.25);fn=t=>t<g2?m0+(m1-m0)*t/g2:t<D*.6?m1:m1-(m1-m0)*Math.min(1,(t-D*.6)/g2);vs=9;}
+   else if(n.kind==="pb"){const h=Math.min(.18,D*.35);fn=t=>t<h?m1:m1-(m1-m0)*Math.min(1,(t-h)/g);vs=h+g+.05;}
+   else if(n.kind==="t"){fn=t=>(Math.floor(t*15)%2?m1:m0);vs=99;}
+   else if(n.tech==="/"||n.tech==="\\"||n.tech==="R"){const gs=n.tech==="R"?g:Math.min(.08,D*.5);fn=t=>prevM+(m0-prevM)*Math.min(1,t/gs);vs=gs+.05;}
+   else{fn=()=>m0;bend=false;}
+   if(it.vib){const f0=fn,v0=Math.max(.15,vs);fn=t=>f0(t)+(t>v0?P.vd*Math.sin(2*Math.PI*P.vr*(t-v0))*Math.min(1,(t-v0)/P.vo):0);bend=true;}
+   curPitch[n.s]=endM;
+   const pick=!n.tech||it.notes.length>1;const prev=cur[n.s];if(prev)prev.end=Math.min(prev.end,T0+.012);
+   const nt={T:T0,s:n.s,fn,bend,pick,amp:(it.notes.length>1?.62:.8)*(pick?1:.8),end:T0+D+.03,lo:Math.min(m0,m1,prevM),hi:Math.max(m0,m1,prevM)};
+   notes.push(nt);cur[n.s]=nt;});
+ });
+ if(notes.length){const z=notes[notes.length-1];z.end+=.7;}
+ // 2) 排程每個音
+ const MAXL=3.05;
+ notes.forEach(n=>{const [sm,buf]=pickBuf(S,(n.lo+n.hi)/2);const src=ctx.createBufferSource();src.buffer=buf;const g=ctx.createGain();src.connect(g);g.connect(N.lead);
+  const T=t0+n.T,off=n.pick?0:.045,rel=Math.max(.03,P.rel*.6);let dur=Math.max(.05,n.end-n.T);
+  const rate=p=>Math.pow(2,(p-sm)/12);
+  if(n.bend){const k=Math.max(2,Math.ceil((dur+rel)*120)),c=new Float32Array(k);for(let i=0;i<k;i++)c[i]=rate(n.fn(i/119.999));src.playbackRate.setValueCurveAtTime(c,T,(k-1)/120);}
+  else src.playbackRate.setValueAtTime(rate(n.fn(0)),T);
+  const r0=rate(n.fn(0));const avail=(buf.duration-off)/Math.max(r0,rate(n.hi))-.06;if(dur>avail-rel)dur=Math.max(.05,avail-rel);
+  const A=n.pick?P.att:.012;g.gain.setValueAtTime(0,T);g.gain.linearRampToValueAtTime(n.amp,T+A);
+  g.gain.setValueAtTime(n.amp,T+Math.max(A,dur));g.gain.linearRampToValueAtTime(0,T+Math.max(A,dur)+rel);
+  src.start(T,off);src.stop(T+Math.max(A,dur)+rel+.02);srcs.push(src);});
+ // 3) 伴奏：乾淨電吉他，每 2 拍下刷一次，換和弦時重一點
+ if(withBack&&SB){const OPENB=[40,45,50,55,59,64];chs.forEach((c,ci)=>{const nb=ci+1<chs.length?chs[ci+1].b:beats;for(let b=c.b;b<nb-EPS;b+=2){const sh=chordShape(c.name);if(!sh)continue;
+  const T=t0+lead0+b*spb,L=Math.min(2*spb,nb-b>=2?2*spb:(nb-b)*spb)+.05;let k=0;
+  sh.frets.forEach((f,i)=>{if(f<0)return;const m=OPENB[i]+f;const [sm,buf]=pickBuf(SB,m);const src=ctx.createBufferSource();src.buffer=buf;src.playbackRate.value=Math.pow(2,(m-sm)/12);
+   const g=ctx.createGain();src.connect(g);g.connect(N.back);const ts=T+k*.011;k++;const a=(b===c.b?.34:.24)*(1-k*.03);
+   g.gain.setValueAtTime(0,ts);g.gain.linearRampToValueAtTime(a,ts+.004);g.gain.setValueAtTime(a,ts+L-.06);g.gain.linearRampToValueAtTime(0,ts+L);src.start(ts);src.stop(ts+L+.02);srcs.push(src);});}});}
+ return{ev,lead0,srcs,out:N.out,len:lead0+beats*spb+2.4};}
+// 離線算成音檔（測試／匯出用）
+function renderRock(solo,phIdx,bpm,withBack,SR){SR=SR||44100;const P=GTR[solo.style]||GTR._;const spb=60/bpm;const {beats}=rockEvents(solo,phIdx,bpm);
+ const len=Math.ceil((.25+beats*spb+2.4)*SR);const OC=window.OfflineAudioContext||window.webkitOfflineAudioContext;const oc=new OC(2,len,SR);
+ const need=[P.inst].concat(withBack?[BACK_INST]:[]);return Promise.all(need.map(n=>smpLoad(oc,n))).then(()=>{smpSched(oc,solo,phIdx,bpm,withBack,0);return oc.startRendering();});}
+function rockStop(){AUD.tok=null;if(AUD.src){try{AUD.src.stop();}catch(e){}AUD.src=null;}if(AUD.srcs){AUD.srcs.forEach(s=>{try{s.stop();}catch(e){}});AUD.srcs=null;}
+ if(AUD.out){const o=AUD.out;try{o.gain.setTargetAtTime(0,AUD.ctx.currentTime,.02);}catch(e){}setTimeout(()=>{try{o.disconnect();}catch(e){}},200);AUD.out=null;}
+ clearTimeout(AUD.end);cancelAnimationFrame(AUD.raf);document.querySelectorAll("g.rn.on").forEach(g=>g.classList.remove("on"));
+ document.querySelectorAll(".btn.loading").forEach(b=>b.classList.remove("loading"));if(AUD.btn){AUD.btn.classList.remove("playing");AUD.btn=null;}}
+function audUnlock(ctx){if(ctx.state==="suspended")ctx.resume();if(!AUD.unlocked){try{const b=ctx.createBuffer(1,1,22050),s=ctx.createBufferSource();s.buffer=b;s.connect(ctx.destination);s.start(0);}catch(e){}AUD.unlocked=true;}}
+function rockHighlight(ctx,t0,r,phIdx,tabIds){let curEl=null;const tick=()=>{const el=ctx.currentTime-t0-r.lead0;let cur=null;for(const e of r.ev){if(e.t<=el)cur=e;else break;}
+  const want=cur&&el<cur.t+cur.d?document.querySelector(`svg[data-tab="${tabIds[phIdx.indexOf(cur.pi)]}"] g.rn[data-i="${cur.i}"]`):null;
+  if(want!==curEl){if(curEl)curEl.classList.remove("on");if(want){want.classList.add("on");}curEl=want;}
+  AUD.raf=requestAnimationFrame(tick);};AUD.raf=requestAnimationFrame(tick);}
+function rockPlay(solo,phIdx,tabIds,btn,bpmO){const again=AUD.btn&&AUD.btn===btn;rockStop();if(again)return;
+ const C=window.AudioContext||window.webkitAudioContext;if(!C){alert("這個瀏覽器不支援播放");return;}
+ if(!AUD.ctx)AUD.ctx=new C();const ctx=AUD.ctx;audUnlock(ctx);
  const bpm=bpmO||+($("rockBpm")?$("rockBpm").value:solo.bpm)||solo.bpm,back=$("rockBack")?$("rockBack").checked:true;
+ const P=GTR[solo.style]||GTR._,need=[P.inst].concat(back?[BACK_INST]:[]);AUD.btn=btn;
+ const go=()=>{if(!SMP.failed&&need.every(n=>SMP.inst[n]))rockPlaySmp(ctx,solo,phIdx,tabIds,btn,bpm,back);else rockPlaySynth(ctx,solo,phIdx,tabIds,btn,bpm,back);};
+ if(SMP.failed||need.every(n=>SMP.inst[n])){go();return;}
+ const tok=AUD.tok={};if(btn)btn.classList.add("loading");
+ Promise.race([Promise.all(need.map(n=>smpLoad(ctx,n))),new Promise((_,rej)=>setTimeout(()=>rej(new Error("timeout")),15000))])
+  .catch(e=>{SMP.failed=true;console.warn("吉他取樣載入失敗，改用合成音色",e);const n=$("smpNote");if(n)n.textContent="（電吉他取樣載入失敗，暫時改用合成音色）";})
+  .then(()=>{if(btn)btn.classList.remove("loading");if(AUD.tok===tok){AUD.tok=null;if(ctx.state==="suspended")ctx.resume();go();}});}
+function rockPlaySmp(ctx,solo,phIdx,tabIds,btn,bpm,back){const t0=ctx.currentTime+.08;const r=smpSched(ctx,solo,phIdx,bpm,back,t0-0);
+ AUD.srcs=r.srcs;AUD.out=r.out;AUD.btn=btn;if(btn)btn.classList.add("playing");
+ AUD.end=setTimeout(()=>{if(AUD.out===r.out)rockStop();},(r.len+.2)*1000);rockHighlight(ctx,t0,r,phIdx,tabIds);}
+function rockPlaySynth(ctx,solo,phIdx,tabIds,btn,bpm,back){
  const r=synthRock(solo,phIdx,bpm,back,32000);const buf=ctx.createBuffer(1,r.data.length,r.SR);buf.getChannelData(0).set(r.data);
  const src=ctx.createBufferSource();src.buffer=buf;
  if(!AUD.rev){const L=Math.floor(ctx.sampleRate*1.6),ir=ctx.createBuffer(2,L,ctx.sampleRate);for(let c=0;c<2;c++){const d=ir.getChannelData(c);for(let i=0;i<L;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/L,3);}AUD.rev=ctx.createConvolver();AUD.rev.buffer=ir;const wet=ctx.createGain();wet.gain.value=.22;AUD.rev.connect(wet);wet.connect(ctx.destination);}
  const dry=ctx.createGain();dry.gain.value=.8;src.connect(dry);dry.connect(ctx.destination);src.connect(AUD.rev);
  const t0=ctx.currentTime+.05;src.start(t0);AUD.src=src;AUD.btn=btn;if(btn)btn.classList.add("playing");
- src.onended=()=>{if(AUD.src===src)rockStop();};
- let curEl=null;const tick=()=>{const el=ctx.currentTime-t0-r.lead0;let cur=null;for(const e of r.ev){if(e.t<=el)cur=e;else break;}
-  const want=cur&&el<cur.t+cur.d?document.querySelector(`svg[data-tab="${tabIds[phIdx.indexOf(cur.pi)]}"] g.rn[data-i="${cur.i}"]`):null;
-  if(want!==curEl){if(curEl)curEl.classList.remove("on");if(want){want.classList.add("on");}curEl=want;}
-  AUD.raf=requestAnimationFrame(tick);};AUD.raf=requestAnimationFrame(tick);}
+ src.onended=()=>{if(AUD.src===src)rockStop();};rockHighlight(ctx,t0,r,phIdx,tabIds);}
 // ===== legato + chords: static =====
 $("legatoTechTable").innerHTML=table(["記號","名稱","怎麼彈","聽起來"],[["h","搥弦 hammer-on","撥前一個音後，另一指像小槌子一樣用力敲到高格","音往上連，不用再撥"],["p","勾弦 pull-off","兩指先都按好，上面的手指往下（往地板方向）勾一下弦再離開","音往下連，像嘆氣"],["/","上滑 slide up","手指不放開，壓著弦滑到高格","像人聲往上「滑」上去"],["\\","下滑 slide down","壓著弦往低格滑","像一口氣慢慢吐出來"],["h…p…（反覆）","顫音 trill","兩個音快速搥勾交替","緊張、閃爍"],["~","揉弦 vibrato","長音時把弦小幅度上下推動","讓長音有生命、有情緒"]]);
 $("rockStyleTable").innerHTML=table(["吉他手","常用音階","招牌技巧","印象音程／目標音","推薦聽的歌"],ROCK_STYLE_ROWS);
@@ -1212,7 +1312,7 @@ function render(){
  linkChords(document.body);
 }
 render();renderQuiz();
-window.__modes={ROCK,SIG,REF,LK,TONE,ROCK_ERRORS,checkRock,parseRock,synthRock,rockKey,rockAllowed,plainRock,rockTab,LEGATO,JOURNEY,CHORD_ERRORS,chordShape,checkChord,parseChord,LICK_CHORDS,spell,diatonic,MODES,spellIv,bluesScale,pentBoxes,LICKS,BLUES_LICKS,MIX_SCALE,MIX_LICK,TAB_ERRORS,modeScale,OPEN_STRINGS};
+window.__modes={GTR,SMP,renderRock,smpSched,ROCK,SIG,REF,LK,TONE,ROCK_ERRORS,checkRock,parseRock,synthRock,rockKey,rockAllowed,plainRock,rockTab,LEGATO,JOURNEY,CHORD_ERRORS,chordShape,checkChord,parseChord,LICK_CHORDS,spell,diatonic,MODES,spellIv,bluesScale,pentBoxes,LICKS,BLUES_LICKS,MIX_SCALE,MIX_LICK,TAB_ERRORS,modeScale,OPEN_STRINGS};
 </script>
 <div id="chPop" class="chpop" hidden></div>
 </body>
