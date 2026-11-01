@@ -1,4 +1,7 @@
-# Guitar samples
+# Audio samples
 
-`overdriven_guitar`, `distortion_guitar`, `electric_guitar_clean`: single-note MP3s from the **FluidR3_GM** SoundFont (Frank Wen et al.), as rendered by [gleitz/midi-js-soundfonts](https://github.com/gleitz/midi-js-soundfonts).
-License: [Creative Commons Attribution 3.0](https://creativecommons.org/licenses/by/3.0/). Every 3rd semitone from E2 to G6 is included; the player pitch-shifts the samples in between.
+- `egtr/`: clean DI electric guitar single notes. **Karoryfer Samples** electric guitar, licensed [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/). The MP3s come from [nbrosowsky/tonejs-instruments](https://github.com/nbrosowsky/tonejs-instruments) (MIT). The player pitch-shifts between the sampled notes and loops the sustain.
+- `ebass/`: electric bass single notes, also Karoryfer Samples (CC BY 3.0) via tonejs-instruments (MIT).
+- `ir/cab-a.wav`, `ir/cab-b.wav`: guitar cabinet impulse responses from David Fau Casquel, *Impulse Responses* ([archive.org/details/ImpulseResponses](https://archive.org/details/ImpulseResponses)), CC BY 3.0. They were trimmed and resampled.
+
+Drums are synthesized in the browser, so they use no samples.

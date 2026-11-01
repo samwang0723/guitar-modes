@@ -219,7 +219,7 @@ details.basic summary{cursor:pointer;padding:6px 0;color:var(--text2)}
 </section>
 
 <section id="s9"><h2>9. Legato 與搖滾吉他 Solo：先拆 Slash・松本孝弘・Eric Johnson 的原曲，再寫自己的</h2>
-  <p>要彈出他們的味道，最快的方法是<b class="hl">先聽原曲、對著官方譜，把手法拆出來</b>：用什麼調、什麼把位、推弦推到哪個音、快句怎麼分組、句子在第幾小節變密。這一節分三步：① <b class="hl">拆解原曲</b>（文字分析＋官方授權譜與官方影片連結）；② <b class="hl">經典 Lick 庫</b>：每位吉他手 8 個課程裡最常教的經典手法（附來源連結，用原創短句示範，可以單獨聽）；③ <b class="hl">原創 Solo</b>：每一句都由這些經典 lick 組成，標出用到哪幾個，調性、速度、和弦進行都和參考曲同一類型。</p>
+  <p>要彈出他們的味道，最快的方法是<b class="hl">先聽原曲、對著官方譜，把手法拆出來</b>：用什麼調、什麼把位、推弦推到哪個音、快句怎麼分組、句子在第幾小節變密。這一節分三步：① <b class="hl">拆解原曲</b>（文字分析＋官方授權譜與官方影片連結）；② <b class="hl">經典 Lick 庫</b>：每位吉他手 7–8 個「拿手 lick」，按辨識度排名（#1 最招牌；附來源連結，用原創短句示範，可以單獨聽）；③ <b class="hl">原創 Solo</b>：每一句都由這些經典 lick 組成，標出用到哪幾個，調性、速度、和弦進行都和參考曲同一類型。</p>
   <div class="callout"><b>版權說明：</b>本站不轉載原曲的譜。下面的「拆解」只有文字分析；要看原曲的完整 TAB，請點 Songsterr 等授權譜網站與官方 YouTube 連結。所有 lick 與 solo 都是照這些手法新寫的；「經典 lick」指的是課程裡公認的手法（例如四音一組、五連音、齊音推弦），不是原曲的旋律。Slash 的原曲是降半音（E♭）調弦，標準調弦的課程通常寫成高半音的指型，本站也一樣。</div>
   <h3>① 拆解原曲</h3>
   <div class="seg" id="refSeg"></div>
@@ -242,9 +242,9 @@ details.basic summary{cursor:pointer;padding:6px 0;color:var(--text2)}
     <button type="button" class="btn" id="rockPlayAll">▶ 播放整段</button>
     <button type="button" class="btn" id="rockStopBtn">■ 停止</button>
     <label class="pl-l">速度 <input type="range" id="rockBpm" min="40" max="140" step="2"> <span id="rockBpmVal"></span> BPM</label>
-    <label class="pl-l"><input type="checkbox" id="rockBack" checked> 伴奏和弦</label>
+    <label class="pl-l"><input type="checkbox" id="rockBack" checked> 樂團伴奏（鼓、貝斯、節奏吉他）</label>
   </div>
-  <p class="muted">試聽用的是<b>真實電吉他取樣</b>（第一次按播放會先下載約 1 MB 的音色，按鈕會顯示「載入音色…」），推弦、滑音、揉弦是把取樣的音高即時推動做出來的，再經過破音、音箱等化、延遲與殘響。每位吉他手的音色不同：Slash 是 Les Paul 中破音、中頻厚，推弦慢、揉弦寬而慢；松本孝弘是延音長、滑順的破音，加一點延遲，推弦快而準、揉弦均勻；Eric Johnson 是溫暖、起音柔和的「小提琴音色」，揉弦窄而快。伴奏是乾淨電吉他刷和弦。先放慢到 60% 跟著唱，再跟著彈。iPhone 請先關掉靜音模式。再按一次正在播放的按鈕可以停止。<span id="smpNote"></span><br><span style="font-size:.85em">吉他取樣：FluidR3_GM SoundFont（Frank Wen 等），經 <a href="https://github.com/gleitz/midi-js-soundfonts" target="_blank" rel="noopener">gleitz/midi-js-soundfonts</a> 轉檔，授權 <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="noopener">CC BY 3.0</a>。</span></p>
+  <p class="muted">試聽用的是<b>真實電吉他取樣</b>：乾淨、沒有效果的電吉他單音（DI），在瀏覽器裡跑一整套<b>音箱模擬</b>：輸入增益 → 低切＋中頻提升 → 兩級真空管削波 → 音色堆疊（Bass／Mid／Treble）→ 後級飽和 → 音箱箱體脈衝響應（IR）→ 立體延遲 → 板式殘響。每位吉他手是不同的設定：<b>Slash</b> 是 Marshall JCM800 式中破音、800 Hz 中頻突出，wah 段會自動踩踏板；<b>松本孝弘</b>是 Bradshaw 式高增益＋壓縮、附點四分音符立體延遲、厚殘響；<b>Eric Johnson</b> 是頸部拾音器高音轉小的「小提琴音色」：壓縮、音量慢慢拉起、延遲。推弦會稍微推過頭再回到準音、揉弦晚一點才開始而且越揉越寬、搥勾弦比較小聲、還有撥弦聲、滑音聲和句尾悶音。勾選「樂團伴奏」會加上鼓、貝斯（跟著和弦根音）和節奏吉他（Slash：破音強力和弦；松本：乾淨分解和弦＋鋪底；EJ：乾淨 Strat）。第一次播放會先下載約 1.5 MB 的音色。先放慢到 60% 跟著唱，再跟著彈。iPhone 請先關掉靜音模式。再按一次正在播放的按鈕可以停止。<span id="smpNote"></span><br><span style="font-size:.85em">吉他與貝斯取樣：Karoryfer Samples（授權 <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="noopener">CC BY 3.0</a>），經 <a href="https://github.com/nbrosowsky/tonejs-instruments" target="_blank" rel="noopener">nbrosowsky/tonejs-instruments</a>（MIT）轉檔。音箱 IR：David Fau Casquel《Impulse Responses》（<a href="https://archive.org/details/ImpulseResponses" target="_blank" rel="noopener">archive.org</a>，CC BY 3.0）。鼓是瀏覽器即時合成。</span></p>
   <p class="muted">這段 solo 用到的指板位置（音名；紫色是借來的音）：</p>
   <div class="figure scroll" id="rockNeck"></div>
   <div id="rockList"></div>
@@ -720,177 +720,299 @@ $("resetQuiz").onclick=()=>{state.answers={};renderQuiz();};
 // ===== 搖滾 solo 資料 =====
 // ===== 經典 Lick（原創短句；照課程整理的手法寫，不是原曲的譜）=====
 const LK={
- // ── Slash（E 小調：12–17 格；B 小調：7–10 格、19–22 格）
- s_pre:["r:8","e15:8","B15pb17:4","G14:8","G12:8","D14:4~"],
- s_hook:["B15b17:4.~","RB15:8","pB13:8","G14:8","G12:4~"],
- s_seq:["D14:16","G12:16","hG14:16","B12:16","G12:16","hG14:16","B12:16","hB15:16","G14:16","B12:16","hB15:16","e12:16","B12:16","hB15:16","e12:16","he15:16"],
- s_hm:["e11:16t","he12:16t","/e14:16t","he15:16t","/e17:16t","he19:16t","pe17:16t","pe15:16t","pe14:16t","he15:16t","he17:16t","pe15:16t","/e19:2~"],
- s_loop:["B15b17:4","e15:16t","pe12:16t","B15:16t","e15:16t","pe12:16t","B15:16t","e15:16t","pe12:16t","B15:16t","e15:16t","pe12:16t","B15:16t","e15:16t","pe12:16t","B15:16t","e15:16t","pe12:16t","B15:16t"],
- s_hi:["B20b22:4~","e19:8t","B20:8t","pB17:8t","e19:8t","B20:8t","pB17:8t","G19b21:4~"],
- s_v7:["e19:8","pe17:8","B19:8","B16:8","G16:8","G14:8","B16b17:4~"],
- s_end:["B15b17:2.~","r:4"],
- n_pre:["r:8","e10:8","B10pb12:4","G9:8","G7:8","D9:4~"],
- n_obl:["B10b12+e10:4.","B8+e7:8","B10b12+e10:4~","e10:8","B10:8"],
- n_d8:["D12:8","G14:8","B15:8","e14:8","B15:8","G14:8","e14:8","B15:8"],
- n_a:["e12:8","B14:8","B12b14:2~","B12:8","G14:8"],
- n_loop:["B10b12:4","e10:16t","pe7:16t","B10:16t","e10:16t","pe7:16t","B10:16t","e10:16t","pe7:16t","B10:16t","e10:16t","pe7:16t","B10:16t","e10:16t","pe7:16t","B10:16t","e10:16t","pe7:16t","B10:16t"],
- n_seq:["D9:16","G7:16","hG9:16","B7:16","G7:16","hG9:16","B7:16","hB10:16","G9:16","B7:16","hB10:16","e7:16","B7:16","hB10:16","e7:16","he10:16"],
- n_hi:["B15b17:4~","e17:8t","pe14:8t","B17:8t","e17:8t","pe14:8t","B17:8t","G16:4~"],
- n_hm:["e14:16t","he15:16t","/e18:16t","he19:16t","pe18:16t","pe15:16t","he18:16t","he19:16t","pe18:16t","pe15:16t","pe14:16t","he15:16t","/e18:2~"],
- n_loop8:["B22b24:4~","e22:16t","pe19:16t","B22:16t","e22:16t","pe19:16t","B22:16t","e22:16t","pe19:16t","B22:16t","e22:16t","pe19:16t","B22:16t","e22:16t","pe19:16t","B22:16t","e22:16t","pe19:16t","B22:16t"],
- n_end:["e19:2.~","r:4"],
- // ── 松本孝弘（G 大調：12–22 格；A 大調：5–21 格）
- t_uni:["r:8","e12:8","B15b17+e12:2~","B13:8","B12:8"],
- t_pin1:["G14:8","G16:8","B13b15:2~","RB13:8","G14:8"],
- t_down:["r:8","e15:8","e17pb19:2~","e15:8","e17:8"],
- t_six:["e14:16t","he15:16t","he17:16t","pe15:16t","pe14:16t","pe12:16t","B15:8","e12:8","e14:2~"],
- t_ct:["D17:16","G15*:16","hG16:16","G19:16","B20:16","e19:16","B20:16","e19:16","e17:8","/e19:4.~"],
- t_half:["e17:8","e19:8","e19b20:2~","Re19:8","e17:8"],
- t_hm:["e19:16t","pe17:16t","pe15:16t","B19:16t","pB17:16t","pB16:16t","e17:16t","pe15:16t","B19:16t","pB17:16t","pB16:16t","G17:16t","B16:2~"],
- t_land:["e14b15:2.~","r:4"],
- t_pin2:["r:8","e17:8","e20:8","e20b22:4.~","Re20:8","e17:8"],
- t_end:["e17:8","pe14:8","B17:8","e14:8","@G","/e19:2~"],
- a_ct:["D7:16","G5*:16","hG6:16","G9:16","B10:16","e9:16","B10:16","e9:16","e10:8","/e12:4.~"],
- a_pin:["e14:8","B12:8","G11b13:2~","RG11:8","G9:8"],
- a_leg:["B10:16","hB12:16","pB10:16","/B14:16","hB15:16","pB14:16","/B17:16","hB19:16","e17:2~"],
- a_e:["e16:8","e14:8","B17:8","e14:8","B15b17:2~"],
- a_rise:["r:16","A7:16","A9:16","D6:16","D7:16","D9:16","G6:16","G7:16","G9:16","B7:16","B9:16","B10:16","e7:16","e9:16","e10:16","/e12:16"],
- a_top:["e14b16:2.~","r:4"],
- a_pin8:["r:8","e17:8","e19:8","e19b21:4.~","Re19:8","e17:8"],
- a_gs8:["B17:8","e16:4.~","e14:8","B17:8","B14:4"],
- a_c1:["e17:4~","e16:8","e14:8","@E","e12:8","e14:8","e16:4~"],
- a_c2:["e12b14:4~","e12:8","B14:8","@E","B12:8","B9:8","G13:8","G11:8"],
- a_end:["B12b14+e9:2.~","r:4"],
- // ── Eric Johnson（G 大調／E 小調五聲：12–22 格；E 多利安）
- e_bend:["e17b19:4.~","e17:8","pe15:8","pe12:8","B15:8","B12:8"],
- e_five:["e17:16q","pe15:16q","pe12:16q","B15:16q","pB12:16q","e15:16q","pe12:16q","B15:16q","pB12:16q","G14:16q","e12:16q","B15:16q","pB12:16q","G14:16q","pG12:16q","D16:4~"],
- e_casc:["B12:16","hB15:16","e12:16","he15:16","he17:16t","pe15:16t","pe12:16t","he15:16t","he17:16t","pe15:16t","pe12:16t","B15:16t","pB12:16t","G14:16t","pG12:16t","D14:16t","pD12:16t","A14:16t","pA12:16t","D14:8"],
- e_tri:["D14:8t","G16:8t","e15:8t","D16:8t","B15:8t","e17:8t","D17:8t","G19:8t","e19:8t","B17:4~"],
- e_roots:["e17:16q","pe15:16q","pe12:16q","B15:16q","pB12:16q","e15:16q","pe12:16q","B15:16q","pB12:16q","G14:16q","A12:8t","G14:8t","e17:8t","e17b19:4~"],
- e_4th:["G12+B13:8","G9+B10:8","G12+B13:8","G14+B15:8","G12:16q","hG14:16q","B12:16q","hB13:16q","hB15:16q","e12:4~"],
- e_mix:["e15:16q","he17:16q","/e19:16q","/e22:16q","pe19:16q","pe17:16","B20:16","pB17:16","G19:16","pG16:8t","D19:8t","pD17:8t","B20b22:4~"],
- e_fin:["D17:8","B20:8","e19:2.~"],
+ // ── Slash（E 小調 12 把位；B 小調 7／14–22 格）
+ sl_hook:["r:8","B15:8","e15b17:4~","Re15:8","pe12:8","B15:8","e12:8"],
+ sl_rep:["r:8","G14b16:8","G14b16:8","G14b16:4~","RG14:8","G12:8","D14:8"],
+ sl_loop:["B15b17:4~","e15:16t","pe12:16t","B15:16t","e15:16t","pe12:16t","B15:16t","e15:16t","pe12:16t","B15:16t","e15:16t","pe12:16t","B15:16t","e15:16t","pe12:16t","B15:16t","e15:16t","pe12:16t","B15:16t"],
+ sl_chrom:["G13*:16","G14:16","G15*:16","G16:16","B16:8","e14:8","B15b16:4~","e12:8","B16:8"],
+ sl_hi:["B20b22:4~","RB20:8","pB17:8","e19:8t","pe17:8t","B20:8t","e19:8t","pe17:8t","B20:8t"],
+ sl_loop2:["e20:16t","pe17:16t","B20:16t","e20:16t","pe17:16t","B20:16t","e20:16t","pe17:16t","B20:16t","e20:16t","pe17:16t","B20:16t","e20b22:4~","e19:8","e17:8"],
+ sl_hm:["e20:16t","pe19:16t","pe15:16t","B17:16t","pB16:16t","hB17:16t","B20:16t","pB17:16t","pB16:16t","G17:16t","pG16:16t","hG17:16t","G16:2~"],
+ sl_hook2:["r:8","B15:8","e15b17:4~","Re15:8","pe12:8","B15:16","pB12:16","G14:8"],
+ sl_rep2:["G14b16:8","G14b16:8","G14b16r:4","G12:8","D14:8","D12:16","hD14:16","G12:8"],
+ sl_end:["B15b17:2.~","r:4"],
+ nr_1:["r:8","B7:8","/B10:8","e7:8","e10b12:4~","Re10:8","e7:8"],
+ nr_2:["B10b12:2~","RB10:8","B8:8","G9:4"],
+ nr_3:["r:8","e10:8","/e12:8","e10:8","e12b14:2~"],
+ nr_4:["e12:8","pe10:8","B10:8","B12:8","/B14:2~"],
+ nr_5:["e19:8","e22b24:4.~","Re22:8","pe19:8","e17:8","B19:8"],
+ nr_6:["e19:16t","pe15:16t","B17:16t","e19:16t","pe15:16t","B17:16t","e19:16t","pe15:16t","B17:16t","e19:16t","pe15:16t","B17:16t","e15b17:4~","e15:8","e17:8"],
+ nr_7:["e19:16t","pe18:16t","pe14:16t","B17:16t","pB15:16t","pB14:16t","G16:16t","pG15:16t","pG12:16t","D16:16t","pD14:16t","hD16:16t","G15:2~"],
+ nr_8:["B15b17:4~","RB15:8","pB12:8","G14:8","G11:8","/G14:8","G16:8"],
+ nr_9:["e17:16","pe14:16","B17:16","pB15:16","G16:16","pG14:16","D16:16","pD14:16","D12:4","A14:4~"],
+ nr_end:["G14b16:2.~","r:4"],
+ // ── 松本孝弘（G 大調 → A 大調轉調；A 小調）
+ tk_t1:["r:8","B15:8","B17:8","e15:8","e17b19:2~"],
+ tk_t2:["Re17:8","e15:8","e14:4~","r:8","B15:8","e14:8","B17:8"],
+ tk_t3:["B17:8","e15:8","e14:8","e12:8","B15b17:2~"],
+ tk_t4:["B13:8","B15:8","B17:4~","B15:8","B13:8","G14:4"],
+ tk_hw:["e14b15:4","Re14:8","e12:8","e15b17:2~"],
+ tk_hw2:["Re15:8","e14:8","e12:8","B15:8","e14:2~"],
+ tk_hm:["e19:16t","pe17:16t","pe15:16t","B17:16t","pB16:16t","pB13:16t","G17:16t","pG16:16t","pG14:16t","D17:16t","pD16:16t","pD13:16t","G16:2~"],
+ tk_land:["B15b17:2.~","r:4"],
+ tk_u1:["r:8","B17:8","B19:8","e17:8","e19b21:2~"],
+ tk_u2:["Re19:8","e17:8","e16:4~","r:8","B17:8","e16:8","B19:8"],
+ tk_u3:["e19:8","e21:8","e19b21:4~","@D","Re19:8","e17:8","e14:4~"],
+ tk_u4:["e19:8","e17:8","e16:8","e14:8","@A","e16b17:2~"],
+ tr_1:["r:8","e17:8","e20:8","e17:8","e19b20:2~"],
+ tr_2:["Re19:8","e17:8","B20:8","B18:8","B17b18:2~"],
+ tr_hm1:["e20:16t","pe19:16t","pe17:16t","B20:16t","pB18:16t","pB17:16t","G19:16t","pG17:16t","pG16:16t","D19:16t","pD17:16t","pD15:16t","G17b19:2~"],
+ tr_hm2:["e16:16t","he17:16t","pe16:16t","pe13:16t","B15:16t","pB13:16t","G16:16t","pG13:16t","D15:16t","pD12:16t","A15:16t","pA12:16t","G13:2~"],
+ tr_one:["e12:16","he13:16","he15:16","/e17:16","he19:16","pe17:16","he19:16","he20:16","/e22:4~","e20:8","e19:8"],
+ tr_hw:["B17b18:4","RB17:8","B20:8","B20b22:2~"],
+ tr_down:["e20pb22:4","e19:8","e17:8","B20:8","B18:8","G19:8","G17:8"],
+ tr_e7:["D18:8","G16:8","B17:8","e16:8","e16b17:2~"],
+ tr_end:["e17:2.~","r:4"],
+ tr_pent:["e8:16","pe5:16","B8:16","pB5:16","G7b9:4~","G5:8","D7:8","D5b7r:4"],
+ // ── Eric Johnson（G 大調／E 小調五聲；E 多利安）
+ ej_vio:["e17b19:2~","e17:8","pe15:8","pe12:8","B15:8"],
+ ej_bell:["G14+B15:8","G12+B13:8","G14+B15:4","G9+B10:8","G12+B13:8","G14+B15:4~"],
+ ej_casc:["e17:16q","pe15:16q","pe12:16q","B15:16q","pB12:16q","e15:16q","pe12:16q","B15:16q","pB12:16q","G14:16q","e12:16q","B15:16q","pB12:16q","G14:16q","pG12:16q","B15:16q","pB12:16q","G14:16q","pG12:16q","D14:16q"],
+ ej_casc2:["G14:16q","pG12:16q","D14:16q","pD12:16q","A14:16q","D12b14:2.~"],
+ ej_wide:["A12:16","D14:16","G14:16","B13:16","e12:16","e15:16","e17:8","e17b19:2~"],
+ ej_hyb:["e17:16t","pe15:16t","B17:16t","pB15:16t","G16:16t","pG14:16t","D16:16t","pD14:16t","pD12:16t","A14:16t","pA12:16t","hA14:16t","G14+B15:2~"],
+ ej_shift:["e17:16q","/e22:16q","pe19:16q","pe17:16q","B20:16q","pB17:16q","e19:16q","pe17:16q","B20:16q","pB17:16q","G19:16q","e17:16q","pe15:16q","pe12:16q","B15:16q","G12:4~"],
+ ej_bell2:["B15+e15:8","B12+e12:8","G14+B15:8","G12+B13:8","D14+G14:8","D12+G12:8","A14+D14:4~"],
+ ej_vio2:["A12:8","D12:8","G11:8","/G14:8","G14b16:2~"],
+ ej_end:["e14:2.~","r:4"],
  m_oct:["r:8","A7+G9:8","A10+G12:8","A12+G14:8","A13*+G15*:8","A14+G16:4."],
  m_oct2:["A12+G14:8","A9+G11:8","A7+G9:8","A4+G6:4","A5+G7:8","A4+G6:4"],
- m_6th:["G11+e10:8","G12+e12:8","G14+e14:4","G16+e15:4~","G14+e14:8","G12+e12:8"],
- m_fsm:["r:8","e14:16","pe12:16","pe9:8","B12:8","B10:8","G11:8","B10:4~"],
- m_burst:["r:4","B12:16","hB14:16","hB15:8","e15:16t","pe14:16t","pe12:16t","B15:16t","pB12:16t","G14:16t","pG11:16t","D14:16t","pD12:16t","G11:16t","hG12:16t","hG14:16t"],
- m_a7:["e19b21:4~","e19:16q","pe17:16q","pe14:16q","B17:16q","pB14:16q","e17:16q","pe14:16q","B17:16q","pB14:16q","G16:16q","G12:4~"],
- m_4q:["B15+e15:8","B12+e12:8","B10+e10:4","e14:16q","pe12:16q","pe10:16q","B12:16q","pB10:16q","G11:4~"],
- m_end:["e14:2.~","r:4"]};
+ m_vio:["r:8","e14:4.~","e12:8","B15:8","B14:8","e12:8"],
+ m_fsm:["e17:16q","pe14:16q","B17:16q","pB14:16q","pB12:16q","e14:16q","B17:16q","pB14:16q","pB12:16q","G14:16q","B14:16q","pB12:16q","G14:16q","pG11:16q","D14:16q","G11:4~"],
+ m_bell:["B15+e14:8","B12+e12:8","G14+B15:8","G12+B12:8","G11+B12:4~","r:4"],
+ m_a7:["e17b19:4~","e17:16q","pe15:16q","pe12:16q","B14:16q","pB12:16q","e15:16q","pe12:16q","B14:16q","pB12:16q","G14:16q","G12:4~"],
+ m_bm:["A14:16","D14:16","G14:16","B15:16","e14:16","e17:16","B15:8","e14:2~"],
+ m_casc:["e17:16q","/e22:16q","pe19:16q","pe17:16q","B20:16q","pB17:16q","e19:16q","pe17:16q","B20:16q","pB17:16q","G19:16q","e17:16q","pe15:16q","pe12:16q","B15:16q","pB12:16q","G14:16q","pG12:16q","D14:16q","pD12:16q"],
+ m_a7b:["G14b16:2~","G14:8","pG12:8","D14:8","D11:8"],
+ m_end:["B12+e14:2.~","r:4"]};
 const C=(ch,...ks)=>{const o=[];ks.forEach((k,i)=>{if(ch[i])o.push("@"+ch[i]);o.push(...LK[k]);});return o;};
+const YT={scom:"https://www.youtube.com/watch?v=1w7OgIMMRc4",nr:"https://www.youtube.com/watch?v=8SbUC-UaAxE",alone:"https://www.youtube.com/watch?v=fhoHMNKa610",calling:"https://www.youtube.com/watch?v=rYyk3kgE3mY",lp:"https://www.youtube.com/watch?v=ZgRPDC4xE4A",ultra:"https://www.youtube.com/watch?v=Ujb-ZeX7Mo8",badcom:"https://www.youtube.com/watch?v=jG5yDMHd_go",cliffs:"https://www.youtube.com/watch?v=5Nd7EZ3k39s",manh:"https://www.youtube.com/watch?v=reHoA0xxo_o"};
 const ROCK=[
- {id:"slash1",style:"Slash",seg:"Slash 1・12 把位",title:"Slash 風・12 把位的哭腔（E 小調，約 124 BPM）",key:{pc:4,mode:5},extras:{3:["D#","和聲小調導音（B7 的 3 度）"]},bpm:124,
-  feel:"中速搖滾、8 分音符律動；推弦慢、揉弦寬而慢（像 Les Paul 接 Marshall 的破音）",prog:"Em – C – Am – B7 – Em – C – B7 – Em",
-  mood:"把整首歌累積的情緒一口氣唱出來，最後在高把位哭出來",listen:"Guns N' Roses〈Sweet Child O' Mine〉主 solo（E 小調段落）",
-  based:"〈Sweet Child O' Mine〉主 solo 的結構：頸部拾音器唱長句 → 和聲小調一路爬高 → 12 格五聲第一把位勾弦循環 → 高潮",
-  chords:["Em","C","Am","B7"],phrases:[
-  {n:"① 預推鉤子：同一個推弦唱兩次（第 1–2 小節）",tokens:C(["Em", "C"],"s_pre","s_hook"),lk:["預推鉤子＋同一推弦換意義"],
-   tip:"休半拍，e 弦 15 格 G 之後，B 弦 15 格先無聲推到 E 再撥、慢慢放回 D，接 A–G，落在 D 弦 14 格的 E（根音）揉弦。C 和弦上把同一個 D→E 再推一次，這次 E 是 C 的 3 度；放回 D、勾到 C，最後停在 G（C 的 5 度）。一樣的動作、不同的意義，就是 Slash 抒情 solo 好唱的原因。"},
-  {n:"② 四音一組爬升 → e 弦和聲小調換把（第 3–4 小節）",tokens:C(["Am", "B7"],"s_seq","s_hm"),lk:["四音一組爬升", "e 弦和聲小調換把"],
-   tip:"Am 上用 12 格五聲第一把位做四音一組爬升：E–G–A–B、G–A–B–D、A–B–D–E、B–D–E–G，十六個十六分音符一口氣衝到 e 弦 15 格。B7 上從 e 弦 11 格 D#（B7 的 3 度）沿著 e 弦用和聲小調換把往上：D#–E–F#–G–A–B，勾回來再搥上去，最後滑到 19 格 B（根音）撐兩拍。"},
-  {n:"③ 推弦＋三音勾弦循環 → 高把位三連音（第 5–6 小節，高潮）",tokens:C(["Em", "C"],"s_loop","s_hi"),lk:["推弦＋三音勾弦循環", "高把位推弦＋快速三連音"],
-   tip:"B 弦 15 格 D 推到 E 撐一拍，然後 e15–e12（勾弦）–B15 三個音一組，用六連音重複六次，越重複越激動。C 和弦直接跳到 20 格：把 G 推到 A，三連音 B–G–E 兩次（20→17 用勾弦），最後把 G 弦 19 格 D 推到 E（C 的 3 度）。"},
-  {n:"④ V7 導音推半音，再推一次根音收尾（第 7–8 小節）",tokens:C(["B7", "Em"],"s_v7","s_end"),lk:["V7 導音推半音解決"],
-   tip:"B7 上從 e 弦 19 格 B 往下：A–F#–D#–B–A，最後一拍把 B 弦 16 格 D#（導音）推半音到 E，和弦還沒換就先暗示要回到 Em。Em 上再把 D 推到 E 撐三拍，揉弦比前面都寬，最後一拍完全安靜。"}]},
- {id:"slash2",style:"Slash",seg:"Slash 2・抒情尾奏",title:"Slash 風・鋼琴抒情曲的兩段 solo（B 小調，約 80 BPM）",key:{pc:11,mode:5},extras:{10:["A#","和聲小調導音（F# 的 3 度）"]},bpm:80,
-  feel:"慢板抒情；推弦要推到準，揉弦寬而慢；尾奏越來越密",prog:"Bm – G – D – A – Bm – G – Em – F# – Bm – Bm",
-  mood:"前半是唱得出來的旋律，後半是樂團漸強、情緒潰堤的尾奏",listen:"Guns N' Roses〈November Rain〉、〈Don't Cry〉",
-  based:"〈November Rain〉：第一段 solo 用全音推弦落在和弦 3 度、句句唱得出來；尾奏在自然小調與和聲小調之間切換，用下行快跑收尾",
-  chords:["Bm","G","D","A","Em","F#"],phrases:[
-  {n:"① 預推鉤子 → 斜推雙音（第 1–2 小節）",tokens:C(["Bm", "G"],"n_pre","n_obl"),lk:["預推鉤子＋同一推弦換意義", "斜推雙音（oblique bend）"],
-   tip:"Bm 上：e 弦 10 格 D，B 弦 10 格先無聲推到 B 再撥、放回 A，接 E–D，落在 D 弦 9 格 B（根音）。G 和弦上用斜推雙音：e 弦 10 格 D 按住不動，同時把 B 弦 10 格 A 推到 B，兩個音一起響（B、D 是 G 的 3 度和 5 度）；中間換成 G＋B 雙音。"},
-  {n:"② 八分音符和弦指型 → 推到 3 度（第 3–4 小節）",tokens:C(["D", "A"],"n_d8","n_a"),lk:["八分音符和弦指型", "預推鉤子＋同一推弦換意義"],
-   tip:"把開放 D 和弦的指型搬到 12–15 格（D–A–D–F#），用平均的八分音符分解，像一段會唱的伴奏。A 和弦上先彈 B 弦 14 格 C# 讓耳朵聽到目標音，再從 12 格 B 推到 C#（A 的 3 度）撐兩拍。"},
-  {n:"③ 推弦＋三音循環 → 四音一組爬升（第 5–6 小節）",tokens:C(["Bm", "G"],"n_loop","n_seq"),lk:["推弦＋三音勾弦循環", "四音一組爬升"],
-   tip:"7 格 B 小調五聲第一把位：B 弦 10 格 A 推到 B，接 e10–e7（勾弦）–B10 三音一組六連音重複六次。G 和弦上四音一組往上爬（B–D–E–F#、D–E–F#–A…），最後到 e 弦 10 格 D（G 的 5 度）。"},
-  {n:"④ 高把位三連音 → e 弦和聲小調換把（第 7–8 小節）",tokens:C(["Em", "F#"],"n_hi","n_hm"),lk:["高把位推弦＋快速三連音", "e 弦和聲小調換把"],
-   tip:"Em 上換到 14–17 格：B 弦 15 格 D 推到 E（Em 的根音），三連音 A–F#–E 兩次，落在 G 弦 16 格 B（5 度）。F# 和弦上沿著 e 弦用 B 和聲小調換把：F#–G–A#–B 來回，最後滑到 18 格 A#（F# 的 3 度，和聲小調導音）撐兩拍。"},
-  {n:"⑤ 三音循環搬到 22 格，高音 B 收尾（第 9–10 小節，高潮）",tokens:C(["Bm", "Bm"],"n_loop8","n_end"),lk:["推弦＋三音勾弦循環"],
-   tip:"同一個循環搬到高八度的 19–22 格：B 弦 22 格 A 推到 B，接 e22–e19–B22（D–B–A）六連音重複六次，這是全曲最高、最密的地方。最後回到 e 弦 19 格高音 B 撐三拍寬揉弦，再留一拍空白。"}]},
- {id:"tak1",style:"松本孝弘",seg:"Tak 1・聖誕抒情",title:"松本孝弘風・冬夜抒情（G 大調，約 78 BPM）",key:{pc:7,mode:0},extras:{3:["D#","和聲小調導音（B7 的 3 度）"]},bpm:78,
-  feel:"慢板抒情；推弦要推到準確的音就停，再加均勻的寬揉弦；句子之間要換氣",prog:"Cmaj7 – Bm7 – Am7 – D – Gmaj7 – F#m7b5 – B7 – Em – Am7 – D7 – G",
-  mood:"像下雪的夜晚，solo 是第二段副歌：每一句都唱得出來",listen:"B'z〈いつかのメリークリスマス〉、〈ALONE〉",
-  based:"〈いつかのメリークリスマス〉的和聲語彙：Cmaj7–Bm7–Am7–D 級進下行，以及 F#m7b5–B7–Em 的小調 ii–V",
-  chords:["Cmaj7","Bm7","Am7","D","Gmaj7","F#m7b5","B7","Em","D7","G"],phrases:[
-  {n:"① 齊音推弦 → 定點推弦（第 1–2 小節）",tokens:C(["Cmaj7", "Bm7"],"t_uni","t_pin1"),lk:["ユニゾンチョーキング（齊音推弦）", "定點チョーキング＋均勻揉弦"],
-   tip:"休半拍，先彈 e 弦 12 格 E，接著齊音推弦：B 弦 15 格 D 推到 E，同時 e 弦 12 格 E 一起響，兩個 E 對準後再揉弦（Cmaj7 的 3 度）。Bm7 上 A–B 之後把 B 弦 13 格 C 推全音到 D（Bm7 的 3 度），推到就停、再揉，放回 C、落在 A。"},
-  {n:"② チョークダウン → 6 音一組快速句（第 3–4 小節）",tokens:C(["Am7", "D"],"t_down","t_six"),lk:["チョークダウン（預推放下）", "6 音一組快速句（タラタラタタ）"],
-   tip:"Am7 上：e 弦 17 格先無聲推到 B，撥弦後慢慢放回 A（Am7 的根音），接 G–A。D 和弦上 6 音一組：F#–G–A–G–F#–E 只撥第一個音、其餘搥勾，接 D–E，停在 e 弦 14 格 F#（D 的 3 度）撐兩拍。快慢對比要很明顯。"},
-  {n:"③ コードトーン分解 → 半音推弦（第 5–6 小節）",tokens:C(["Gmaj7", "F#m7b5"],"t_ct","t_half"),lk:["コードトーン分解＋裝飾音", "半音チョーキング"],
-   tip:"Gmaj7 上從 D 弦 17 格 G 開始分解和弦：G 弦 15 格 B♭ 是半音裝飾音（標 *），馬上搥到 B，接 D–G–B–G–B，再從 A 滑到 B（3 度）撐住。F#m7b5 上 A–B 之後把 B 推半音到 C（F#m7b5 的 ♭5），推到就停，放回 B、A。"},
-  {n:"④ 和聲小調 6 音一組下行 → 半音推弦（第 7–8 小節）",tokens:C(["B7", "Em"],"t_hm","t_land"),lk:["6 音一組快速句（タラタラタタ）", "半音チョーキング"],
-   tip:"B7 上兩組 6 音一組的 E 和聲小調下行：B–A–G–F#–E–D#、A–G–F#–E–D#–C，停在 B 弦 16 格 D#（B7 的 3 度）撐兩拍。Em 上把 e 弦 14 格 F# 推半音到 G（Em 的 3 度），推到準的音高就停，再揉三拍。"},
-  {n:"⑤ 22 格的最高點，滑到 3 度收尾（第 9–10 小節，高潮）",tokens:C(["Am7", "D7"],"t_pin2","t_end"),lk:["定點チョーキング＋均勻揉弦"],
-   tip:"Am7 上 A–C 之後，把 e 弦 20 格 C 推全音到 D（全曲最高音），撐一拍半再放回 C、A。D7 上 A–F#–E–F#（F# 是 D7 的 3 度），G 和弦一到就從 14 格滑上 19 格的 B（G 的 3 度），用寬而均勻的揉弦收尾。"}]},
- {id:"tak2",style:"松本孝弘",seg:"Tak 2・下行低音",title:"松本孝弘風・下行低音的抒情搖滾（A 大調，約 90 BPM）",key:{pc:9,mode:0},extras:{},bpm:90,
-  feel:"中慢板；每一輪都比上一輪高；推弦精準、單弦レガートスライド、動機搬到高八度",prog:"A – E/G# – F#m – E – D – E – A – E/G# – F#m E – D E – A",
-  mood:"一輪比一輪高，像副歌越唱越激動，最後落在 3 度",listen:"B'z〈ALONE〉、〈LOVE PHANTOM〉、松本孝弘〈#1090 ~Thousand Dreams~〉",
-  based:"〈ALONE〉的 solo 在 A 大調、低音一路下行（A–E/G#–F#m–E–D–E–A），推弦是主角；經典 lick：齊音推弦、定點推弦、コードトーン分解、レガートスライド、音階衝上去接推弦",
-  chords:["A","E/G#","F#m","E","D"],phrases:[
-  {n:"① コードトーン分解 → 定點推弦（第 1–2 小節）",tokens:C(["A", "E/G#"],"a_ct","a_pin"),lk:["コードトーン分解＋裝飾音", "定點チョーキング＋均勻揉弦"],
-   tip:"A 和弦上從 D 弦 7 格 A 開始分解：G 弦 5 格 C 是半音裝飾音，馬上搥到 C#，接 E–A–C#–A–C#，D 滑到 E（A 的 5 度）。E/G# 上 F#–B 之後把 G 弦 11 格 F# 推到 G#（跟著低音，也是 E 的 3 度），推到就停，放回 F#、落在 E。"},
-  {n:"② 單弦レガートスライド（第 3–4 小節）",tokens:C(["F#m", "E"],"a_leg","a_e"),lk:["レガートスライド（單弦滑音連奏）", "定點チョーキング＋均勻揉弦"],
-   tip:"B 弦上只撥第一個音：A–B–A 搥勾、滑到 C#、D–C# 搥勾、滑到 E–F#，最後換到 e 弦 17 格 A（F#m 的 3 度）撐兩拍。E 和弦上 G#–F#–E–F#，再把 B 弦 15 格 D 推到 E（根音）。"},
-  {n:"③ 音階衝上去，接釋放式推弦（第 5–6 小節）",tokens:C(["D", "E"],"a_rise","a_top"),lk:["音階衝上去＋釋放式推弦"],
-   tip:"休一個十六分音符，從 A 弦 7 格 E 開始，A 大調音階三音一弦往上衝：E–F#–G#–A–B–C#–D–E–F#–G#–A–B–C#–D，滑到 e 弦 12 格 E。前半可以用悶音（ズンズン），越往上越放開。E 和弦上把 e 弦 14 格 F# 推到 G#（E 的 3 度）撐三拍。"},
-  {n:"④ 同一個推弦搬到高八度（第 7–8 小節，高潮）",tokens:C(["A", "E/G#"],"a_pin8","a_gs8"),lk:["定點チョーキング＋均勻揉弦"],
-   tip:"跟第 ① 句同樣的「推到 3 度就停」，搬到 e 弦高八度：A–B 之後把 19 格 B 推到 C#（A 的 3 度），撐一拍半，放回 B、A。E/G# 上停在 e 弦 16 格 G#（3 度），再 F#–E–C#。"},
-  {n:"⑤ 每個和弦落在和弦音，齊音推弦收尾（第 9–11 小節）",tokens:C(["F#m", "D", "A"],"a_c1","a_c2","a_end"),lk:["コードトーン分解＋裝飾音", "ユニゾンチョーキング（齊音推弦）"],
-   tip:"和弦變成兩拍一個，旋律跟著落在和弦音：F#m 上停在 A（3 度），E 上停在 G#；D 上把 E 推到 F#（D 的 3 度），E 上 B–G#。最後在 A 和弦用齊音推弦：B 弦 12 格 B 推到 C#，同時 e 弦 9 格 C# 一起響（A 的 3 度），撐三拍。"}]},
- {id:"ej1",style:"Eric Johnson",seg:"EJ 1・五聲瀑布",title:"Eric Johnson 風・五聲瀑布（G 大調／E 小調五聲，96 BPM）",key:{pc:7,mode:0},extras:{},bpm:96,
-  feel:"這裡寫成 96 BPM 的十六分音符，等於約 192 BPM 的八分音符；五連音、六連音成組往下，像瀑布；音色乾淨、圓潤",prog:"G – D – Em – C – Am7 – C – D – G",
-  mood:"清晨的海岸線，清亮的高速句子中間也有呼吸",listen:"Eric Johnson〈Cliffs of Dover〉、〈Trademark〉",
-  based:"〈Cliffs of Dover〉：G 大調（大部分是 E 小調五聲），五個或六個音一組往下的五聲瀑布、經濟撥弦、開放音程的琶音",
-  chords:["G","D","Em","C","Am7"],phrases:[
-  {n:"① 17 格大推弦 → 五連音下行（第 1–2 小節）",tokens:C(["G", "D"],"e_bend","e_five"),lk:["三個八度根音＋17 格大推弦", "五連音下行"],
-   tip:"e 弦 17 格把 A 推到 B（G 的 3 度）撐一拍半，再下來 A–G–E–D–B。D 和弦上是五連音下行：A–G–E–D–B、G–E–D–B–A、E–D–B–A–G，每組 5 個音、下一組從低一個音開始，最後停在 D 弦 16 格 F#（D 的 3 度）。"},
-  {n:"② 五聲瀑布 → 開放三和弦（第 3–4 小節）",tokens:C(["Em", "C"],"e_casc","e_tri"),lk:["五聲瀑布（cascade）", "開放三和弦"],
-   tip:"先上行助跑 B–D–E–G，在 e 弦做單弦迴轉 A–G–E–G–A–G，再往下瀑布 E–D–B–A–G–E–D–B–A，落在 D 弦 14 格 E。C 和弦上是三組跨弦的開放三和弦：Em（E–B–G）、D/F#（F#–D–A）、G（G–D–B），疊在 C 上分別是 Cmaj7、C 利底亞、Cmaj9 的聲音，最後落在 B 弦 17 格 E（C 的 3 度）。"},
-  {n:"③ 三個八度的根音＋大推弦 → 四度雙音（第 5–6 小節）",tokens:C(["Am7", "C"],"e_roots","e_4th"),lk:["五連音下行", "三個八度根音＋17 格大推弦", "四度／六度雙音"],
-   tip:"Am7 上兩組五連音下行，接三個八度的 A（A 弦 12 格、G 弦 14 格、e 弦 17 格），再在 17 格把 A 推到 B（Am7 的 9 度）。C 和弦上用 G、B 弦的四度雙音，再用五連音搥弦爬上去，落在 e 弦 12 格 E（3 度）。"},
-  {n:"④ 混合分組 5／4／3 衝到 22 格（第 7–8 小節，高潮）",tokens:C(["D", "G"],"e_mix","e_fin"),lk:["混合分組 5／4／3"],
-   tip:"從 e 弦 15 格用搥弦和滑音一路衝到 22 格 D（全曲最高音）：第一拍五連音 G–A–B–D–B，第二拍四個十六分音符 A–G–E–D，第三拍三連音 B–A–G，第四拍把 B 弦 20 格 G 推到 A（D 的 5 度）。G 和弦上 G–G 八度之後，停在 e 弦 19 格 B（3 度），窄而快的揉弦。"}]},
- {id:"ej2",style:"Eric Johnson",seg:"EJ 2・爵士八度",title:"Eric Johnson 風・爵士八度與雙音（E 多利安，99 BPM）",key:{pc:4,mode:1},extras:{},bpm:99,
-  feel:"中板；Wes Montgomery 式八度、雙音、六聲五聲音階；乾淨音色加一點延遲",prog:"Em7 – A7 – Gmaj7 – F#m7 – Em7 – A7 – Bm7 – Em7",
-  mood:"深夜城市的爵士味：快句很少，每一句之間都有空間",listen:"Eric Johnson〈Manhattan〉",
-  based:"〈Manhattan〉：原曲 E♭ 小調、約 99 BPM；八度奏法加半音滑入、雙音、i 級與 ii 級的小調五聲疊用（加 9 度變成六聲音階）、先留白再加速。這裡寫在 E 小調，比原曲高半音；吉他降半音調弦就和原曲同調",
+ {id:"slash1",style:"Slash",seg:"Slash 1・12 把位＋wah",title:"Slash 風・12 把位、勾弦循環與 wah（E 小調，124 BPM，10 小節）",key:{pc:4,mode:5},extras:{3:["D#","和聲小調導音（B7 的 3 度）"]},bpm:124,
+  band:{groove:"rock",rg:"crunch",sw:.05},
+  feel:"中速硬搖滾，八分音符稍微甩（swing 一點點）、故意不完全對齊拍子；Les Paul 接 JCM800 的中頻破音",prog:"Em – D – C – B7 – Em – C – B7 – Em – D – Em",
+  mood:"髒髒的、很有藍調味的搖滾 solo：一個好記的推弦鉤子出現三次，中間開 wah、衝上 20 格再用和聲小調摔下來",listen:"Guns N' Roses〈Sweet Child O' Mine〉主 solo（E 小調段落）",
+  based:"Slash 前三名招牌：① 12–15 格三連音勾弦循環 ② b3→4 推弦＋寬揉弦 ③ 和聲小調異國風下行；加上 wah 段與半音爬升",
+  ref:[["〈Sweet Child O' Mine〉官方 MV・主 solo（2:34 起）",YT.scom+"&t=154"]],
+  chords:["Em","D","C","B7"],phrases:[
+  {n:"① 鉤子：反拍進來的 b3→4 推弦＋同音反覆推弦（第 1–2 小節）",tokens:C(["Em","D"],"sl_hook","sl_rep"),lk:["b3→4 推弦＋寬揉弦（Slash bend）","同音反覆推弦"],
+   tip:"先休半拍，從反拍的 D 進來，e 弦 15 格 G 推一個全音到 A（小調的 b3 推到 4，Slash 最常見的哭腔），放回 G、勾到 E。D 和弦上把 G 弦 14 格 A 推到 B，同一個推弦連撥三次：不要每次都放下，像在同一個音上「喊」三聲。"},
+  {n:"② 開 wah：推弦接三連音勾弦循環 → 半音爬到導音（第 3–4 小節）",tokens:C(["C","B7"],"sl_loop","sl_chrom"),lk:["12–15 格三連音勾弦循環","wah 半開唱句＋半音爬升"],wah:true,
+   tip:"這兩小節開 wah：每個撥弦音腳跟到腳尖踩一下再停在半開。C 和弦先把 B 弦 15 格 D 推到 E，接 e15–e12（勾弦）–B15 的六連音循環六次，越重複越激動。B7 上從 G 弦 13 格半音爬升 G#–A–A#–B，接 D#（B7 的 3 度）、F#，再把 D 推半音到 D#，和聲小調的拉力就出來了。"},
+  {n:"③ 高潮：20 格 b3→4 推弦 → 高把位循環 → 和聲小調摔下來（第 5–7 小節）",tokens:C(["Em","C","B7"],"sl_hi","sl_loop2","sl_hm"),lk:["b3→4 推弦＋寬揉弦（Slash bend）","12–15 格三連音勾弦循環","和聲小調異國風下行"],
+   tip:"跳到 20 格把 G 推到 A（同一個 b3→4 推弦，高八度），放回來、勾到 E，再彈兩組 B–A–G 三連音。C 和弦換成 20 格的循環 C–A–G，四組之後把 C 推到 D。B7 上兩組六連音：C–B–G–E–D#–E、G–E–D#–C–B–C，C 是 B7 的 b9、D# 是 3 度，這就是 Slash 的「異國風」，最後停在 B。"},
+  {n:"④ 鉤子再來一次，最後用 b7→1 推弦收尾（第 8–10 小節）",tokens:C(["Em","D","Em"],"sl_hook2","sl_rep2","sl_end"),lk:["b3→4 推弦＋寬揉弦（Slash bend）","同音反覆推弦"],
+   tip:"第 1 小節的鉤子原封不動回來（聽眾會認得），後半改成勾弦往下。D 和弦上同音推弦兩次、第三次推上去再放下。最後把 B 弦 15 格 D 推到 E，揉弦越揉越寬，第 4 拍悶音、完全安靜。"}]},
+ {id:"slash2",style:"Slash",seg:"Slash 2・抒情＋尾奏",title:"Slash 風・鋼琴抒情曲：頸部拾音器旋律 → 尾奏高潮（B 小調，80 BPM，10 小節）",key:{pc:11,mode:5},extras:{10:["A#","和聲小調導音（F# 的 3 度）"]},bpm:80,
+  band:{groove:"ballad",rg:"crunch",sw:0},
+  feel:"慢板；前 4 小節像唱歌，用頸部拾音器的滑音；後 6 小節樂團變重，推到 22 格",prog:"Bm – G – D – A – Bm – G – F# – Bm – G – Bm",
+  mood:"先唱一段溫柔的旋律，後面情緒潰堤：最高的推弦、勾弦循環、和聲小調下行",listen:"Guns N' Roses〈November Rain〉第一段 solo 與尾奏 solo",
+  based:"〈November Rain〉的兩種 Slash：第一段 solo 是唱得出來的長句（推弦落在和弦音），尾奏是高把位推弦＋快速下行",
+  ref:[["〈November Rain〉官方 MV・第一段 solo（4:12 起）",YT.nr+"&t=252"],["〈November Rain〉官方 MV・尾奏 solo（7:25 起）",YT.nr+"&t=445"]],
+  chords:["Bm","G","D","A","F#"],phrases:[
+  {n:"① 頸部拾音器：滑音進來，b3→4 推弦（第 1–2 小節）",tokens:C(["Bm","G"],"nr_1","nr_2"),lk:["頸部拾音器滑音旋律","b3→4 推弦＋寬揉弦（Slash bend）"],
+   tip:"B 弦 7 格 F# 滑到 10 格 A，接 e 弦 7 格 B，再把 e 弦 10 格 D 推到 E（b3→4），揉弦慢而寬。G 和弦上把 A 推到 B（G 的 3 度）撐兩拍，放回來接 G、E。"},
+  {n:"② 往上唱：滑音到 3 度（第 3–4 小節）",tokens:C(["D","A"],"nr_3","nr_4"),lk:["頸部拾音器滑音旋律"],
+   tip:"D 和弦：D–E（滑音）–D，然後把 E 推到 F#（D 的 3 度）撐兩拍。A 和弦：E–D 勾弦，A–B，最後 B 滑到 C#（A 的 3 度）。句子都落在和弦 3 度，所以好唱。"},
+  {n:"③ 尾奏：22 格 b3→4 → 勾弦循環 → 和聲小調下行（第 5–7 小節）",tokens:C(["Bm","G","F#"],"nr_5","nr_6","nr_7"),lk:["尾奏高把位推弦＋快速下行","12–15 格三連音勾弦循環","和聲小調異國風下行"],wah:false,groove:"rock",
+   tip:"樂團轉成重拍。e 弦 22 格 D 推到 E（同一個 b3→4，高兩個八度），放回、勾到 B。G 和弦上 B–G–E 的六連音循環（e19–e15 勾弦、B17）。F# 和弦：B–A#–F#–E–D–C#、B–A#–G–F#–E–F#，A# 和 G 讓它變成和聲小調，最後停在 A#（F# 的 3 度）。"},
+  {n:"④ 推弦哭腔 → 快速下行 → b7→1 收尾（第 8–10 小節）",tokens:C(["Bm","G","Bm"],"nr_8","nr_9","nr_end"),lk:["b3→4 推弦＋寬揉弦（Slash bend）","尾奏高把位推弦＋快速下行"],groove:"rock",
+   tip:"B 弦 15 格 D 推到 E 撐一拍，放回、勾到 B，然後 G 弦 11→14 滑音。G 和弦上一口氣用十六分音符從 A 勾弦下行到 E，落在 B（G 的 3 度）。最後 G 弦 14 格 A 推到 B（b7→1）撐三拍。"}]},
+ {id:"tak1",style:"松本孝弘",seg:"Tak 1・抒情轉調",title:"松本孝弘風・唱得出來的抒情 solo，最後一段轉調（G 大調 → A 大調，78 BPM，12 小節）",key:{pc:7,mode:0},extras:{3:["D#","和聲小調導音（B7 的 3 度）"]},bpm:78,
+  band:{groove:"ballad",rg:"arp",sw:0},
+  feel:"慢板抒情；推弦慢慢推到準、停住，再加上寬而均勻的長揉弦；Bradshaw 式高增益、附點四分音符延遲",prog:"G – D/F# – Em – C – Am7 – D – B7 – Em ｜轉調｜ A – E/G# – F#m–D – E–A",
+  mood:"像副歌一樣的旋律，中間突然一串和聲小調快句，最後全曲升一個全音，像最後一次副歌",listen:"B'z〈ALONE〉solo 與轉調後的副歌、〈いつかのメリークリスマス〉",
+  based:"松本前三名招牌：① 精準推弦後的大回しビブラート ② 半音→全音推弦 ③ ハーモニックマイナー 6 音一組快句；再加上抒情曲常見的轉調",
+  ref:[["B'z〈ALONE〉官方 Live from AVACO STUDIO（B'z 官方頻道）",YT.alone]],
+  chords:["G","D/F#","Em","C","Am7","D","B7","A","E/G#","F#m","E"],phrases:[
+  {n:"① 主題：唱上去，慢推到 3 度再長揉（第 1–2 小節）",tokens:C(["G","D/F#"],"tk_t1","tk_t2"),lk:["精準推弦＋大回しビブラート"],swell:true,
+   tip:"D–E–G 往上唱，e 弦 17 格 A 慢慢推到 B（G 的 3 度）：推到準就停，等半拍才開始揉，揉弦寬、速度一樣。D/F# 上放回 A、G，落在 F#（3 度）。後半小節是同一句的回音。"},
+  {n:"② 主題的回答（第 3–4 小節）",tokens:C(["Em","C"],"tk_t3","tk_t4"),lk:["精準推弦＋大回しビブラート"],swell:true,
+   tip:"往下唱 E–G–F#–E，再把 D 推到 E（Em 的根音）。C 和弦：C–D–E 長音（C 的 3 度）–D–C–A。整句都可以用嘴巴唱出來，這就是松本說的「solo 是第二段副歌」。"},
+  {n:"③ 半音→全音推弦 → 突然的和聲小調快句（第 5–8 小節）",tokens:C(["Am7","D","B7","Em"],"tk_hw","tk_hw2","tk_hm","tk_land"),lk:["半音→全音推弦","ハーモニックマイナー 6 音一組快句","精準推弦＋大回しビブラート"],
+   tip:"Am7：F# 只推半音到 G，放回，再把 G 推全音到 A，同一條弦兩種寬度的推弦是松本的招牌。D：落在 F#（3 度）。B7 上突然兩組六連音：B–A–G–E–D#–C、C–B–A–G–F#–D#，D# 是和聲小調的導音，最後停在 B。Em 上把 D 推到 E 撐三拍。"},
+  {n:"④ 轉調！主題升一個全音到 A 大調（第 9–12 小節）",tokens:C(["A","E/G#","F#m","E"],"tk_u1","tk_u2","tk_u3","tk_u4"),key:{pc:9,mode:0},lk:["抒情延遲長音（ボリューム＋ディレイ）","精準推弦＋大回しビブラート","半音→全音推弦"],swell:true,
+   tip:"鼓手在前一小節打過門，整首升一個全音：同一個主題，從 E–F#–A 唱上去，把 B 推到 C#（A 的 3 度）。F#m 上衝到 21 格 C#、再推一次 B→C#；D 上落 F#；最後在 A 上把 G# 推半音到 A，長揉弦收尾。"}]},
+ {id:"tak2",style:"松本孝弘",seg:"Tak 2・硬派搖滾",title:"松本孝弘風・硬派搖滾 solo（A 小調＋和聲小調，132 BPM，9 小節）",key:{pc:9,mode:5},extras:{8:["G#","和聲小調導音（E7 的 3 度）"]},bpm:132,
+  band:{groove:"rock",rg:"crunch",sw:0},
+  feel:"快速硬搖滾；Bradshaw 式高增益、延遲；句子短、推弦準、快句突然出現",prog:"Am – F – G – E7 – Am – F – G – E7 – Am",
+  mood:"〈LOVE PHANTOM〉〈Calling〉那種戲劇化的 B'z 搖滾：和聲小調、單弦連奏、チョークダウン",listen:"B'z〈LOVE PHANTOM〉、〈Calling〉",
+  based:"松本的半音推弦、ハーモニックマイナー 6 音一組快句、單弦レガートスライド、チョークダウン",
+  ref:[["B'z〈LOVE PHANTOM〉官方 LIVE-GYM 2023（B'z 官方頻道）",YT.lp],["B'z〈Calling〉官方 Live from AVACO STUDIO",YT.calling]],
+  chords:["Am","F","G","E7"],phrases:[
+  {n:"① 半音推弦的鉤子（第 1–2 小節）",tokens:C(["Am","F"],"tr_1","tr_2"),lk:["半音→全音推弦"],
+   tip:"A–C–A 之後把 B 推半音到 C（Am 的 3 度）。F 和弦上放回 B、A，接 G–F，再把 E 推半音到 F（F 的根音）。兩次都是半音推弦，推過頭就不像他。"},
+  {n:"② 和聲小調 6 音一組快句（第 3–4 小節）",tokens:C(["G","E7"],"tr_hm1","tr_hm2"),lk:["ハーモニックマイナー 6 音一組快句"],
+   tip:"G 和弦：C–B–A–G–F–E、D–C–B–A–G–F 兩組六連音，每組只撥第一個音；停在 C 推到 D。E7 上 G#–A–G#–F–D–C、B–G#–F–D–C–A 一路往下，最後停在 G#（E7 的 3 度）。"},
+  {n:"③ e 弦單弦レガートスライド → 半音→全音推弦（第 5–6 小節）",tokens:C(["Am","F"],"tr_one","tr_hw"),lk:["單弦レガートスライド","半音→全音推弦"],
+   tip:"只在 e 弦上：E–F–G 搥弦、滑到 A、搥 B、勾 A、搥 B–C，再滑到 22 格 D。F 和弦：E 推半音到 F，放回，再把 G 推全音到 A（F 的 3 度）。"},
+  {n:"④ チョークダウン → E7 分解 → 半音推回主音（第 7–9 小節）",tokens:C(["G","E7","Am"],"tr_down","tr_e7","tr_end"),lk:["チョークダウン（預推放下）","精準推弦＋大回しビブラート"],
+   tip:"e 弦 20 格先無聲推到 D 再撥，慢慢放回 C，接 B–A–G–F–D–C。E7：G#–B–E–G# 分解，再把 G# 推半音到 A，提前解決到 Am。最後 A 長音，揉弦寬而均勻。"}]},
+ {id:"ej1",style:"Eric Johnson",seg:"EJ 1・五聲瀑布",title:"Eric Johnson 風・五聲瀑布與小提琴長音（G 大調／E 小調五聲，96 BPM，10 小節）",key:{pc:7,mode:0},extras:{},bpm:96,
+  band:{groove:"drive",rg:"strat",sw:0},
+  feel:"明亮的推進感，十六分音符 hi-hat；音色是高音轉小的頸部拾音器＋Marshall／fuzz，長音慢慢「拉」出來像小提琴",prog:"G – C – Em – C – Am7 – D – G – C – D – Em",
+  mood:"清澈、流動：長音唱一句，接著五個音一組的瀑布一路往下流，中間用四度雙音像鐘聲",listen:"Eric Johnson〈Cliffs of Dover〉前奏與主奏",
+  based:"Eric Johnson 前三名招牌：① 五個音一組、每兩條弦換把的五連音下行 ② 寬音程五聲琶音 ③ sus／四度雙音鐘聲；加上小提琴長音",
+  ref:[["〈Cliffs of Dover〉官方現場（Eric Johnson 官方頻道，1988 Austin；前奏一開始就是五聲瀑布）",YT.cliffs]],
+  chords:["G","C","Em","Am7","D"],phrases:[
+  {n:"① 小提琴長音 → 四度雙音鐘聲（第 1–2 小節）",tokens:C(["G","C"],"ej_vio","ej_bell"),lk:["小提琴長音（音量慢慢拉起）","sus／四度雙音鐘聲"],
+   tip:"e 弦 17 格 A 推到 B（G 的 3 度），音量慢慢拉起來、窄而快的揉弦。接 A–G–E–D 下行。C 和弦用 G、B 弦的四度雙音：A+D、G+C、E+A，聽起來像 sus2／sus4 的鐘聲。"},
+  {n:"② 招牌：五連音瀑布一路流下來（第 3–4 小節）",tokens:C(["Em","C"],"ej_casc","ej_casc2"),lk:["五連音五聲瀑布（每兩條弦換把）","小提琴長音（音量慢慢拉起）"],
+   tip:"每拍五個音：A–G–E–D–B、G–E–D–B–A、E–D–B–A–G、D–B–A–G–E…每組從低一個音開始，不對齊拍子的感覺就是 EJ。C 和弦上繼續流到 A 弦，最後把 D 推到 E（C 的 3 度）撐三拍。"},
+  {n:"③ 寬音程琶音 → 撥弦＋勾弦瀑布 → 衝上 22 格再流下來（第 5–7 小節）",tokens:C(["Am7","D","G"],"ej_wide","ej_hyb","ej_shift"),lk:["寬音程五聲琶音","撥弦＋勾弦混合瀑布（hybrid）","Cliffs 式 E 小調五聲換把下行"],
+   tip:"Am7：A–E–A–C–E–G 每條弦一個音的寬音程琶音，接 A 推到 B（9 度）。D：六連音從 A 一路勾到 A 弦，停在 A+D 雙音。G：e 弦 17 滑到 22 格 D，然後五連音從 22 格一路換把流回 12 格，落在 G。"},
+  {n:"④ 雙音鐘聲 → 小提琴推弦 → 停在 9 度（第 8–10 小節）",tokens:C(["C","D","Em"],"ej_bell2","ej_vio2","ej_end"),lk:["sus／四度雙音鐘聲","小提琴長音（音量慢慢拉起）"],
+   tip:"C 上的四度雙音一路往下：D+G、B+E、A+D、G+C、E+A、D+G、B+E。D 上滑到 A，再推到 B，音量拉起來。最後停在 F#（Em 的 9 度），不完全解決，EJ 很愛的開放結尾。"}]},
+ {id:"ej2",style:"Eric Johnson",seg:"EJ 2・爵士八度",title:"Eric Johnson 風・八度、疊用五聲與五連音（E 多利安，99 BPM，10 小節）",key:{pc:4,mode:1},extras:{},bpm:99,
+  band:{groove:"jazz",rg:"jazz",sw:0},
+  feel:"中速 fusion groove；乾淨的 Strat 和弦在反拍、lead 用小提琴音色",prog:"Em7 – A7 – Gmaj7 – F#m7 – Em7 – A7 – Bm7 – Em7 – A7 – Em7",
+  mood:"有爵士味的 EJ：Wes 式八度、疊用 F# 小調五聲、雙音鐘聲、五連音瀑布",listen:"Eric Johnson〈Manhattan〉",
+  based:"〈Manhattan〉的八度與雙音，加上 EJ 前三名招牌（五連音瀑布、寬音程琶音、雙音鐘聲）",
+  ref:[["〈Manhattan〉官方音源（Eric Johnson - Topic）",YT.manh]],
   chords:["Em7","A7","Gmaj7","F#m7","Bm7"],phrases:[
-  {n:"① Wes 式八度＋半音進入（第 1–2 小節）",tokens:C(["Em7", "A7"],"m_oct","m_oct2"),lk:["Wes 式八度"],
+  {n:"① Wes 式八度＋半音進入（第 1–2 小節）",tokens:C(["Em7","A7"],"m_oct","m_oct2"),lk:["Wes 式八度"],
    tip:"A、G 弦的八度指型（中間 D 弦悶掉），E–G–A 往上，A# 是半音經過音，落在 B。A7 上往下走到 C#（3 度）。"},
-  {n:"② 六度雙音 → 疊用兩組五聲（第 3–4 小節）",tokens:C(["Gmaj7", "F#m7"],"m_6th","m_fsm"),lk:["四度／六度雙音", "疊用兩組五聲"],
-   tip:"G、e 弦的六度雙音（中間兩條弦悶掉），頂端爬到 F#（Gmaj7 的 7 度）再到 G。F#m7 上換成 F# 小調五聲，也就是把 i 級和 ii 級的五聲疊在一起，落在 A（3 度）。"},
-  {n:"③ 先停一拍再加速 → 推弦接五連音（第 5–6 小節，高潮）",tokens:C(["Em7", "A7"],"m_burst","m_a7"),lk:["五聲瀑布（cascade）", "五連音下行"],
-   tip:"整整休一拍才進來，搥弦帶出 C#（多利安的大六度），接兩組六連音下行再爬回來。A7 上把 e 弦 19 格 B 推到 C#（A7 的 3 度），接兩組五連音 B–A–F#–E–C#、A–F#–E–C#–B，落在 G 弦 12 格 G（7 度）。"},
-  {n:"④ 四度雙音、五連音，收在 9 度（第 7–8 小節）",tokens:C(["Bm7", "Em7"],"m_4q","m_end"),lk:["四度／六度雙音", "五連音下行"],
-   tip:"B、e 弦同格就是四度雙音。接一組五連音下行到 F#（Bm7 的 5 度）。最後在 Em7 上停在 F#（9 度），開放、沒有說完的感覺。"}]}
+  {n:"② 小提琴長音 → 疊用 F# 小調五聲 → 雙音鐘聲（第 3–5 小節）",tokens:C(["Gmaj7","F#m7","Em7"],"m_vio","m_fsm","m_bell"),lk:["小提琴長音（音量慢慢拉起）","疊用兩組五聲","sus／四度雙音鐘聲"],
+   tip:"Gmaj7 上 F#（大七度）慢慢拉起來，C# 是利底亞 #11 的顏色。F#m7 上換成 F# 小調五聲的五連音瀑布，落在 F#。Em7：D+F#、B+E、A+D、G+B、F#+B 的雙音。"},
+  {n:"③ 推弦接五連音 → 寬音程琶音（第 6–7 小節）",tokens:C(["A7","Bm7"],"m_a7","m_bm"),lk:["五連音五聲瀑布（每兩條弦換把）","寬音程五聲琶音"],
+   tip:"A 推到 B（A7 的 9 度），接兩組五連音落在 G（7 度）。Bm7：B–E–A–D–F#–A 每弦一音的 11 和弦琶音，停在 F#。"},
+  {n:"④ 從 22 格瀑布流下來，停在 9 度雙音（第 8–10 小節）",tokens:C(["Em7","A7","Em7"],"m_casc","m_a7b","m_end"),lk:["Cliffs 式 E 小調五聲換把下行","sus／四度雙音鐘聲"],
+   tip:"e 弦 17 滑到 22 格 D，四組五連音一路換把流到 D 弦。A7：A 推到 B，再到 C#（3 度）。最後 B+F#（5 度＋9 度）雙音收尾。"}]}
 ];
-// 經典 Lick 庫：照課程整理的經典手法，用原創短句示範（每句都用在上面的 solo）
+// 經典 Lick 庫：依「最有辨識度」排名；每句都是原創短句，只示範手法
 const SIG=[
- {p:0,n:"四音一組爬升",of:"slash1",ks:["s_seq"],ch:["Am"],lab:"Slash 風格的五聲音階四音一組 sequence（〈Sweet Child O' Mine〉solo 用過的手法）",links:[["Guitar World：Slash 的 10 個節奏與主奏手法", "https://www.guitarworld.com/lessons/learn-slashs-rhythm-and-lead-approaches"]],why:"四個音一組、每組往上移一個音，是 Slash 把五聲音階「跑起來」最常用的方法：聽起來流暢又有方向感，不像在背音階。",tip:"Guitar World 第 4 點：E 小調五聲的四音一組 sequence。先用八分音符練到每組第一個音有重音，再加速成十六分音符。"},
- {p:0,n:"推弦＋三音勾弦循環",of:"slash1",ks:["s_loop"],ch:["Em"],lab:"Slash 風格的推弦＋三音勾弦循環（〈Sweet Child O' Mine〉12 格高潮段的手法）",links:[["James Shipway：Repeating rock licks（Lick 1）", "https://jamesshipwayguitar.com/repeating-rock-licks/"]],why:"先用推弦「唱」一個長音，再用同一把位的三個音高速重複：Slash 的高潮幾乎都是這樣堆出來的，重複越多次越激動。",tip:"James Shipway 的 Lick 1：B 弦推弦後接 e、B 弦三連音搥勾，原文說「Slash 很常彈這類 lick」。e 弦 15 撥、勾到 12、撥 B 弦 15，先用八分音符練穩。"},
- {p:0,n:"e 弦和聲小調換把",of:"slash1",ks:["s_hm"],ch:["B7"],lab:"Slash 風格的 e 弦和聲小調換把（〈Sweet Child O' Mine〉尾奏 solo 的手法）",links:[["Guitar World：Slash 的 10 個節奏與主奏手法", "https://www.guitarworld.com/lessons/learn-slashs-rhythm-and-lead-approaches"], ["Guitar World：Seven ways to nail down Slash's slithery style", "https://www.guitarworld.com/lessons/guitar-strength-getting-slithery-and-sleazy-slurring-slash"]],why:"只在一條弦上靠滑音換把往上爬，加上和聲小調的 D#，一下子就有古典、戲劇的味道。",tip:"Guitar World 第 8 點：沿著第一弦往上的和聲小調句；另一篇 Slash 滑音課也提到他常「借用和聲小調」並換把。每次滑音後的第一個音要準時，D# 在 B7 上是 3 度，可以多停一下。"},
- {p:0,n:"預推鉤子＋同一推弦換意義",of:"slash1",ks:["s_pre", "s_hook"],ch:["Em", "C"],lab:"Slash 風格的預推鉤子：同一個推弦在不同和弦上換意義（抒情 solo 常見手法）",links:[["MusicRadar：5 ways to play guitar like Slash", "https://www.musicradar.com/news/slash-guitar-lesson"]],why:"預推（先推好再撥、慢慢放下）聽起來像在哭；同一個推弦在 Em 上是根音、在 C 上是 3 度，旋律簡單到可以唱，這就是 Slash 的「hook」。",tip:"MusicRadar 第 2 點講 Slash 流暢、唱歌一樣的推弦。預推前先彈 B 弦 17 格聽目標音。"},
- {p:0,n:"高把位推弦＋快速三連音",of:"slash1",ks:["s_hi"],ch:["C"],lab:"Slash 風格的高把位推弦＋快速三連音（Les Paul 高把位 solo 手法）",links:[["MusicRadar：5 ways to play guitar like Slash", "https://www.musicradar.com/news/slash-guitar-lesson"], ["Guitar World：Seven ways to nail down Slash's slithery style", "https://www.guitarworld.com/lessons/guitar-strength-getting-slithery-and-sleazy-slurring-slash"]],why:"Slash 的高潮常跑到 17–22 格：先推一個尖叫的長音，接一串三連音勾弦，再推弦停住。",tip:"MusicRadar 第 4、5 點講快速 legato 和高把位；Guitar World 的 Slash 滑音課講他用搥勾讓快句「流」起來。20→17 的勾弦要用小指和食指。"},
- {p:0,n:"斜推雙音（oblique bend）",of:"slash2",ks:["n_obl"],ch:["G"],lab:"Slash 風格的斜推雙音（〈November Rain〉味道的手法）",links:[["MusicRadar：5 ways to play guitar like Slash", "https://www.musicradar.com/news/slash-guitar-lesson"], ["Guitar World：How to master the minor pentatonic（Ex 5）", "https://www.guitarworld.com/lessons/techniques/how-to-master-the-minor-pentatonic"]],why:"一個音按住不動、另一個音推上去，兩個音同時響會有「擠」的聲音，這是 Slash 抒情 solo 很有辨識度的音色。",tip:"MusicRadar 第 3 點把這種 oblique bend 說成 November Rain 的味道；Guitar World 五聲音階 Ex 5 是 Slash 式雙音推弦。無名指推 B 弦，小指按住 e 弦不要被推歪。"},
- {p:0,n:"V7 導音推半音解決",of:"slash1",ks:["s_v7", "s_end"],ch:["B7", "Em"],lab:"Slash 風格的 V7 導音推半音解決（和聲小調在 B7 上的手法）",links:[["Guitar World：Slash 的 10 個節奏與主奏手法", "https://www.guitarworld.com/lessons/learn-slashs-rhythm-and-lead-approaches"]],why:"和聲小調的 D# 一出現就有「要回家」的拉力，推半音到 E 等於在和弦還沒換之前就先解決。",tip:"B 弦 16 格的 D# 往上推半音到 E，半音推弦最容易推過頭，先用 17 格的 E 對音。"},
- {p:0,n:"八分音符和弦指型",of:"slash2",ks:["n_d8"],ch:["D"],lab:"Slash 風格的八分音符和弦指型分解（把開放和弦搬到高把位）",links:[["Guitar World：Slash 的 10 個節奏與主奏手法", "https://www.guitarworld.com/lessons/learn-slashs-rhythm-and-lead-approaches"]],why:"Slash 很多旋律其實是和弦指型的分解：音一定好聽，又有固定的八分音符律動。",tip:"Guitar World 第 5 點：把開放 D 和弦的指型搬到高把位，用不斷的八分音符彈。這裡是 12–15 格的 D 和弦。"},
- {p:1,n:"ユニゾンチョーキング（齊音推弦）",of:"tak1",ks:["t_uni"],ch:["Cmaj7"],lab:"松本孝弘風格的ユニゾンチョーキング（齊音推弦，B'z 抒情 solo 常見手法）",links:[["SJR ギタースクール：TAB 記號（ユニゾン／チョークダウン）", "http://www.sjr-guitar.com/readingscore/readingtab/"], ["Kaz Takayama：松本孝弘ギタリスト解說", "https://xn--ock8a3lz93ijtn8wniod.com/guitarist-legends/tak-matsumoto-guitarist-guide/"]],why:"推上去的音和旁邊空著的同音一起響，對到準的瞬間聲音會「合起來」，非常亮、非常唱。松本的推弦一定推到準。",tip:"SJR 的 TAB 記號說明定義了ユニゾンチョーキング。B 弦 15 格推到 E 時，耳朵聽 e 弦 12 格的 E，兩個音不再「搖」才算推準。"},
- {p:1,n:"定點チョーキング＋均勻揉弦",of:"tak2",ks:["a_pin"],ch:["E/G#"],lab:"松本孝弘風格的定點チョーキング＋均勻揉弦（B'z 抒情曲的手法）",links:[["Kaz Takayama：松本孝弘ギタリスト解說", "https://xn--ock8a3lz93ijtn8wniod.com/guitarist-legends/tak-matsumoto-guitarist-guide/"]],why:"Kaz Takayama 的解說：松本的推弦精準落在目標音就停住，再加上均勻的揉弦；不會推過頭再修。這種「乾淨」就是他的味道。",tip:"推到 G# 就停住，數一拍之後才開始揉弦。揉弦的寬度和速度要一樣，不要越揉越快。"},
- {p:1,n:"チョークダウン（預推放下）",of:"tak1",ks:["t_down"],ch:["Am7"],lab:"松本孝弘風格的チョークダウン（預推放下）",links:[["hiiro：B'z 松本孝弘のチョーキング", "https://hiiro-guitar.hatenablog.com/entry/2017/07/14/114643"], ["SJR ギタースクール：TAB 記號（ユニゾン／チョークダウン）", "http://www.sjr-guitar.com/readingscore/readingtab/"]],why:"先推好再撥，慢慢放回原音，聽起來像嘆氣；松本常用在句子開頭，讓旋律從「上面」滑進來。",tip:"e 弦 17 格先無聲推到 B，撥弦後放回 A，放到準的音高再開始揉弦。放下的速度要穩，不要放過頭。"},
- {p:1,n:"半音チョーキング",of:"tak1",ks:["t_half"],ch:["F#m7b5"],lab:"松本孝弘風格的半音チョーキング（〈ultra soul〉等曲的手法）",links:[["hiiro：B'z 松本孝弘のチョーキング", "https://hiiro-guitar.hatenablog.com/entry/2017/07/14/114643"]],why:"半音推弦比全音推弦更細膩，推到和弦裡最有張力的音（這裡是 ♭5），聽起來很「日本抒情搖滾」。",tip:"hiiro 的文章整理了松本的半音、四分之一音推弦和チョークダウン。半音只推一點點，先用 20 格的 C 對音。"},
- {p:1,n:"コードトーン分解＋裝飾音",of:"tak1",ks:["t_ct"],ch:["Gmaj7"],lab:"松本孝弘風格的コードトーン分解＋半音裝飾音（〈BLOWIN'〉〈RED SUN〉一類的手法）",links:[["ms-jeek：松本孝弘ギター研究 コードトーン編", "https://ameblo.jp/ms-jeek/entry-10632969185.html"]],why:"ms-jeek 的分析：松本會從和弦的根音開始分解，用小 3 度當裝飾音馬上搥到大 3 度，最後滑音到高音。旋律跟著和弦走，所以每一句都好聽。",tip:"裝飾音（B♭）只碰一下就搥到 B。最後 A 滑到 B 要準時，滑完再揉。"},
- {p:1,n:"6 音一組快速句（タラタラタタ）",of:"tak1",ks:["t_hm", "t_land"],ch:["B7", "Em"],lab:"松本孝弘風格的 6 音一組快速句（タラタラタタ，和聲小調）",links:[["ms-jeek：松本孝弘ギター研究 速弾き編", "https://ameblo.jp/ms-jeek/entry-10634526027.html"]],why:"ms-jeek 速弾き編：松本的快速句常是 6 個音一組、和聲小調加藍調音的組合，快句之後一定接一個長音推弦。",tip:"每組只撥第一個音，其餘用勾弦。先數「タ-ラ-タ-ラ-タ-タ」，再加速。"},
- {p:1,n:"レガートスライド（單弦滑音連奏）",of:"tak2",ks:["a_leg"],ch:["F#m"],lab:"松本孝弘風格的レガートスライド（單弦滑音連奏）",links:[["イケベ楽器 動画レッスン：レガートスライド", "https://www.ikebe-gakki.com/Form/Video/VideoDetail.aspx?vvid=10LEGchukyu00023"]],why:"イケベ楽器的課程把「レガートスライド」列為松本的特徵：在一條弦上用搥勾和滑音連起來，聲音像唱歌一樣不中斷。",tip:"整句只撥三次（每組第一個音）。滑音要用同一根手指滑到底，不要中途鬆開。"},
- {p:1,n:"音階衝上去＋釋放式推弦",of:"tak2",ks:["a_rise", "a_top"],ch:["D", "E"],lab:"松本孝弘風格的音階衝上去＋釋放式推弦（〈ギリギリchop〉〈赤い陽炎〉一類的手法）",links:[["ms-jeek：松本孝弘ギター研究 マイナースケール編", "https://ameblo.jp/ms-jeek/entry-10633212405.html"]],why:"ms-jeek マイナースケール編：音階一口氣爬三個八度，最後「從悶音裡釋放出來」推一個長音。速度感和釋放感都很強。",tip:"前半小節右手掌輕壓琴橋悶音，越往上越放開。最後的推弦推到 G# 就停，再揉。"},
- {p:2,n:"五連音下行",of:"ej1",ks:["e_five"],ch:["D"],lab:"Eric Johnson 風格的五連音下行（〈Cliffs of Dover〉式五聲音階手法）",links:[["Fundamental Changes：Play like Eric Johnson", "https://www.fundamental-changes.com/video-lesson-play-like-eric-johnson/"], ["Premier Guitar：Eric Johnson vs. Joe Bonamassa", "https://www.premierguitar.com/lessons/beyond-blues-eric-johnson-vs-joe-bonamassa"]],why:"五個音一組不會對齊拍子，聽起來像水一樣一直流；這是 Eric Johnson 最有辨識度的聲音。",tip:"Fundamental Changes 把五連音數成「u-ni-ver-si-ty」。重音放在每組第一個音，同弦的第二個音用勾弦。"},
- {p:2,n:"五聲瀑布（cascade）",of:"ej1",ks:["e_casc"],ch:["Em"],lab:"Eric Johnson 風格的五聲瀑布（cascade）",links:[["Troy Grady（Guitar World）：Eric Johnson 的五聲瀑布", "https://www.guitarworld.com/lessons/cracking-code-eric-johnsons-pickslanting-pentatonics"]],why:"先上行助跑，在高音弦做一個單弦迴轉，再一路瀑布下來；Troy Grady 分析這種句子是靠撥片斜度和勾弦換弦，才能這麼順。",tip:"每條弦兩個音，第二個音用勾弦，換弦用撥弦。先把 e 弦的迴轉（A–G–E–G–A–G）練順。"},
- {p:2,n:"開放三和弦",of:"ej1",ks:["e_tri"],ch:["C"],lab:"Eric Johnson 風格的開放三和弦分解（跨弦的寬音程）",links:[["Premier Guitar：Eric Johnson vs. Joe Bonamassa", "https://www.premierguitar.com/lessons/beyond-blues-eric-johnson-vs-joe-bonamassa"]],why:"Premier Guitar Ex 1：Em、D/F#、G 三個跨弦的開放三和弦，音程很寬，聽起來像鋼琴，不像吉他音階。",tip:"每個三和弦跨過一條弦，用撥片往下掃過去。疊在 C 上，三個和弦會變成 Cmaj7、C 利底亞、Cmaj9 的聲音。"},
- {p:2,n:"三個八度根音＋17 格大推弦",of:"ej1",ks:["e_roots"],ch:["Am7"],lab:"Eric Johnson 風格的三個八度根音＋17 格大推弦",links:[["Fundamental Changes：Play like Eric Johnson", "https://www.fundamental-changes.com/video-lesson-play-like-eric-johnson/"]],why:"Fundamental Changes Example 2：用五連音下行，接三個八度的根音，再在 17 格推一個很「胖」的推弦。從低到高的跳躍很有 Eric Johnson 的味道。",tip:"三個 A 分別在 A 弦 12、G 弦 14、e 弦 17。推弦要推到 B，揉弦窄而快，像小提琴。"},
- {p:2,n:"四度／六度雙音",of:"ej1",ks:["e_4th"],ch:["C"],lab:"Eric Johnson 風格的四度雙音（加上搥弦）",links:[["Guitar World：Eric Johnson 的 10 個手法", "https://www.guitarworld.com/lessons/eric-johnson-10-techniques"], ["Premier Guitar：Pentatonic Boxes Are for Squares", "https://www.premierguitar.com/lessons/rock/pentatonic-boxes-are-for-squares"]],why:"四度雙音沒有大小調的色彩，聽起來很開闊、很現代；Eric Johnson 常用來讓句子「透氣」。",tip:"Guitar World 第 1g 點講雙音；Premier Guitar 講相鄰弦的四度和滑動四度。同格兩弦用一指橫按。"},
- {p:2,n:"疊用兩組五聲",of:"ej2",ks:["m_fsm"],ch:["F#m7"],lab:"Eric Johnson 風格的疊用兩組五聲音階（i 級＋ii 級）",links:[["Guitar World：Eric Johnson 的 10 個手法", "https://www.guitarworld.com/lessons/eric-johnson-10-techniques"]],why:"Guitar World 第 1c 點：Dm 五聲加 Am 五聲等於 Dm11。疊兩組五聲，就多出 9 度、6 度這些「爵士」的顏色。",tip:"這裡在 E 多利安的 F#m7 上換成 F# 小調五聲，聽起來馬上變得更明亮。"},
- {p:2,n:"Wes 式八度",of:"ej2",ks:["m_oct"],ch:["Em7"],lab:"Eric Johnson 風格的 Wes 式八度（〈Manhattan〉的手法）",links:[["Guitar World：Eric Johnson 的 10 個手法", "https://www.guitarworld.com/lessons/eric-johnson-10-techniques"]],why:"Guitar World 把 Wes Montgomery 列為 Eric Johnson 的影響之一。八度讓旋律變厚、變溫暖，加上半音滑入就有爵士味。",tip:"A 弦和 G 弦的八度，中間 D 弦用食指悶掉。A# 是半音經過音，馬上滑到 B。"},
- {p:2,n:"混合分組 5／4／3",of:"ej1",ks:["e_mix", "e_fin"],ch:["D", "G"],lab:"Eric Johnson 風格的混合分組 5／4／3",links:[["Guitar World：Eric Johnson 的 10 個手法", "https://www.guitarworld.com/lessons/eric-johnson-10-techniques"]],why:"Guitar World 第 1j 點：五連音、十六分音符、三連音混著用，句子會一下快一下慢，像在說話。",tip:"先分開練：第一拍五連音、第二拍四個十六分音符、第三拍三連音。滑音衝到 22 格時，左手要提早準備。"}];
+ {p:0,rank:1,n:"12–15 格三連音勾弦循環",skill:"五聲第一把位的快速三音循環（撥 e 弦、勾弦、撥 B 弦）",of:"slash1",ks:["sl_loop"],ch:["C"],
+  lab:"經典 lick（來自 Slash 風格／出現在〈Sweet Child O' Mine〉主 solo 12 格段落的手法）",songs:[["〈Sweet Child O' Mine〉官方 MV・主 solo 2:34",YT.scom+"&t=154"]],
+  rhythm:"推弦一拍 → 六連音（每拍 6 個）三拍：每組 3 個音，重音落在每組第一個",
+  why:"同一個把位、三個音不停重複，越重複越激動，是 Slash 高潮最常用的武器；Guitar World 的 Slash 課程與 James Shipway 的 repeating licks 都把它列為核心手法。",
+  tip:"先用八分音符三連音（每拍 3 個）練到勾弦清楚，再加倍成六連音。勾弦時手指往地板方向勾，不要只是放開。",
+  links:[["Guitar World：Five Slash licks you need to know","https://www.guitarworld.com/lessons/five-slash-licks-you-need-to-know"],["James Shipway：Repeating rock licks","https://jamesshipwayguitar.com/repeating-rock-licks/"],["Guitar World：Slash 的節奏與主奏手法","https://www.guitarworld.com/lessons/learn-slashs-rhythm-and-lead-approaches"]]},
+ {p:0,rank:2,n:"b3→4 推弦＋寬揉弦（Slash bend）",skill:"小調 b3 推全音到 4（或 b7 推到根音），推完寬而慢的揉弦",of:"slash1",ks:["sl_hook"],ch:["Em"],
+  lab:"經典 lick（來自 Slash 風格／出現在〈November Rain〉、〈Sweet Child O' Mine〉solo 的推弦手法）",songs:[["〈November Rain〉官方 MV・第一段 solo 4:12",YT.nr+"&t=252"],["〈Sweet Child O' Mine〉官方 MV・主 solo 2:34",YT.scom+"&t=154"]],
+  rhythm:"休半拍 → 反拍進來 → 推弦一拍 → 八分音符收尾（swing 一點點）",
+  why:"Slash 的推弦又慢又寬，常推在小調的 b3（推到 4）和 b7（推到根音）；配上反拍進來，就有那種「懶洋洋卻很痛」的藍調味。",
+  tip:"先彈 e 弦 17 格 A 聽目標音，再從 15 格推上去對準。揉弦用手腕轉動，速度大約每秒 4–5 下，越後面越寬。",
+  links:[["Guitar World：Slithery and sleazy, slurring Slash","https://www.guitarworld.com/lessons/guitar-strength-getting-slithery-and-sleazy-slurring-slash"],["MusicRadar：5 ways to play guitar like Slash","https://www.musicradar.com/news/slash-guitar-lesson"]]},
+ {p:0,rank:3,n:"和聲小調異國風下行",skill:"在 V7（B7）上用和聲小調：b9（C）與導音（D#）",of:"slash1",ks:["sl_hm"],ch:["B7"],
+  lab:"經典 lick（來自 Slash 風格／出現在〈Sweet Child O' Mine〉尾奏 solo 的和聲小調手法）",songs:[["〈Sweet Child O' Mine〉官方 MV（尾奏 wah solo 段落；影片時間點未查證，所以不加）",YT.scom]],
+  rhythm:"兩組六連音（每組只撥第一個音）→ 二分音符長音",
+  why:"Guitar World 指出 Slash 在〈Sweet Child O' Mine〉尾奏用了和聲小調的爬升；b9 和導音一出現就有古典、異國的味道，是他跟一般藍調吉他手最大的不同。",
+  tip:"先慢慢彈 C–B–G–E–D#–E，聽 D#→E 的拉力。再加上勾弦，每組只撥一次。",
+  links:[["Guitar World：Slash 的節奏與主奏手法","https://www.guitarworld.com/lessons/learn-slashs-rhythm-and-lead-approaches"],["Guitar World：Slithery and sleazy, slurring Slash（flirting with harmonic minor）","https://www.guitarworld.com/lessons/guitar-strength-getting-slithery-and-sleazy-slurring-slash"]]},
+ {p:0,rank:4,n:"wah 半開唱句＋半音爬升",skill:"wah 踩一下再停在半開（cocked wah）；半音階爬到和弦 3 度",of:"slash1",ks:["sl_chrom"],ch:["B7"],wah:true,
+  lab:"經典 lick（來自 Slash 風格／出現在〈Sweet Child O' Mine〉wah solo 的手法）",songs:[["〈Sweet Child O' Mine〉官方 MV（wah solo 段落；時間點未查證）",YT.scom]],
+  rhythm:"四個十六分音符半音爬升 → 八分音符 → 推半音一拍",
+  why:"Slash 的 wah 不是一直「哇哇」，而是每個音踩一下、停在半開，讓破音像在說話；半音爬升（G#–A–A#–B）是他從藍調學來的連接方法。",
+  tip:"沒有 wah 也可以先練左手：G 弦 13→16 四個半音，一指一格。播放時這句會自動開 wah。",
+  links:[["Guitar World：Five Slash licks you need to know","https://www.guitarworld.com/lessons/five-slash-licks-you-need-to-know"],["Guitar World：Slash 的節奏與主奏手法","https://www.guitarworld.com/lessons/learn-slashs-rhythm-and-lead-approaches"]]},
+ {p:0,rank:5,n:"頸部拾音器滑音旋律",skill:"頸部拾音器、滑音進入，推弦落在和弦 3 度的唱句",of:"slash2",ks:["nr_1","nr_2"],ch:["Bm","G"],
+  lab:"經典 lick（來自 Slash 風格／出現在〈November Rain〉第一段 solo 的唱句手法）",songs:[["〈November Rain〉官方 MV・第一段 solo 4:12",YT.nr+"&t=252"]],
+  rhythm:"八分音符旋律＋一拍、兩拍的長推弦，句尾留白",
+  why:"Guitar World 把〈November Rain〉列為 Slash「史詩式旋律」的代表：句子短、唱得出來、每句落在和弦音。",
+  tip:"先用嘴巴唱一次再彈。滑音要聽得到「滑」的過程，不要太快。",
+  links:[["Guitar World：Slash 的節奏與主奏手法","https://www.guitarworld.com/lessons/learn-slashs-rhythm-and-lead-approaches"],["Objectif Guitare：November Rain 第一段 solo 分析","https://www.objectif-guitare.com/solo-de-november-rain/"]]},
+ {p:0,rank:6,n:"尾奏高把位推弦＋快速下行",skill:"22 格的高音推弦，接十六分音符換弦下行",of:"slash2",ks:["nr_8","nr_9"],ch:["Bm","G"],
+  lab:"經典 lick（來自 Slash 風格／出現在〈November Rain〉尾奏 solo 的手法）",songs:[["〈November Rain〉官方 MV・尾奏 solo 7:25",YT.nr+"&t=445"]],
+  rhythm:"推弦一拍 → 八分音符 → 十六分音符一路下行 → 四分音符落地",
+  why:"〈November Rain〉尾奏越爬越高、最後一串快速下行；Guitar-Zone 的尾奏課程就是拆這種下行。",
+  tip:"十六分音符的每兩個音一組，第一個撥、第二個勾。先 60 BPM 練。",
+  links:[["Guitar-Zone：November Rain 尾奏 solo 課程","https://www.guitar-zone.com/guitar-lesson/november-rain-outro-guitar-solo-lesson-guns-n-roses-slash/"],["Guitar World：Slithery and sleazy, slurring Slash","https://www.guitarworld.com/lessons/guitar-strength-getting-slithery-and-sleazy-slurring-slash"]]},
+ {p:0,rank:7,n:"同音反覆推弦",skill:"同一個推弦連撥好幾次，像在喊",of:"slash1",ks:["sl_rep"],ch:["D"],
+  lab:"經典 lick（來自 Slash 風格的同音反覆手法）",songs:[["〈Sweet Child O' Mine〉官方 MV・主 solo 2:34",YT.scom+"&t=154"]],
+  rhythm:"反拍進來 → 同一個推弦八分音符兩次 → 第三次撐一拍",
+  why:"MusicRadar 與 Guitar World 都提到 Slash 的推弦像在唱歌、常重複同一個音型；重複讓旋律變成鉤子。",
+  tip:"推上去之後手指不要完全放鬆，撥第二、三次時音高要一樣準。",
+  links:[["MusicRadar：5 ways to play guitar like Slash","https://www.musicradar.com/news/slash-guitar-lesson"],["Guitar World：Five Slash licks you need to know","https://www.guitarworld.com/lessons/five-slash-licks-you-need-to-know"]]},
+ {p:1,rank:1,n:"精準推弦＋大回しビブラート",skill:"推到準就停（不推過頭），停一下才開始寬而均勻的大揉弦",of:"tak1",ks:["tk_t1"],ch:["G"],
+  lab:"經典 lick（來自松本孝弘風格／B'z 抒情曲 solo 的推弦手法）",songs:[["B'z〈ALONE〉Live from AVACO STUDIO（官方）",YT.alone],["B'z〈いつかのメリークリスマス〉：YouTube 上找不到官方完整影片，請聽專輯或看下方 Songsterr 譜",""]],
+  rhythm:"反拍進來的三個八分音符 → 推弦撐兩拍（推弦慢、揉弦晚一點才開始）",
+  why:"Kaz Takayama 的解說：松本的推弦精準停在目標音，接著是均勻的揉弦；這種「乾淨的哭腔」就是 B'z 抒情 solo 的聲音。",
+  tip:"先彈目標音（e 弦 19 格），再推。推到之後數半拍才開始揉，揉弦寬度約半音、每秒 5 下，從頭到尾一樣寬。",
+  links:[["Kaz Takayama：松本孝弘ギタリスト解說","https://xn--ock8a3lz93ijtn8wniod.com/guitarist-legends/tak-matsumoto-guitarist-guide/"],["hiiro：B'z 松本孝弘のチョーキング","https://hiiro-guitar.hatenablog.com/entry/2017/07/14/114643"]]},
+ {p:1,rank:2,n:"半音→全音推弦",skill:"同一條弦先推半音、再推全音，兩種寬度連著用",of:"tak1",ks:["tk_hw"],ch:["Am7"],
+  lab:"經典 lick（來自松本孝弘風格的半音／全音チョーキング）",songs:[["B'z〈ultra soul〉官方 MV（短版）",YT.ultra]],
+  rhythm:"半音推弦一拍 → 放下＋八分音符 → 全音推弦兩拍",
+  why:"hiiro 整理松本的推弦：半音、全音、四分之一音分得很清楚；半音推弦細膩，全音推弦像唱高音，兩個連用就是他的抒情味。",
+  tip:"先推半音（F#→G），用 15 格對音；再推全音（G→A），用 17 格對音。兩次的手指都要三指一起推。",
+  links:[["hiiro：B'z 松本孝弘のチョーキング","https://hiiro-guitar.hatenablog.com/entry/2017/07/14/114643"],["Kaz Takayama：松本孝弘ギタリスト解說","https://xn--ock8a3lz93ijtn8wniod.com/guitarist-legends/tak-matsumoto-guitarist-guide/"]]},
+ {p:1,rank:3,n:"ハーモニックマイナー 6 音一組快句",skill:"和聲小調（導音 D#／G#）的 6 音一組下行快句",of:"tak1",ks:["tk_hm","tk_land"],ch:["B7","Em"],
+  lab:"經典 lick（來自松本孝弘風格／ms-jeek 分析〈月光〉〈ミエナイチカラ〉一類快句的手法）",songs:[["B'z〈LOVE PHANTOM〉LIVE-GYM 2023（官方，可對照聽戲劇化的小調 solo）",YT.lp]],
+  rhythm:"兩組六連音（タラタラタタ）→ 二分音符 → 推弦長音",
+  why:"ms-jeek 速弾き編：松本的快句常是和聲小調加藍調音、6 個音一組，快句之後一定接一個長音推弦。",
+  tip:"每組只撥第一個音，其餘勾弦。先數「タ-ラ-タ-ラ-タ-タ」慢練。",
+  links:[["ms-jeek：松本孝弘ギター研究 速弾き編","https://ameblo.jp/ms-jeek/entry-10634526027.html"],["ms-jeek：マイナースケール編","https://ameblo.jp/ms-jeek/entry-10633212405.html"]]},
+ {p:1,rank:4,n:"チョークダウン（預推放下）",skill:"先無聲推好再撥，慢慢放回原音",of:"tak2",ks:["tr_down"],ch:["G"],
+  lab:"經典 lick（來自松本孝弘風格的チョークダウン）",songs:[["B'z〈Calling〉Live from AVACO STUDIO（官方）",YT.calling]],
+  rhythm:"預推放下一拍 → 八分音符下行",
+  why:"hiiro 與 SJR 都把チョークダウン列為松本的常用記號：從上面「降」進來，聽起來像嘆氣。",
+  tip:"e 弦 20 格先推到 22 格的音高（不撥），撥了之後用一拍慢慢放回。",
+  links:[["hiiro：B'z 松本孝弘のチョーキング","https://hiiro-guitar.hatenablog.com/entry/2017/07/14/114643"],["SJR ギタースクール：TAB 記號（チョークダウン）","http://www.sjr-guitar.com/readingscore/readingtab/"]]},
+ {p:1,rank:5,n:"單弦レガートスライド",skill:"在一條弦上用搥勾＋滑音快速移動",of:"tak2",ks:["tr_one"],ch:["Am"],
+  lab:"經典 lick（來自松本孝弘風格的レガートスライド）",songs:[["B'z〈LOVE PHANTOM〉LIVE-GYM 2023（官方）",YT.lp]],
+  rhythm:"八個十六分音符（只撥第一個）→ 滑音長音 → 八分音符",
+  why:"イケベ楽器的松本課程把「レガートスライド」列為他的特徵：一條弦上連起來，聲音不中斷。",
+  tip:"滑音用同一根手指滑到底；搥弦要用力，音量才會跟撥弦一樣。",
+  links:[["イケベ楽器 動画レッスン：レガートスライド","https://www.ikebe-gakki.com/Form/Video/VideoDetail.aspx?vvid=10LEGchukyu00023"],["ms-jeek：マイナースケール編","https://ameblo.jp/ms-jeek/entry-10633212405.html"]]},
+ {p:1,rank:6,n:"抒情延遲長音（ボリューム＋ディレイ）",skill:"音量慢慢拉起、配附點四分音符延遲的長音主題",of:"tak1",ks:["tk_u1"],ch:["A"],key:{pc:9,mode:0},
+  lab:"經典 lick（來自松本孝弘抒情曲的長音手法；轉調後的主題）",songs:[["B'z〈ALONE〉Live from AVACO STUDIO（官方）",YT.alone]],
+  rhythm:"反拍進來的三個八分音符 → 推弦兩拍，延遲在後面回答",
+  why:"Kaz Takayama 的解說提到松本的中頻厚、破音不開太大、句子有換氣；延遲讓長音在句子之間「接話」。",
+  tip:"撥弦後音量從小拉大（用音量旋鈕或撥得輕），推到 C# 停住。延遲設附點四分音符，不要太多回授。",
+  links:[["Kaz Takayama：松本孝弘ギタリスト解說","https://xn--ock8a3lz93ijtn8wniod.com/guitarist-legends/tak-matsumoto-guitarist-guide/"],["盧家宏吉他教室：#1090 Thousand Dreams","https://www.guitarlu.net/lesson-song-86-thousand-dreams-1090.html"]]},
+ {p:1,rank:7,n:"五聲音階基本句",skill:"小調五聲第一把位：勾弦＋推弦＋推放",of:"tak2",ks:["tr_pent"],ch:["Am"],
+  lab:"經典 lick（來自松本孝弘風格的五聲音階句）",songs:[["B'z〈BAD COMMUNICATION〉官方音源（B'z - Topic）",YT.badcom]],
+  rhythm:"四個十六分音符 → 推弦一拍 → 八分音符 → 推放一拍",
+  why:"松本的搖滾 riff 與 solo 底子是藍調搖滾的五聲音階，再加上精準的推弦。",
+  tip:"G 弦 7 格推全音到 E、D 弦 5 格推上去再放下，兩個推弦都要準。",
+  links:[["ms-jeek：マイナースケール編","https://ameblo.jp/ms-jeek/entry-10633212405.html"],["Kaz Takayama：松本孝弘ギタリスト解說","https://xn--ock8a3lz93ijtn8wniod.com/guitarist-legends/tak-matsumoto-guitarist-guide/"]]},
+ {p:2,rank:1,n:"五連音五聲瀑布（每兩條弦換把）",skill:"五個音一組、每組從低一個音開始的五聲下行，兩條弦一組往下換",of:"ej1",ks:["ej_casc"],ch:["Em"],
+  lab:"經典 lick（來自 Eric Johnson 風格／〈Cliffs of Dover〉一類的五聲瀑布手法）",songs:[["〈Cliffs of Dover〉官方現場（前奏）",YT.cliffs]],
+  rhythm:"五連音（每拍 5 個，數「u-ni-ver-si-ty」）四拍",
+  why:"Fundamental Changes 與 Premier Guitar 都把「五個音一組的五聲下行」列為 EJ 最有辨識度的手法：不對齊拍子，像水一樣流。",
+  tip:"先數「u-ni-ver-si-ty」，每拍第一個音加重。每組第一個音撥弦，同弦第二個音勾弦。",
+  links:[["Fundamental Changes：Play like Eric Johnson","https://www.fundamental-changes.com/video-lesson-play-like-eric-johnson/"],["Premier Guitar：Eric Johnson vs. Joe Bonamassa","https://www.premierguitar.com/lessons/beyond-blues-eric-johnson-vs-joe-bonamassa"]]},
+ {p:2,rank:2,n:"寬音程五聲琶音",skill:"每條弦一個音、跳弦的寬音程琶音（像鋼琴）",of:"ej1",ks:["ej_wide"],ch:["Am7"],
+  lab:"經典 lick（來自 Eric Johnson 風格的寬音程五聲手法）",songs:[["〈Cliffs of Dover〉官方現場",YT.cliffs]],
+  rhythm:"六個十六分音符 → 八分音符 → 推弦兩拍",
+  why:"Fundamental Changes 提到 EJ 的「interval skipping」；Premier Guitar 也示範他跨弦的開放三和弦。音程寬，聽起來不像在跑音階。",
+  tip:"每條弦只彈一個音，右手用掃弦的感覺往下帶；左手 12–17 格要撐開。",
+  links:[["Fundamental Changes：Play like Eric Johnson","https://www.fundamental-changes.com/video-lesson-play-like-eric-johnson/"],["Premier Guitar：Eric Johnson vs. Joe Bonamassa","https://www.premierguitar.com/lessons/beyond-blues-eric-johnson-vs-joe-bonamassa"]]},
+ {p:2,rank:3,n:"sus／四度雙音鐘聲",skill:"相鄰兩條弦的四度雙音，sus2／sus4／add9 的開闊顏色",of:"ej1",ks:["ej_bell"],ch:["C"],
+  lab:"經典 lick（來自 Eric Johnson 風格的四度雙音）",songs:[["〈Manhattan〉官方音源",YT.manh]],
+  rhythm:"八分音符雙音 → 四分音符雙音",
+  why:"Guitar World 與 Premier Guitar 都講到 EJ 的雙音和四度：沒有大小調色彩，聽起來開闊、現代。",
+  tip:"G、B 弦用同一根手指橫按或兩指同格；聽兩個音要一樣大聲。",
+  links:[["Guitar World：Eric Johnson 的 10 個手法","https://www.guitarworld.com/lessons/eric-johnson-10-techniques"],["Premier Guitar：Pentatonic Boxes Are for Squares","https://www.premierguitar.com/lessons/rock/pentatonic-boxes-are-for-squares"]]},
+ {p:2,rank:4,n:"小提琴長音（音量慢慢拉起）",skill:"頸部拾音器＋高音轉小，音量慢慢拉起的長推弦，窄而快的揉弦",of:"ej1",ks:["ej_vio"],ch:["G"],
+  lab:"經典 lick（來自 Eric Johnson 的 violin tone 長音手法）",songs:[["〈Cliffs of Dover〉官方現場",YT.cliffs]],
+  rhythm:"推弦兩拍 → 八分音符下行",
+  why:"EJ 的「小提琴音色」是頸部拾音器、高音旋鈕轉小、破音很飽，音頭軟、延音長；Guitar World 與 Fundamental Changes 都提到他窄而快的揉弦。",
+  tip:"撥弦輕，靠破音撐延音；揉弦小幅度、快一點，像小提琴。",
+  links:[["Guitar World：Eric Johnson blues lesson","https://www.guitarworld.com/lessons/eric-johnson-blues"],["Fundamental Changes：Play like Eric Johnson","https://www.fundamental-changes.com/video-lesson-play-like-eric-johnson/"]]},
+ {p:2,rank:5,n:"撥弦＋勾弦混合瀑布（hybrid）",skill:"每條弦兩個音、換弦撥弦、同弦勾弦的六連音瀑布",of:"ej1",ks:["ej_hyb"],ch:["D"],
+  lab:"經典 lick（來自 Eric Johnson 風格的撥弦＋勾弦瀑布）",songs:[["〈Cliffs of Dover〉官方現場",YT.cliffs]],
+  rhythm:"兩組六連音 → 雙音兩拍",
+  why:"Troy Grady 分析 EJ 的瀑布：每條弦兩個音、靠撥片斜度和勾弦換弦，所以能又快又順；Fundamental Changes 也提到 down-down-middle 的混合撥弦。",
+  tip:"每條弦第一個音撥、第二個音勾；換弦時撥片順勢往下。",
+  links:[["Troy Grady（Guitar World）：Eric Johnson 的五聲瀑布","https://www.guitarworld.com/lessons/cracking-code-eric-johnsons-pickslanting-pentatonics"],["Fundamental Changes：Play like Eric Johnson","https://www.fundamental-changes.com/video-lesson-play-like-eric-johnson/"]]},
+ {p:2,rank:6,n:"Cliffs 式 E 小調五聲換把下行",skill:"從 22 格滑上去，用五連音一路換把流回 12 格",of:"ej1",ks:["ej_shift"],ch:["G"],
+  lab:"經典 lick（來自 Eric Johnson 風格／〈Cliffs of Dover〉式 E 小調五聲換把手法）",songs:[["〈Cliffs of Dover〉官方現場",YT.cliffs]],
+  rhythm:"三拍五連音 → 四分音符落地",
+  why:"Premier Guitar 示範 EJ 的小調五聲加 9 度、五個一組下行；換把讓同一個五聲音型從高音一路流下來。",
+  tip:"滑音到 22 格之後，手要一路往琴頭方向帶；每個把位只停一拍。",
+  links:[["Premier Guitar：Eric Johnson vs. Joe Bonamassa","https://www.premierguitar.com/lessons/beyond-blues-eric-johnson-vs-joe-bonamassa"],["Hooktheory：Cliffs of Dover 分析","https://www.hooktheory.com/theorytab/view/eric-johnson/cliffs-of-dover"]]},
+ {p:2,rank:7,n:"Wes 式八度",skill:"隔一條弦的八度＋半音進入",of:"ej2",ks:["m_oct"],ch:["Em7"],
+  lab:"經典 lick（來自 Eric Johnson 風格／〈Manhattan〉的八度手法）",songs:[["〈Manhattan〉官方音源",YT.manh]],
+  rhythm:"休半拍 → 八分音符八度 → 附點四分",
+  why:"Guitar World 把 Wes Montgomery 列為 EJ 的影響；八度讓旋律變厚、加上半音滑入就有爵士味。",
+  tip:"A 弦和 G 弦的八度，中間 D 弦用食指悶掉。",
+  links:[["Guitar World：Eric Johnson 的 10 個手法","https://www.guitarworld.com/lessons/eric-johnson-10-techniques"],["The Guitar Mag：Manhattan 分析","https://www.theguitarmag.com/?p=32364"]]},
+ {p:2,rank:8,n:"疊用兩組五聲",skill:"i 級（E 小調）與 ii 級（F# 小調）五聲疊用",of:"ej2",ks:["m_fsm"],ch:["F#m7"],
+  lab:"經典 lick（來自 Eric Johnson 風格的疊用五聲音階）",songs:[["〈Manhattan〉官方音源",YT.manh]],
+  rhythm:"三拍五連音 → 四分音符",
+  why:"Guitar World 第 1c 點：兩組五聲疊在一起，就多出 9 度、6 度這些顏色。",
+  tip:"在 F#m7 上直接用 F# 小調五聲，聽起來馬上更亮。",
+  links:[["Guitar World：Eric Johnson 的 10 個手法","https://www.guitarworld.com/lessons/eric-johnson-10-techniques"],["Premier Guitar：Eric Johnson vs. Joe Bonamassa","https://www.premierguitar.com/lessons/beyond-blues-eric-johnson-vs-joe-bonamassa"]]}];
 const REF_PLAYERS=["Slash","松本孝弘","Eric Johnson"];
 const REF=[
  {p:0,dna:"Slash 的 solo 通常有這幾個特點：從小調五聲出發，屬七和弦上加入和聲小調的導音；常用全音推弦推到根音或 3 度，揉弦寬而慢；同一個推弦或短句會重複出現；快句多半是五聲第一把位的勾弦循環。他的原曲都用降半音（E♭）調弦，標準調弦的課程會寫成高半音的指型。",
@@ -1084,89 +1206,192 @@ function synthRock(solo,phIdx,bpm,withBack,SR){SR=SR||32000;const TN=TONE[solo.s
    lpL+=TN.lp*((Math.tanh(sl*TN.dr+TN.asy)-th0)*gOut-lpL);lp2+=TN.lp*(lpL-lp2);lpB+=.3*(sb-lpB);out[n0+k]=lp2+lpB*.7;}}
  let pk=0;for(let i=0;i<len;i++)pk=Math.max(pk,Math.abs(out[i]));if(pk>0){const gn=.85/pk;for(let i=0;i<len;i++)out[i]*=gn;}
  return{data:out,SR,ev,lead0,peak:pk};}
-// ===== 試聽：真實電吉他取樣（FluidR3_GM，CC BY 3.0）＋推弦／滑音／揉弦自動化 + 效果鏈；載入失敗時退回合成 =====
-const SMP={base:"samples/",cdn:"https://gleitz.github.io/midi-js-soundfonts/FluidR3_GM/",notes:[],inst:{},loading:{},failed:false};for(let m=40;m<92;m+=3)SMP.notes.push(m);
-const NOTE_FN=["C","Db","D","Eb","E","F","Gb","G","Ab","A","Bb","B"];
-function smpName(m){return NOTE_FN[m%12]+(Math.floor(m/12)-1);}
-function smpFetch(u){return fetch(u).then(r=>{if(!r.ok)throw new Error(r.status);return r.arrayBuffer();});}
+// ===== 試聽：乾淨 DI 電吉他取樣（Karoryfer，CC BY 3.0）→ Web Audio 音箱模擬 → 效果 → 樂團伴奏；載入失敗時退回合成 =====
+// 訊號鏈：(壓縮) → (wah) → 輸入增益 → 前級 EQ（低切 + 中頻）→ 兩級不對稱真空管削波（4x 過取樣）→ 音色堆疊 → 後級軟削波 → 箱體 IR → 後 EQ → 立體延遲 → 板式殘響 → 限幅
+const SMP={base:"samples/",sets:{egtr:["E2","Fs2","A2","C3","Ds3","Fs3","A3","C4","Ds4","Fs4","A4","C5","Ds5","Fs5","A5","C6"],ebass:["E1","G1","As1","Cs2","E2","G2","As2","Cs3","E3","G3"]},irs:["cab-a","cab-b"],inst:{},ir:{},loading:{},failed:false};
+const NOTE_FN=["C","Cs","D","Ds","E","F","Fs","G","Gs","A","As","B"];
+function smpMidi(n){const m=/^([A-G]s?)(\d)$/.exec(n);return NOTE_FN.indexOf(m[1])+12*(+m[2]+1);}
+function smpFetch(u){return fetch(u).then(r=>{if(!r.ok)throw new Error(u+" "+r.status);return r.arrayBuffer();});}
 function smpDecode(ctx,ab){return new Promise((res,rej)=>{const p=ctx.decodeAudioData(ab,res,rej);if(p&&p.then)p.then(res,rej);});}
-function smpLoad(ctx,inst){if(SMP.inst[inst])return Promise.resolve(SMP.inst[inst]);if(SMP.loading[inst])return SMP.loading[inst];
- const p=Promise.all(SMP.notes.map(m=>smpFetch(SMP.base+inst+"/"+smpName(m)+".mp3").catch(()=>smpFetch(SMP.cdn+inst+"-mp3/"+smpName(m)+".mp3")).then(ab=>smpDecode(ctx,ab)).then(b=>[m,b])))
-  .then(a=>{const o={};a.forEach(([m,b])=>{o[m]=b;});SMP.inst[inst]=o;return o;});
- SMP.loading[inst]=p.catch(e=>{delete SMP.loading[inst];throw e;});return SMP.loading[inst];}
-// 每位吉他手的音色預設
+// 延音：0.8 秒之後，用「整數個週期」長的片段做 Hann 交叉淡化循環（先把包絡壓平），音符就不會在 3 秒左右斷掉
+function smpExtend(ctx,b,midi,sec){const sr=b.sampleRate,x=b.getChannelData(0),N=Math.floor(sec*sr),y=new Float32Array(N);
+ const per=sr/(440*Math.pow(2,(midi-69)/12)),Ls=Math.floor(.8*sr),h=Math.max(2,Math.round(Math.max(1,Math.round(.09*sr/per))*per)),Ll=2*h;
+ const fr=Math.floor(.01*sr),nf=Math.floor(x.length/fr),env=new Float32Array(nf);
+ for(let k=0;k<nf;k++){let s=0;for(let i=k*fr;i<(k+1)*fr;i++)s+=x[i]*x[i];env[k]=Math.sqrt(s/fr)+1e-5;}
+ const E=i=>{const f=i/fr-.5,k=Math.max(0,Math.min(nf-2,Math.floor(f))),u=Math.max(0,Math.min(1,f-k));return env[k]*(1-u)+env[k+1]*u;};
+ const e0=E(Ls+h),seg=new Float32Array(Ll),w=new Float32Array(Ll);
+ for(let i=0;i<Ll;i++){seg[i]=(x[Ls+i]||0)/E(Ls+i)*e0;w[i]=.5-.5*Math.cos(2*Math.PI*i/Ll);}
+ for(let i=0;i<Math.min(N,Ls);i++)y[i]=x[i]||0;
+ for(let i=Ls;i<N;i++){const t=i-Ls,u=t%h,L=w[u+h]*seg[u+h]+w[u]*seg[u],r=t<h?.5-.5*Math.cos(Math.PI*t/h):1;y[i]=(x[i]||0)*(1-r)+L*r*Math.exp(-t/sr*.25);}
+ const fo=Math.floor(.05*sr);for(let i=0;i<fo;i++)y[N-1-i]*=i/fo;
+ const o=ctx.createBuffer(1,N,sr);o.getChannelData(0).set(y);return o;}
+function smpLoad(ctx,set){if(SMP.inst[set])return Promise.resolve(SMP.inst[set]);if(SMP.loading[set])return SMP.loading[set];
+ const ext=set==="egtr";const p=Promise.all(SMP.sets[set].map(n=>smpFetch(SMP.base+set+"/"+n+".mp3").then(ab=>smpDecode(ctx,ab)).then(b=>{const m=smpMidi(n);return[m,ext?smpExtend(ctx,b,m,7):b];})))
+  .then(a=>{const o={};a.forEach(([m,b])=>{o[m]=b;});SMP.inst[set]=o;return o;});
+ SMP.loading[set]=p.catch(e=>{delete SMP.loading[set];throw e;});return SMP.loading[set];}
+function irLoad(ctx,n){if(SMP.ir[n])return Promise.resolve(SMP.ir[n]);const k="ir:"+n;if(SMP.loading[k])return SMP.loading[k];
+ const p=smpFetch(SMP.base+"ir/"+n+".wav").then(ab=>smpDecode(ctx,ab)).then(b=>{SMP.ir[n]=b;return b;});SMP.loading[k]=p.catch(e=>{delete SMP.loading[k];throw e;});return SMP.loading[k];}
+function smpReady(){return !!(SMP.inst.egtr&&SMP.inst.ebass&&SMP.irs.every(n=>SMP.ir[n]));}
+function smpLoadAll(ctx){return Promise.all([smpLoad(ctx,"egtr"),smpLoad(ctx,"ebass")].concat(SMP.irs.map(n=>irLoad(ctx,n))));}
+// 可重現的「人味」：固定種子的亂數
+function rng(seed){let a=seed>>>0;return()=>{a=(a+0x6D2B79F5)>>>0;let t=a;t=Math.imul(t^(t>>>15),t|1);t^=t+Math.imul(t^(t>>>7),t|61);return((t^(t>>>14))>>>0)/4294967296;};}
+function hstr(s){let h=2166136261;for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619);}return h>>>0;}
+const NOISE=new WeakMap();
+function noiseBuf(ctx){let b=NOISE.get(ctx);if(b)return b;const r=rng(99),L=ctx.sampleRate*2;b=ctx.createBuffer(1,L,ctx.sampleRate);const d=b.getChannelData(0);for(let i=0;i<L;i++)d[i]=r()*2-1;NOISE.set(ctx,b);return b;}
+const mkG=(ctx,v)=>{const g=ctx.createGain();g.gain.value=v;return g;};
+function bq(ctx,t,f,q,g){const b=ctx.createBiquadFilter();b.type=t;b.frequency.value=f;if(q!=null)b.Q.value=q;if(g!=null)b.gain.value=g;return b;}
+function wsh(ctx,c,os){const w=ctx.createWaveShaper();w.curve=c;w.oversample=os;return w;}
+function ser(ns){for(let i=0;i<ns.length-1;i++)ns[i].connect(ns[i+1]);return ns;}
+// 真空管：tanh(k(x+b)) − tanh(kb)，偏壓 b 讓正負半波不對稱（偶次諧波）
+function curveTube(k,b){const n=4096,c=new Float32Array(n),o=Math.tanh(k*b);let mx=0;for(let i=0;i<n;i++){const x=i/(n-1)*2-1;c[i]=Math.tanh(k*(x+b))-o;mx=Math.max(mx,Math.abs(c[i]));}for(let i=0;i<n;i++)c[i]/=mx;return c;}
+function curveSoft(k){const n=4096,c=new Float32Array(n),t=Math.tanh(k);for(let i=0;i<n;i++){const x=i/(n-1)*2-1;c[i]=Math.tanh(k*x)/t;}return c;}
+function curvePow(k){const n=4096,c=new Float32Array(n),t=Math.atan(k);for(let i=0;i<n;i++){const x=i/(n-1)*2-1;c[i]=Math.atan(k*x)/t;}return c;}
+// 音箱模型（每位吉他手一組參數）
+const AMP={
+ jcm:{name:"Les Paul → JCM800 式（中頻往前、中等破音）",inG:1.25,hp:100,pre:[800,.9,6],lpPre:5200,k1:5,b1:.22,g2:.9,k2:3,ts:[1,800,4,1],g3:.8,pa:1.6,post:[2600,2,6500],out:.5},
+ brad:{name:"Bradshaw 式高增益 lead（壓縮、長延音）",inG:1.3,comp:[-34,4,.006,2.4],hp:110,pre:[1000,.8,4],lpPre:6000,k1:10,b1:.15,g2:1,k2:5,ts:[1.5,900,2.5,-1],g3:.8,pa:1.4,post:[2300,1.5,6000],out:.42},
+ violin:{name:"Strat 頸部拾音器、高音旋鈕轉小 → Marshall／fuzz（小提琴音色）",inG:1.2,comp:[-30,6,.012,2.6],hp:120,pre:[650,.8,3],lpPre:1500,k1:7,b1:.3,g2:1,k2:4,ts:[-1,700,2,-6],g3:.8,pa:1.5,post:[1800,1.5,3600],out:.62},
+ crunch:{name:"節奏吉他 crunch",inG:1,hp:90,pre:[700,.8,3],lpPre:5000,k1:3.2,b1:.2,g2:.8,k2:2,ts:[1,700,2,1],g3:.8,pa:1.3,post:[2500,1,6200],out:.5},
+ clean:{name:"乾淨 Strat",inG:.9,hp:80,pre:[800,.7,0],lpPre:9000,k1:1.2,b1:.1,g2:.6,k2:1,ts:[0,800,0,2],g3:.7,pa:1,post:[3000,1,9000],out:.75}};
 const GTR={
- _:{inst:"overdriven_guitar",drive:1.6,hp:90,mid:[800,1,3],lp:4800,comp:-24,att:.004,rel:.09,dly:[0,0,0],rev:.16,vd:.38,vr:5.6,vo:.25,bg:.14,lvl:1},
- "Slash":{inst:"overdriven_guitar",drive:2.4,hp:85,mid:[750,.9,5],lp:5200,comp:-24,att:.003,rel:.09,dly:[0,0,0],rev:.15,vd:.5,vr:4.6,vo:.35,bg:.2,lvl:1},
- "松本孝弘":{inst:"distortion_guitar",drive:1.5,hp:100,mid:[1100,1,3],lp:4400,comp:-32,att:.006,rel:.16,dly:[.75,.3,.2],rev:.22,vd:.42,vr:5.8,vo:.18,bg:.09,lvl:.95},
- "Eric Johnson":{inst:"overdriven_guitar",drive:1.3,hp:110,mid:[520,.8,3],lp:2800,comp:-32,att:.028,rel:.18,dly:[1,.28,.22],rev:.26,vd:.18,vr:6.8,vo:.2,bg:.12,lvl:1.15}};
-const BACK_INST="electric_guitar_clean";
-function smpCurve(ctx,k){const n=2048,c=new Float32Array(n),th=Math.tanh(k);for(let i=0;i<n;i++){const x=i/(n-1)*2-1;c[i]=Math.tanh(k*x)/th;}return c;}
-function smpIR(ctx,sec){const L=Math.floor(ctx.sampleRate*sec),ir=ctx.createBuffer(2,L,ctx.sampleRate);
- for(let c=0;c<2;c++){const d=ir.getChannelData(c);let lp=0;for(let i=0;i<L;i++){const t=i/ctx.sampleRate;lp+=.35*((Math.random()*2-1)-lp);d[i]=t<.012?0:lp*Math.exp(-t*4.2);}}return ir;}
-// 建立效果鏈：lead → 壓縮（延音）→ 破音 → 低切／中頻／高切（音箱）→ 延遲 + 殘響；伴奏走乾淨聲道
-function smpChain(ctx,P,spb){const N={};const out=ctx.createGain();out.gain.value=.9;
- const lim=ctx.createDynamicsCompressor();lim.threshold.value=-6;lim.knee.value=4;lim.ratio.value=12;lim.attack.value=.002;lim.release.value=.15;out.connect(lim);lim.connect(ctx.destination);
- const lead=ctx.createGain();lead.gain.value=1.4;const comp=ctx.createDynamicsCompressor();comp.threshold.value=P.comp;comp.knee.value=10;comp.ratio.value=5;comp.attack.value=.004;comp.release.value=.25;
- const pre=ctx.createGain();pre.gain.value=1;const ws=ctx.createWaveShaper();ws.curve=smpCurve(ctx,P.drive);ws.oversample="2x";
- const hp=ctx.createBiquadFilter();hp.type="highpass";hp.frequency.value=P.hp;hp.Q.value=.7;
- const mid=ctx.createBiquadFilter();mid.type="peaking";mid.frequency.value=P.mid[0];mid.Q.value=P.mid[1];mid.gain.value=P.mid[2];
- const lp1=ctx.createBiquadFilter();lp1.type="lowpass";lp1.frequency.value=P.lp;lp1.Q.value=.6;const lp2=ctx.createBiquadFilter();lp2.type="lowpass";lp2.frequency.value=P.lp*1.25;lp2.Q.value=.5;
- const lo=ctx.createGain();lo.gain.value=.55*P.lvl;
- lead.connect(comp);comp.connect(pre);pre.connect(ws);ws.connect(hp);hp.connect(mid);mid.connect(lp1);lp1.connect(lp2);lp2.connect(lo);lo.connect(out);
- const rv=ctx.createConvolver();rv.buffer=smpIR(ctx,1.4);const rw=ctx.createGain();rw.gain.value=P.rev;lo.connect(rv);rv.connect(rw);rw.connect(out);
- if(P.dly[2]>0){const d=ctx.createDelay(1.5);d.delayTime.value=Math.min(.6,P.dly[0]*spb);const fb=ctx.createGain();fb.gain.value=P.dly[1];const dl=ctx.createBiquadFilter();dl.type="lowpass";dl.frequency.value=2500;const dw=ctx.createGain();dw.gain.value=P.dly[2];
-  lo.connect(d);d.connect(dl);dl.connect(fb);fb.connect(d);dl.connect(dw);dw.connect(out);dw.connect(rv);}
- const back=ctx.createGain();back.gain.value=.6;const bh=ctx.createBiquadFilter();bh.type="highpass";bh.frequency.value=110;const bl=ctx.createBiquadFilter();bl.type="lowpass";bl.frequency.value=3800;
- back.connect(bh);bh.connect(bl);bl.connect(out);const bs=ctx.createGain();bs.gain.value=.12;bl.connect(bs);bs.connect(rv);
- N.lead=lead;N.back=back;N.out=out;return N;}
-// 排程：同一套推弦／滑音／揉弦曲線，改用取樣 + playbackRate 自動化
-function smpSched(ctx,solo,phIdx,bpm,withBack,t0){const P=GTR[solo.style]||GTR._;const {ev,chs,beats,spb}=rockEvents(solo,phIdx,bpm);
- const S=SMP.inst[P.inst],SB=SMP.inst[BACK_INST];const N=smpChain(ctx,P,spb);const lead0=.25,srcs=[];
- const pickBuf=(set,m)=>{let best=SMP.notes[0];for(const n of SMP.notes)if(Math.abs(n-m)<Math.abs(best-m))best=n;return[best,set[best]];};
- // 1) 事件 → 音符清單
- const notes=[];const cur={};const curPitch={};let lastEnd=0;
- ev.forEach(e=>{const it=e.it,T0=lead0+e.t,D=e.d;
-  if(it.rest){Object.keys(cur).forEach(s=>{const n=cur[s];if(n.end>T0)n.end=T0+.04;delete cur[s];});return;}
+ "Slash":{amp:"jcm",ir:"cab-a",fx:{dly:[.5,.75,.18,.07,2400],rev:[1.5,.12,.012]},vib:{d:.55,r:4.7,on:.22,ramp:.32,jit:.08},bend:{g:.11,os:.09},att:.002,rel:.06,swell:0,hum:.010,lvl:2.2},
+ "松本孝弘":{amp:"brad",ir:"cab-a",fx:{dly:[1.5,.75,.3,.17,2200],rev:[2.6,.24,.025]},vib:{d:.62,r:5.1,on:.3,ramp:.45,jit:.02},bend:{g:.2,os:.025},att:.003,rel:.1,swell:0,hum:.007,lvl:1.55},
+ "Eric Johnson":{amp:"violin",ir:"cab-b",fx:{dly:[.75,1,.3,.16,2000],rev:[2,.2,.02]},vib:{d:.24,r:6.4,on:.18,ramp:.25,jit:.03},bend:{g:.09,os:.045},att:.004,rel:.12,swell:.065,hum:.005,lvl:1.4}};
+GTR._=GTR.Slash;
+function ampBuild(ctx,A,ir){const N={},inp=mkG(ctx,1);let last=inp;
+ if(A.comp){const c=ctx.createDynamicsCompressor();c.threshold.value=A.comp[0];c.ratio.value=A.comp[1];c.knee.value=6;c.attack.value=A.comp[2];c.release.value=.22;const mk=mkG(ctx,A.comp[3]);last.connect(c);c.connect(mk);last=mk;}
+ const sum=mkG(ctx,1),dry=mkG(ctx,1),bp=bq(ctx,"bandpass",800,3.2),wet=mkG(ctx,0);last.connect(dry);dry.connect(sum);last.connect(bp);bp.connect(wet);wet.connect(sum);N.wah={f:bp.frequency,dry:dry.gain,wet:wet.gain};
+ const cv=ctx.createConvolver();cv.buffer=ir;
+ const ns=ser([sum,mkG(ctx,A.inG),bq(ctx,"highpass",A.hp,.7),bq(ctx,"peaking",A.pre[0],A.pre[1],A.pre[2]),bq(ctx,"lowpass",A.lpPre,.7),
+  wsh(ctx,curveTube(A.k1,A.b1),"4x"),bq(ctx,"highpass",30,.7),bq(ctx,"lowpass",7000,.5),mkG(ctx,A.g2),wsh(ctx,curveSoft(A.k2),"4x"),
+  bq(ctx,"lowshelf",120,null,A.ts[0]),bq(ctx,"peaking",A.ts[1],.8,A.ts[2]),bq(ctx,"highshelf",3000,null,A.ts[3]),mkG(ctx,A.g3),wsh(ctx,curvePow(A.pa),"2x"),
+  cv,bq(ctx,"highpass",75,.7),bq(ctx,"peaking",A.post[0],1,A.post[1]),bq(ctx,"lowpass",A.post[2],.7),mkG(ctx,A.out)]);
+ N.inp=inp;N.out=ns[ns.length-1];return N;}
+// 板式殘響：程式產生的立體雜訊 IR，越後面越暗
+function plateIR(ctx,T,pre,seed){const sr=ctx.sampleRate,p0=Math.floor(pre*sr),L=p0+Math.floor(sr*T*1.05),b=ctx.createBuffer(2,L,sr),R=rng(seed);
+ for(let c=0;c<2;c++){const d=b.getChannelData(c);let lp=0;for(let i=p0;i<L;i++){const t=(i-p0)/sr,a=.92-.62*Math.min(1,t/T);lp+=a*((R()*2-1)-lp);d[i]=lp*Math.exp(-6.9*t/T)*Math.min(1,t/.004);}}return b;}
+function fxBuild(ctx,F,spb,dest){const inp=mkG(ctx,1);inp.connect(dest);
+ const rv=ctx.createConvolver();rv.buffer=plateIR(ctx,F.rev[0],F.rev[2],7);const rs=mkG(ctx,F.rev[1]);inp.connect(rs);rs.connect(rv);rv.connect(dest);
+ if(F.dly){const [bl,br,fb,mix,lp]=F.dly,s=mkG(ctx,mix),dL=ctx.createDelay(4),dR=ctx.createDelay(4);dL.delayTime.value=Math.min(3.5,bl*spb);dR.delayTime.value=Math.min(3.5,br*spb);
+  const fL=bq(ctx,"lowpass",lp,.5),fR=bq(ctx,"lowpass",lp,.5),gL=mkG(ctx,fb),gR=mkG(ctx,fb),pL=ctx.createStereoPanner(),pR=ctx.createStereoPanner();pL.pan.value=-.75;pR.pan.value=.75;
+  inp.connect(s);s.connect(dL);s.connect(dR);dL.connect(fL);fL.connect(gL);gL.connect(dR);dR.connect(fR);fR.connect(gR);gR.connect(dL);fL.connect(pL);fR.connect(pR);pL.connect(dest);pR.connect(dest);
+  const ds=mkG(ctx,.5);pL.connect(ds);pR.connect(ds);ds.connect(rv);}
+ return inp;}
+function masterBuild(ctx){const out=mkG(ctx,.9),lim=ctx.createDynamicsCompressor();lim.threshold.value=-3;lim.knee.value=0;lim.ratio.value=20;lim.attack.value=.002;lim.release.value=.12;out.connect(lim);lim.connect(ctx.destination);return out;}
+function noiseHit(ctx,nb,dest,T,len,type,f,q,peak,R,srcs){const s=ctx.createBufferSource();s.buffer=nb;const fl=bq(ctx,type,f,q),g=ctx.createGain();s.connect(fl);fl.connect(g);g.connect(dest);
+ g.gain.setValueAtTime(0,T);g.gain.linearRampToValueAtTime(peak,T+.001);g.gain.setTargetAtTime(0,T+.001,len/3);s.start(T,R()*1.5);s.stop(T+len+.05);srcs.push(s);return g;}
+const nearest=(set,m)=>{let best=null;for(const k in set){if(best==null||Math.abs(k-m)<Math.abs(best-m))best=+k;}return[best,set[best]];};
+// 排程：取樣 + 音高曲線（推弦先快後慢、稍微推過頭再回來；揉弦晚一點才開始、越揉越深）
+function smpSched(ctx,solo,phIdx,bpm,withBack,t0,opt){opt=opt||{};const P=GTR[solo.style]||GTR._,A=AMP[P.amp];const R0=rockEvents(solo,phIdx,bpm),{chs,beats,spb}=R0;
+ const R=rng(hstr(solo.id+":"+phIdx.join(",")+":"+bpm)),B=solo.band||{groove:"rock",rg:"crunch",sw:0},sw=B.sw||0;
+ const warp=b=>{const k=Math.floor(b+1e-9),f=b-k;return k+(f<.5?f*(1+2*sw):.5+sw+(f-.5)*(1-2*sw));};
+ const ev=R0.ev.map(e=>{const b=e.t/spb,b1=b+e.d/spb;return{...e,b,t:warp(b)*spb,d:(warp(b1)-warp(b))*spb};});
+ const lead0=.3,srcs=[],out=masterBuild(ctx),nb=noiseBuf(ctx);
+ const N=ampBuild(ctx,A,SMP.ir[P.ir]),lv=mkG(ctx,opt.lead===false?0:P.lvl),fx=fxBuild(ctx,P.fx,spb,out);N.out.connect(lv);lv.connect(fx);
+ const S=SMP.inst.egtr,bc=(u,os)=>u<1?(1+os)*(1-Math.pow(1-u,2.2)):1+os*Math.exp(-(u-1)*5)*Math.cos((u-1)*3);
+ // 1) 事件 → 音符
+ const notes=[],cur={},curPitch={};
+ ev.forEach((e,ei)=>{const it=e.it,ph=solo.phrases[e.pi]||{},hum=(R()*2-1)*P.hum,T0=t0+lead0+e.t+hum,D=e.d;
+  const nxt=ev[ei+1],endPh=!nxt||nxt.pi!==e.pi||nxt.it.rest;
+  if(it.rest){for(const s in cur){const n=cur[s];if(n.end>T0){n.end=T0+.02;n.mute=true;}delete cur[s];}return;}
   const pickAny=it.notes.some(n=>!n.tech)||it.notes.length>1;
-  if(pickAny)Object.keys(cur).forEach(s=>{if(!it.notes.some(n=>n.s==+s)){const n=cur[s];n.end=Math.min(n.end,T0+P.rel);}});
-  it.notes.forEach(n=>{const m0=MIDI_OPEN[n.s]+n.f,m1=n.t!=null?MIDI_OPEN[n.s]+n.t:m0;const prevM=curPitch[n.s]!=null?curPitch[n.s]:m0;let fn,endM=m0,vs=.12,bend=true;
-   const g=Math.min(P.bg,D*.45);
-   if(n.kind==="b"&&!n.rel){fn=t=>m0+(m1-m0)*Math.min(1,t/g);endM=m1;vs=g+.05;}
-   else if(n.kind==="b"){const g2=Math.min(.12,D*.25);fn=t=>t<g2?m0+(m1-m0)*t/g2:t<D*.6?m1:m1-(m1-m0)*Math.min(1,(t-D*.6)/g2);vs=9;}
-   else if(n.kind==="pb"){const h=Math.min(.18,D*.35);fn=t=>t<h?m1:m1-(m1-m0)*Math.min(1,(t-h)/g);vs=h+g+.05;}
-   else if(n.kind==="t"){fn=t=>(Math.floor(t*15)%2?m1:m0);vs=99;}
-   else if(n.tech==="/"||n.tech==="\\"||n.tech==="R"){const gs=n.tech==="R"?g:Math.min(.08,D*.5);fn=t=>prevM+(m0-prevM)*Math.min(1,t/gs);vs=gs+.05;}
-   else{fn=()=>m0;bend=false;}
-   if(it.vib){const f0=fn,v0=Math.max(.15,vs);fn=t=>f0(t)+(t>v0?P.vd*Math.sin(2*Math.PI*P.vr*(t-v0))*Math.min(1,(t-v0)/P.vo):0);bend=true;}
+  if(pickAny)for(const s in cur){if(!it.notes.some(n=>n.s==+s)){const n=cur[s];n.end=Math.min(n.end,T0+P.rel);}}
+  const fb=e.b-Math.floor(e.b+1e-9),acc=fb<1e-6?1:Math.abs(fb-.5)<1e-6?.9:.82,vel=acc*(1+(R()-.5)*.16);
+  it.notes.forEach(n=>{const m0=MIDI_OPEN[n.s]+n.f,m1=n.t!=null?MIDI_OPEN[n.s]+n.t:m0,prevM=curPitch[n.s]!=null?curPitch[n.s]:m0;let fn,endM=m0,vs=.12,curve=true,glide=0,down=false;
+   const g=Math.min(P.bend.g,D*.5),os=P.bend.os;
+   if(n.kind==="b"&&!n.rel){fn=t=>m0+(m1-m0)*bc(t/g,os);endM=m1;vs=g*1.6;down=true;}
+   else if(n.kind==="b"){const g2=Math.min(.12,D*.25);fn=t=>t<g2?m0+(m1-m0)*bc(t/g2,os*.5):t<D*.6?m1:m1-(m1-m0)*Math.min(1,(t-D*.6)/g2);vs=99;}
+   else if(n.kind==="pb"){const h=Math.min(.2,D*.35),gr=Math.min(.28,D*.45);fn=t=>{if(t<h)return m1;const u=Math.min(1,(t-h)/gr);return m1-(m1-m0)*(u*u*(3-2*u));};vs=h+gr;}
+   else if(n.kind==="t"){fn=t=>{const ph2=(t*14)%1;return ph2<.5?m0:m1;};vs=99;}
+   else if(n.tech==="/"||n.tech==="\\"){const gs=Math.min(.09,D*.5);glide=gs;fn=t=>{const u=Math.min(1,t/gs),p=prevM+(m0-prevM)*u;return .6*Math.round(p)+.4*p;};vs=gs+.05;}
+   else if(n.tech==="R"){fn=t=>prevM+(m0-prevM)*bc(Math.min(1,t/g),0);vs=g+.05;}
+   else{fn=()=>m0;curve=false;}
+   if(it.vib){const f0=fn,V=P.vib,v0=Math.max(V.on,vs),sgn=down||(n.tech==="R"?false:endM>m0)?-1:1;
+    fn=t=>{if(t<=v0)return f0(t);const tt=t-v0,dep=V.d*Math.min(1,tt/V.ramp)*(1+.35*Math.min(1,tt/1.5)),phs=2*Math.PI*V.r*tt+V.jit*6*Math.sin(2*Math.PI*.7*tt);return f0(t)+sgn*dep*(.5-.5*Math.cos(phs));};curve=true;}
    curPitch[n.s]=endM;
-   const pick=!n.tech||it.notes.length>1;const prev=cur[n.s];if(prev)prev.end=Math.min(prev.end,T0+.012);
-   const nt={T:T0,s:n.s,fn,bend,pick,amp:(it.notes.length>1?.62:.8)*(pick?1:.8),end:T0+D+.03,lo:Math.min(m0,m1,prevM),hi:Math.max(m0,m1,prevM)};
-   notes.push(nt);cur[n.s]=nt;});
+   const leg=!!n.tech&&it.notes.length===1&&n.tech!=="/"&&n.tech!=="\\",pick=!n.tech||it.notes.length>1,prev=cur[n.s];if(prev){prev.end=Math.min(prev.end,T0+(pick?.012:.008));prev.cut=true;}
+   const amp=vel*(it.notes.length>1?.62:.85)*(pick?1:n.tech==="p"?.74:n.tech==="h"?.8:.85);
+   const nt={T:T0,D,s:n.s,fn,curve,pick,leg,glide,amp,end:T0+D+.02,mute:false,lo:Math.min(m0,m1,prevM),hi:Math.max(m0,m1,prevM),wah:!!ph.wah,swell:(P.swell&&pick&&D>=.45)?P.swell:(ph.swell&&pick&&D>=.45?.16:0)};
+   if(endPh&&!it.vib)nt.mute=true;notes.push(nt);cur[n.s]=nt;});
  });
- if(notes.length){const z=notes[notes.length-1];z.end+=.7;}
- // 2) 排程每個音
- const MAXL=3.05;
- notes.forEach(n=>{const [sm,buf]=pickBuf(S,(n.lo+n.hi)/2);const src=ctx.createBufferSource();src.buffer=buf;const g=ctx.createGain();src.connect(g);g.connect(N.lead);
-  const T=t0+n.T,off=n.pick?0:.045,rel=Math.max(.03,P.rel*.6);let dur=Math.max(.05,n.end-n.T);
-  const rate=p=>Math.pow(2,(p-sm)/12);
-  if(n.bend){const k=Math.max(2,Math.ceil((dur+rel)*120)),c=new Float32Array(k);for(let i=0;i<k;i++)c[i]=rate(n.fn(i/119.999));src.playbackRate.setValueCurveAtTime(c,T,(k-1)/120);}
+ if(notes.length){const z=notes[notes.length-1];z.end+=.9;z.mute=false;}
+ // wah：wah 段每個撥弦音由腳跟踩到腳尖再停在半開（cocked）
+ const W=N.wah;let wOn=false;
+ notes.forEach(n=>{if(n.wah&&!wOn){W.wet.setValueAtTime(3.2,n.T-.01);W.dry.setValueAtTime(.12,n.T-.01);wOn=true;}else if(!n.wah&&wOn){W.wet.setValueAtTime(0,n.T-.01);W.dry.setValueAtTime(1,n.T-.01);wOn=false;}
+  if(n.wah&&n.pick){W.f.setValueAtTime(480,n.T);W.f.exponentialRampToValueAtTime(1750,n.T+Math.min(.2,n.D*.6));W.f.setTargetAtTime(1150,n.T+Math.min(.2,n.D*.6),.12);}});
+ // 2) 每個音：取樣 + 音高曲線 + 音量包絡 + 撥片聲／搥勾的「咚」／滑音摩擦聲／句尾悶音
+ notes.forEach(n=>{const [sm,buf]=nearest(S,(n.lo+n.hi)/2),src=ctx.createBufferSource();src.buffer=buf;const g=ctx.createGain();src.connect(g);g.connect(N.inp);
+  const T=n.T,rel=n.cut?.006:n.mute?.018:Math.max(.03,P.rel*.5),dur=Math.max(.04,n.end-n.T),off=n.pick?0:.035,rate=p=>Math.pow(2,(p-sm)/12);
+  if(n.curve){const k=Math.max(2,Math.ceil((dur+rel*4)*200)+1),c=new Float32Array(k);for(let i=0;i<k;i++)c[i]=rate(n.fn(i/200));src.playbackRate.setValueCurveAtTime(c,T,(k-1)/200);}
   else src.playbackRate.setValueAtTime(rate(n.fn(0)),T);
-  const r0=rate(n.fn(0));const avail=(buf.duration-off)/Math.max(r0,rate(n.hi))-.06;if(dur>avail-rel)dur=Math.max(.05,avail-rel);
-  const A=n.pick?P.att:.012;g.gain.setValueAtTime(0,T);g.gain.linearRampToValueAtTime(n.amp,T+A);
-  g.gain.setValueAtTime(n.amp,T+Math.max(A,dur));g.gain.linearRampToValueAtTime(0,T+Math.max(A,dur)+rel);
-  src.start(T,off);src.stop(T+Math.max(A,dur)+rel+.02);srcs.push(src);});
- // 3) 伴奏：乾淨電吉他，每 2 拍下刷一次，換和弦時重一點
- if(withBack&&SB){const OPENB=[40,45,50,55,59,64];chs.forEach((c,ci)=>{const nb=ci+1<chs.length?chs[ci+1].b:beats;for(let b=c.b;b<nb-EPS;b+=2){const sh=chordShape(c.name);if(!sh)continue;
-  const T=t0+lead0+b*spb,L=Math.min(2*spb,nb-b>=2?2*spb:(nb-b)*spb)+.05;let k=0;
-  sh.frets.forEach((f,i)=>{if(f<0)return;const m=OPENB[i]+f;const [sm,buf]=pickBuf(SB,m);const src=ctx.createBufferSource();src.buffer=buf;src.playbackRate.value=Math.pow(2,(m-sm)/12);
-   const g=ctx.createGain();src.connect(g);g.connect(N.back);const ts=T+k*.011;k++;const a=(b===c.b?.34:.24)*(1-k*.03);
-   g.gain.setValueAtTime(0,ts);g.gain.linearRampToValueAtTime(a,ts+.004);g.gain.setValueAtTime(a,ts+L-.06);g.gain.linearRampToValueAtTime(0,ts+L);src.start(ts);src.stop(ts+L+.02);srcs.push(src);});}});}
- return{ev,lead0,srcs,out:N.out,len:lead0+beats*spb+2.4};}
+  const A1=n.swell||(n.pick?P.att:.006),a0=n.swell?n.amp*.2:0;g.gain.setValueAtTime(a0,T);g.gain.linearRampToValueAtTime(n.amp,T+A1);g.gain.setTargetAtTime(0,T+Math.max(A1,dur),rel);
+  src.start(T,off);src.stop(T+Math.max(A1,dur)+rel*6+.02);srcs.push(src);
+  if(n.pick&&!n.swell)noiseHit(ctx,nb,N.inp,T,.006,"highpass",2200,.7,n.amp*.09,R,srcs);
+  if(n.leg)noiseHit(ctx,nb,N.inp,T,.014,"lowpass",380,.7,n.amp*.05,R,srcs);
+  if(n.glide){const s2=ctx.createBufferSource();s2.buffer=nb;const f2=bq(ctx,"bandpass",1900,1.2),g2=ctx.createGain();s2.connect(f2);f2.connect(g2);g2.connect(N.inp);g2.gain.setValueAtTime(0,T);g2.gain.linearRampToValueAtTime(.03,T+n.glide*.3);g2.gain.linearRampToValueAtTime(0,T+n.glide);s2.start(T,R());s2.stop(T+n.glide+.02);srcs.push(s2);}
+  if(n.mute)noiseHit(ctx,nb,N.inp,T+dur,.02,"lowpass",500,.7,n.amp*.035,R,srcs);});
+ // 3) 樂團
+ if(withBack)bandSched(ctx,out,solo,R0,warp,t0+lead0,R,nb,srcs,opt);
+ return{ev,lead0,srcs,out,len:lead0+beats*spb+3};}
+// ===== 樂團伴奏：合成鼓組 + 取樣貝斯（和弦根音）+ 節奏吉他（第二台音箱）=====
+const BAND={rock:{k:[[0,1],[1.5,.55],[2,.9],[2.5,.6]],s:[[1,.9],[3,.95]],h:[.5,.55,.3]},
+ ballad:{k:[[0,1],[1.5,.45],[2,.7]],s:[[1,.6],[3,.7]],h:[.5,.32,.18]},
+ drive:{k:[[0,1],[.75,.5],[2,.9],[2.5,.55]],s:[[1,.85],[3,.9]],h:[.25,.36,.16]},
+ jazz:{k:[[0,.8],[2.5,.5]],s:[[1,.45],[3,.5]],h:[.25,.3,.12]}};
+function chordPc(nm){const L={C:0,D:2,E:4,F:5,G:7,A:9,B:11},f=s=>{let p=L[s[0]];if(s[1]==="#")p++;else if(s[1]==="b")p--;return(p+12)%12;};const sl=nm.split("/");return{root:f(sl[0]),bass:sl[1]?f(sl[1]):f(sl[0])};}
+function bandSched(ctx,dest,solo,R0,warp,T0,R,nb,srcs,opt){const {chs,beats,spb}=R0,B=solo.band||{groove:"rock",rg:"crunch"};if(!chs.length)return;
+ const bus=mkG(ctx,opt.band===false?0:.5);bus.connect(dest);
+ const rv=ctx.createConvolver();rv.buffer=plateIR(ctx,1.1,.01,3);const rs=mkG(ctx,.12);rs.connect(rv);rv.connect(bus);
+ const chAt=b=>{let c=chs[0];for(const x of chs){if(x.b<=b+1e-6)c=x;else break;}return c.name;};
+ const tAt=b=>T0+warp(b)*spb,phStart=new Set(),phKey=[];
+ R0.ev.forEach((e,i)=>{if(i===0||R0.ev[i-1].pi!==e.pi){const b=Math.floor(e.t/spb/4+1e-6)*4;phStart.add(b);if(solo.phrases[e.pi]&&solo.phrases[e.pi].key)phKey.push(b);}});
+ // 鼓
+ const dr=mkG(ctx,.55);dr.connect(bus);dr.connect(rs);
+ const kick=(T,v)=>{const o=ctx.createOscillator(),g=ctx.createGain();o.frequency.setValueAtTime(130,T);o.frequency.exponentialRampToValueAtTime(45,T+.09);o.connect(g);g.connect(dr);g.gain.setValueAtTime(0,T);g.gain.linearRampToValueAtTime(v*.9,T+.003);g.gain.setTargetAtTime(0,T+.01,.09);o.start(T);o.stop(T+.5);srcs.push(o);noiseHit(ctx,nb,dr,T,.004,"highpass",3000,.7,v*.15,R,srcs);};
+ const snare=(T,v)=>{noiseHit(ctx,nb,dr,T,.17,"highpass",900,.7,v*.5,R,srcs);const o=ctx.createOscillator(),g=ctx.createGain();o.type="triangle";o.frequency.setValueAtTime(190,T);o.frequency.exponentialRampToValueAtTime(160,T+.05);o.connect(g);g.connect(dr);g.gain.setValueAtTime(0,T);g.gain.linearRampToValueAtTime(v*.45,T+.002);g.gain.setTargetAtTime(0,T+.005,.04);o.start(T);o.stop(T+.3);srcs.push(o);};
+ const hat=(T,v)=>{const p=ctx.createStereoPanner();p.pan.value=.3;p.connect(dr);noiseHit(ctx,nb,p,T,.045,"highpass",7500,.7,v*.35,R,srcs);};
+ const crash=(T,v)=>{const p=ctx.createStereoPanner();p.pan.value=-.35;p.connect(dr);noiseHit(ctx,nb,p,T,1.6,"highpass",4500,.5,v*.28,R,srcs);};
+ const bars=Math.ceil(beats/4-1e-6);
+ for(let bar=0;bar<bars;bar++){const b0=bar*4,ph=R0.ev.find(e=>e.t/spb>=b0-1e-6),pp=ph?solo.phrases[ph.pi]:null,G=BAND[(pp&&pp.groove)||B.groove]||BAND.rock,j=()=>(R()*2-1)*.004;
+  if(phStart.has(b0))crash(tAt(b0),bar===0?.8:1);
+  G.k.forEach(([b,v])=>kick(tAt(b0+b)+j(),v));
+  const fill=bar>0&&phKey.includes(b0+4);
+  G.s.forEach(([b,v])=>{if(!(fill&&b>=2))snare(tAt(b0+b)+j(),v);});
+  if(fill)for(let k=0;k<8;k++)snare(tAt(b0+2+k*.25),.35+k*.08);
+  for(let b=0;b<4-1e-6;b+=G.h[0]){const acc=Math.abs(b-Math.round(b))<1e-6;hat(tAt(b0+b)+j(),(acc?G.h[1]:G.h[2])*(.9+R()*.2));}}
+ crash(tAt(bars*4),.9);kick(tAt(bars*4),1);
+ // 貝斯：和弦根音（斜線和弦用斜線後的低音）
+ const bs=mkG(ctx,.62),blp=bq(ctx,"lowpass",2000,.7),bc=ctx.createDynamicsCompressor();bc.threshold.value=-20;bc.ratio.value=4;blp.connect(bc);bc.connect(bs);bs.connect(bus);
+ const bass=(T,m,L,v)=>{const [sm,buf]=nearest(SMP.inst.ebass,m),s=ctx.createBufferSource();s.buffer=buf;s.playbackRate.value=Math.pow(2,(m-sm)/12);const g=ctx.createGain();s.connect(g);g.connect(blp);
+  g.gain.setValueAtTime(0,T);g.gain.linearRampToValueAtTime(v,T+.004);g.gain.setTargetAtTime(0,T+Math.max(.05,L-.03),.03);s.start(T);s.stop(T+L+.2);srcs.push(s);};
+ const bPat={rock:[[0,.5,1],[.5,.5,.7],[1,.5,.85],[1.5,.5,.7],[2,.5,.95],[2.5,.5,.7],[3,.5,.85],[3.5,.5,.7]],ballad:[[0,1.9,1],[2,1.4,.85],[3.5,.5,.7]],drive:[[0,.5,1],[.5,.5,.6],[1,.5,.8],[1.5,.5,.6],[2,.5,.9],[2.5,.5,.6],[3,.5,.8],[3.5,.5,.6]],jazz:[[0,1,1],[1,1,.8],[2,1,.9],[3,1,.75]]};
+ for(let bar=0;bar<bars;bar++){const ph=R0.ev.find(e=>e.t/spb>=bar*4-1e-6),pp=ph?solo.phrases[ph.pi]:null,gk=(pp&&pp.groove)||B.groove;
+  (bPat[gk]||bPat.rock).forEach(([b,L,v],i)=>{const bb=bar*4+b,c=chordPc(chAt(bb));let m=28+((c.bass-4+12)%12);if(gk==="jazz"&&i===2)m=28+((c.root+7-4+12)%12);bass(tAt(bb),m,L*spb,v*.8);});}
+ {const c=chordPc(chAt(bars*4-.01));bass(tAt(bars*4),28+((c.bass-4+12)%12),2,.8);}
+ // 節奏吉他：第二台音箱（crunch／clean）+ 立體加寬
+ const rg=B.rg||"crunch",RA=ampBuild(ctx,AMP[rg==="crunch"?"crunch":"clean"],SMP.ir["cab-a"]),rl=mkG(ctx,rg==="crunch"?.42:.5);RA.out.connect(rl);
+ const pL=ctx.createStereoPanner(),pR=ctx.createStereoPanner(),dly=ctx.createDelay(.1);pL.pan.value=-.65;pR.pan.value=.65;rl.connect(pL);rl.connect(dly);dly.connect(pR);pL.connect(bus);pR.connect(bus);rl.connect(rs);
+ if(rg==="crunch")dly.delayTime.value=.017;else{dly.delayTime.value=.012;const lfo=ctx.createOscillator(),lg=mkG(ctx,.003);lfo.frequency.value=.8;lfo.connect(lg);lg.connect(dly.delayTime);lfo.start(T0);lfo.stop(T0+beats*spb+3);srcs.push(lfo);}
+ const gnote=(T,m,L,v,mute)=>{const [sm,buf]=nearest(SMP.inst.egtr,m),s=ctx.createBufferSource();s.buffer=buf;s.playbackRate.value=Math.pow(2,(m-sm)/12);const g=ctx.createGain();s.connect(g);g.connect(RA.inp);
+  g.gain.setValueAtTime(0,T);g.gain.linearRampToValueAtTime(v,T+.003);g.gain.setTargetAtTime(0,T+Math.max(.03,L-.02),mute?.012:.05);s.start(T);s.stop(T+L+.4);srcs.push(s);};
+ const OPENB=[40,45,50,55,59,64];
+ const shapeNotes=nm=>{const sh=chordShape(nm);if(!sh)return[];const a=[];sh.frets.forEach((f,i)=>{if(f>=0)a.push(OPENB[i]+f);});return a;};
+ const strum=(b,nm,L,v,dn)=>{const ns=shapeNotes(nm);(dn?ns:ns.slice().reverse()).forEach((m,k)=>gnote(tAt(b)+k*.011,m,L*spb,v*(1-k*.04)));};
+ const power=(b,nm,L,v,mute)=>{const c=chordPc(nm),r=40+((c.root-4+12)%12);[r,r+7,r+12].forEach((m,k)=>gnote(tAt(b)+k*.006,m,L*spb,v,mute));};
+ const PAT={crunch:[[0,1,1,0],[1.5,.4,.55,1],[2,1,.9,0],[3,.4,.55,1],[3.5,.4,.6,1]],strat:[[0,1.4,.8],[1.5,.4,.45],[2.5,.9,.6]],jazz:[[1.5,.5,.6],[3.5,.4,.5]]};
+ // 抒情 pad：兩顆微走音鋸齒波
+ const pad=mkG(ctx,rg==="arp"?.05:0),plp=bq(ctx,"lowpass",1500,.6);plp.connect(pad);pad.connect(bus);pad.connect(rs);
+ for(let bar=0;bar<bars;bar++){const b0=bar*4;
+  if(rg==="arp"){const seqI=[0,2,3,4,5,4,3,2];for(let k=0;k<8;k++){const bb=b0+k*.5,ns=shapeNotes(chAt(bb));if(!ns.length)continue;const m=ns[Math.min(ns.length-1,seqI[k])];gnote(tAt(bb),m,2*spb,(k%2?.38:.48));}}
+  else if(rg==="crunch")PAT.crunch.forEach(([b,L,v,mu])=>power(b0+b,chAt(b0+b),L,v*.85,mu));
+  else (PAT[rg]||PAT.strat).forEach(([b,L,v],k)=>strum(b0+b,chAt(b0+b),L,v*.7,k%2===0));}
+ if(rg==="arp")chs.forEach((c,i)=>{const nb2=i+1<chs.length?chs[i+1].b:beats,ns=shapeNotes(c.name).slice(-3),Ta=tAt(c.b),Tb=tAt(nb2)+(i+1<chs.length?0:1.5);
+  ns.forEach(m=>[-7,7].forEach(dt=>{const o=ctx.createOscillator(),g=ctx.createGain();o.type="sawtooth";o.frequency.value=440*Math.pow(2,(m+12-69)/12);o.detune.value=dt;o.connect(g);g.connect(plp);g.gain.setValueAtTime(0,Ta);g.gain.linearRampToValueAtTime(.25,Ta+.45);g.gain.setValueAtTime(.25,Math.max(Ta+.46,Tb-.15));g.gain.linearRampToValueAtTime(0,Tb+.3);o.start(Ta);o.stop(Tb+.35);srcs.push(o);}));});
+ {const nm=chAt(bars*4-.01);if(rg==="crunch")power(bars*4,nm,6,.9,0);else strum(bars*4,nm,6,.6,true);}}
 // 離線算成音檔（測試／匯出用）
-function renderRock(solo,phIdx,bpm,withBack,SR){SR=SR||44100;const P=GTR[solo.style]||GTR._;const spb=60/bpm;const {beats}=rockEvents(solo,phIdx,bpm);
- const len=Math.ceil((.25+beats*spb+2.4)*SR);const OC=window.OfflineAudioContext||window.webkitOfflineAudioContext;const oc=new OC(2,len,SR);
- const need=[P.inst].concat(withBack?[BACK_INST]:[]);return Promise.all(need.map(n=>smpLoad(oc,n))).then(()=>{smpSched(oc,solo,phIdx,bpm,withBack,0);return oc.startRendering();});}
+function renderRock(solo,phIdx,bpm,withBack,SR,opt){SR=SR||44100;const spb=60/bpm,{beats}=rockEvents(solo,phIdx,bpm);
+ const len=Math.ceil((.3+beats*spb+3)*SR),OC=window.OfflineAudioContext||window.webkitOfflineAudioContext,oc=new OC(2,len,SR);
+ return smpLoadAll(oc).then(()=>{smpSched(oc,solo,phIdx,bpm,withBack,0,opt);return oc.startRendering();});}
 function rockStop(){AUD.tok=null;if(AUD.src){try{AUD.src.stop();}catch(e){}AUD.src=null;}if(AUD.srcs){AUD.srcs.forEach(s=>{try{s.stop();}catch(e){}});AUD.srcs=null;}
  if(AUD.out){const o=AUD.out;try{o.gain.setTargetAtTime(0,AUD.ctx.currentTime,.02);}catch(e){}setTimeout(()=>{try{o.disconnect();}catch(e){}},200);AUD.out=null;}
  clearTimeout(AUD.end);cancelAnimationFrame(AUD.raf);document.querySelectorAll("g.rn.on").forEach(g=>g.classList.remove("on"));
@@ -1179,15 +1404,14 @@ function rockHighlight(ctx,t0,r,phIdx,tabIds){let curEl=null;const tick=()=>{con
 function rockPlay(solo,phIdx,tabIds,btn,bpmO){const again=AUD.btn&&AUD.btn===btn;rockStop();if(again)return;
  const C=window.AudioContext||window.webkitAudioContext;if(!C){alert("這個瀏覽器不支援播放");return;}
  if(!AUD.ctx)AUD.ctx=new C();const ctx=AUD.ctx;audUnlock(ctx);
- const bpm=bpmO||+($("rockBpm")?$("rockBpm").value:solo.bpm)||solo.bpm,back=$("rockBack")?$("rockBack").checked:true;
- const P=GTR[solo.style]||GTR._,need=[P.inst].concat(back?[BACK_INST]:[]);AUD.btn=btn;
- const go=()=>{if(!SMP.failed&&need.every(n=>SMP.inst[n]))rockPlaySmp(ctx,solo,phIdx,tabIds,btn,bpm,back);else rockPlaySynth(ctx,solo,phIdx,tabIds,btn,bpm,back);};
- if(SMP.failed||need.every(n=>SMP.inst[n])){go();return;}
+ const bpm=bpmO||+($("rockBpm")?$("rockBpm").value:solo.bpm)||solo.bpm,back=$("rockBack")?$("rockBack").checked:true;AUD.btn=btn;
+ const go=()=>{if(!SMP.failed&&smpReady())rockPlaySmp(ctx,solo,phIdx,tabIds,btn,bpm,back);else rockPlaySynth(ctx,solo,phIdx,tabIds,btn,bpm,back);};
+ if(SMP.failed||smpReady()){go();return;}
  const tok=AUD.tok={};if(btn)btn.classList.add("loading");
- Promise.race([Promise.all(need.map(n=>smpLoad(ctx,n))),new Promise((_,rej)=>setTimeout(()=>rej(new Error("timeout")),15000))])
+ Promise.race([smpLoadAll(ctx),new Promise((_,rej)=>setTimeout(()=>rej(new Error("timeout")),20000))])
   .catch(e=>{SMP.failed=true;console.warn("吉他取樣載入失敗，改用合成音色",e);const n=$("smpNote");if(n)n.textContent="（電吉他取樣載入失敗，暫時改用合成音色）";})
   .then(()=>{if(btn)btn.classList.remove("loading");if(AUD.tok===tok){AUD.tok=null;if(ctx.state==="suspended")ctx.resume();go();}});}
-function rockPlaySmp(ctx,solo,phIdx,tabIds,btn,bpm,back){const t0=ctx.currentTime+.08;const r=smpSched(ctx,solo,phIdx,bpm,back,t0-0);
+function rockPlaySmp(ctx,solo,phIdx,tabIds,btn,bpm,back){const t0=ctx.currentTime+.08;const r=smpSched(ctx,solo,phIdx,bpm,back,t0);
  AUD.srcs=r.srcs;AUD.out=r.out;AUD.btn=btn;if(btn)btn.classList.add("playing");
  AUD.end=setTimeout(()=>{if(AUD.out===r.out)rockStop();},(r.len+.2)*1000);rockHighlight(ctx,t0,r,phIdx,tabIds);}
 function rockPlaySynth(ctx,solo,phIdx,tabIds,btn,bpm,back){
@@ -1212,10 +1436,10 @@ $("composeSteps").innerHTML=steps([
  ["結尾與檢查","最後落在根音或 3 度，用最慢最寬的揉弦。錄起來聽，用下面的清單檢查，問自己：會不會想再聽一次？"]]);
 $("checklist").innerHTML=`<b>編曲檢查清單：</b><br>□ 每個和弦的強拍或長音落在和弦音（最好是 3 度）？<br>□ 有一個唱得出來、會重複出現的動機或 hook？<br>□ 至少有 3 種以上的音符長度（例如八分、六連、二分）？<br>□ 每一句後面都有留白？<br>□ 推弦都推到準的目標音，而且不超過一個半全音？<br>□ 張力音（導音、#11、半音）最後都有解決？<br>□ 高潮是全曲最高、最密的地方，而且後面接長音？<br>□ 最後一個音有揉弦，聽起來像「說完了」？`;
 {const S=ROCK[0],notes=[
- "之前：同樣的音，全部是平均的八分音符、全部撥弦，像在數音。之後：套用「預推鉤子」：先休半拍再進來；B 弦 15 格先無聲推到 E 再撥、慢慢放回 D，像在哭；落在 E（根音）寬慢地揉弦。到了 C 和弦把同一個 D→E 再推一次，這次 E 是 C 的 3 度。同一個動作、不同的意義，旋律簡單到可以唱。",
- "之前：五聲音階和和聲小調一路八分音符往上，像在練音階。之後：Am 上換成「四音一組爬升」（E–G–A–B、G–A–B–D…），十六分音符一口氣衝上去；B7 上換成「e 弦和聲小調換把」：從 D#（B7 的 3 度）沿著 e 弦滑音往上，最後滑到 19 格 B 撐兩拍。",
- "之前：幾個音各彈一次，一下就過去了。之後：先推弦撐一拍，接「三音勾弦循環」：e 弦 15→12 勾弦配 B 弦 15 撥弦，六連音重複六次，越重複越激動；C 和弦直接跳到 20 格推弦接快速三連音，最後推到 E（C 的 3 度）。這是全曲最高、最密的地方。",
- "之前：全部八分音符，推弦直接按成目標音。之後：B7 的最後一拍把 D#（導音）推半音到 E，和弦還沒換就先暗示要回到 Em；Em 上再推一次 D→E 撐三拍寬揉弦，再留一拍完全安靜。高潮之後的空白，才是讓人起雞皮疙瘩的地方。"];
+ "之前：同樣的音，全部平均的八分音符、全部撥弦，像在數音。之後：先休半拍、從反拍進來，e 弦 15 格 G 推一個全音到 A（小調 b3 推到 4，Slash 最常見的哭腔），揉弦寬而慢。D 和弦上把同一個推弦連撥三次，像在同一個音上喊三聲。這兩小節就是整首的鉤子。",
+ "之前：幾個音各彈一次就過去了。之後：開 wah，推弦撐一拍，接 e15–e12–B15 的六連音勾弦循環，重複六次越來越激動；B7 上用半音爬升 G#–A–A#–B 接到 D#（B7 的 3 度），和聲小調的拉力就出來了。",
+ "之前：五聲音階一路八分音符往上，像在練音階。之後：直接跳到 20 格做同一個 b3→4 推弦（高八度），C 和弦上換成 20 格的循環，B7 上兩組和聲小調六連音（C 是 b9、D# 是導音）摔下來，停在 B。這是全曲最高、最密的地方。",
+ "之前：全部八分音符，推弦直接按成目標音。之後：第 1 小節的鉤子原封不動回來（聽眾會認得），D 上的同音推弦第三次推上去再放下，最後 D 推到 E 撐三拍、寬揉弦，再留一拍完全安靜。高潮之後的空白，才是讓人起雞皮疙瘩的地方。"];
  const WC={};$("workedList").innerHTML=S.phrases.map((p,i)=>{const pl={tokens:plainRock(p.tokens)};const PL={...S,phrases:[pl]};window.__plain=window.__plain||[];window.__plain[i]=PL;
   return `<div class="lick"><h3>${esc(p.n)}</h3><p>${esc(notes[i])}</p><p class="muted">之前：音階式（全部八分音符、全部撥弦） <button type="button" class="btn sm" data-wplain="${i}">▶ 聽</button></p><div class="figure scroll">${rockTab(S,pl,{ctx:"worked plain "+i,aria:"之前",id:"wp"+i,loose:true})}</div><p class="muted">之後：Slash 風（12 把位） <button type="button" class="btn sm" data-wreal="${i}">▶ 聽</button></p><div class="figure scroll">${rockTab(S,p,{ctx:"worked real "+i,aria:"之後",id:"wr"+i,bar0:1+2*i,carry:WC})}</div></div>`;}).join("");
  $("workedList").onclick=e=>{const b=e.target.closest("button");if(!b)return;if(b.dataset.wplain!=null){const i=+b.dataset.wplain;rockPlay(window.__plain[i],[0],["wp"+i],b);}else if(b.dataset.wreal!=null){const i=+b.dataset.wreal;rockPlay(S,[i],["wr"+i],b);}};}
@@ -1229,7 +1453,7 @@ function blankRock(label){const W=1000;let o=`<svg viewBox="0 0 ${W} 230" style=
 $("blankTab1").innerHTML=blankRock("第 1–4 小節：動機 → hook 重複 → 變化");
 $("blankTab2").innerHTML=blankRock("第 5–8 小節：高潮（快速音群 → 長音哭腔）→ 留白 → 結尾");
 $("rockSeg").onclick=null;
-SIG.forEach((L,i)=>{const b=ROCK.find(r=>r.id===L.of);L.base=b;L.used=[];ROCK.forEach(r=>r.phrases.forEach(ph=>{if(ph.lk&&ph.lk.includes(L.n))L.used.push(r.seg+" "+ph.n.slice(0,1));}));L.solo={...b,id:"lk"+i,phrases:[{n:L.n,tokens:C(L.ch,...L.ks)}]};});
+SIG.forEach((L,i)=>{const b=ROCK.find(r=>r.id===L.of);L.base=b;L.used=[];ROCK.forEach(r=>r.phrases.forEach(ph=>{if(ph.lk&&ph.lk.includes(L.n))L.used.push(r.seg+" "+ph.n.slice(0,1));}));L.solo={...b,id:"lk"+i,phrases:[{n:L.n,tokens:C(L.ch,...L.ks),wah:L.wah,key:L.key,swell:L.swell}]};});
 $("lickLib").onclick=e=>{const b=e.target.closest("button[data-lk]");if(!b)return;const L=SIG[+b.dataset.lk];rockPlay(L.solo,[0],["lk"+b.dataset.lk],b,L.solo.bpm);};
 $("rockPlayAll").onclick=e=>{const S=ROCK[state.rock];rockPlay(S,S.phrases.map((_,i)=>i),S.phrases.map((_,i)=>"rk"+i),e.currentTarget);};
 $("rockStopBtn").onclick=rockStop;
@@ -1304,13 +1528,14 @@ function render(){
  {const rp=state.refP||0;seg($("refSeg"),REF_PLAYERS.map((n,i)=>[String(i),n]),String(rp),v=>{rockStop();state.refP=Number(v);render();});
   const R=REF.find(r=>r.p===rp);
   $("refBody").innerHTML=`<p><b>${esc(REF_PLAYERS[rp])} 的共通點：</b>${esc(R.dna)}</p>`+R.songs.map(sg=>`<div class="lick ref"><h3>${esc(sg.t)}</h3><dl class="props">${props([["出處",sg.al],["調性",sg.key],["速度",sg.bpm],["音階／把位",sg.scale]])}</dl><p><b>招牌手法</b></p><ul>${sg.tech.map(x=>`<li>${esc(x)}</li>`).join("")}</ul><p><b>段落結構（文字分析）</b></p><ol>${sg.bars.map(x=>`<li>${esc(x)}</li>`).join("")}</ol><p class="muted">完整的譜與原曲：${sg.links.map(([t,u])=>`<a href="${u}" target="_blank" rel="noopener">${esc(t)}</a>`).join("・")}</p></div>`).join("");
-  let k=0;$("lickLib").innerHTML=SIG.map((L,gi)=>{if(L.p!==rp)return"";k++;const ph=L.solo.phrases[0];return `<div class="lick"><h3>${k}. ${esc(L.n)}<span class="tag">${esc(rockTech(ph.tokens))}</span> <button type="button" class="btn sm" data-lk="${gi}">▶ 聽（${L.solo.bpm} BPM）</button></h3><p><span class="tag">經典 lick</span> ${esc(L.lab)}</p><div class="figure scroll">${rockTab(L.solo,ph,{ctx:"lick "+gi,aria:L.n,id:"lk"+gi})}</div><p><b>為什麼像他：</b>${esc(L.why)}</p><p class="muted"><b>怎麼練：</b>${esc(L.tip)}</p><p class="muted">手法來源：${L.links.map(([t,u])=>`<a href="${u}" target="_blank" rel="noopener">${esc(t)}</a>`).join("、")}。用在 solo：${esc(L.used.join("、"))}。</p></div>`;}).join("");}
+  const lnk=([t,u])=>u?`<a href="${u}" target="_blank" rel="noopener">${esc(t)}</a>`:esc(t);
+  $("lickLib").innerHTML=`<p class="muted">依「最有辨識度」排序：#1 是聽到就知道是他的招牌。每句都是原創的一小節示範，只借用手法，不是原曲的譜。</p>`+SIG.filter(L=>L.p===rp).sort((a,b)=>a.rank-b.rank).map(L=>{const gi=SIG.indexOf(L),ph=L.solo.phrases[0];return `<div class="lick"><h3><span class="tag">#${L.rank}</span> ${esc(L.n)}<span class="tag">${esc(rockTech(ph.tokens))}</span> <button type="button" class="btn sm" data-lk="${gi}">▶ 聽（${L.solo.bpm} BPM）</button></h3><p><span class="tag">經典 lick</span> ${esc(L.lab)}</p><dl class="props">${props([["拿手技巧",L.skill],["節奏",L.rhythm]])}</dl><p class="muted">出現在：${L.songs.map(lnk).join("、")}</p><div class="figure scroll">${rockTab(L.solo,ph,{ctx:"lick "+gi,aria:L.n,id:"lk"+gi})}</div><p><b>為什麼像他：</b>${esc(L.why)}</p><p class="muted"><b>怎麼練：</b>${esc(L.tip)}</p><p class="muted">手法來源：${L.links.map(lnk).join("、")}。用在 solo：${esc(L.used.join("、")||"（只在 Lick 庫）")}。</p></div>`;}).join("");}
  // rock solos
  seg($("rockSeg"),ROCK.map((r,i)=>[String(i),r.seg]),String(state.rock),v=>{rockStop();state.rock=Number(v);state.rockBpmSet=false;render();});
  {const S=ROCK[state.rock];$("rockTitle").textContent=S.title;
   const kn=modeScale(S.key.pc,S.key.mode).names,ex=Object.values(S.extras).map(([n,l])=>`${n}（${l}）`).join("、");
   $("rockProps").innerHTML=props([["風格",S.style],["調／音階",`${kn[0]} ${MODES[S.key.mode].zh}（${MODES[S.key.mode].en}）：${kn.join(" ")}`],["借來的音",ex||"沒有（全部在調內）"],["和弦進行",S.prog],["速度／感覺",`${S.bpm} BPM，${S.feel}`],["參考原曲的什麼",S.based],["情緒畫面",S.mood],["推薦聽",S.listen]]);
-  $("rockChords").innerHTML=chordRow(S.chords,"這段的和弦");
+  $("rockChords").innerHTML=(S.ref&&S.ref.length?`<p><b>對照原曲聽：</b>${S.ref.map(([t,u])=>`<a href="${u}" target="_blank" rel="noopener">${esc(t)}</a>`).join("、")}<br><span class="muted">（官方影片；有標時間的會直接跳到 solo。這段 solo 是原創，只借用手法，不是原曲。）</span></p>`:"")+chordRow(S.chords,"這段的和弦");
   if(!state.rockBpmSet){$("rockBpm").value=S.bpm;$("rockBpmVal").textContent=S.bpm;state.rockBpmSet=true;}
   const dots=rockDots(S),mx=Math.max(...dots.map(d=>d.f));
   $("rockNeck").innerHTML=neck(dots,Math.max(12,mx+1),"這段 solo 用到的音");
@@ -1319,7 +1544,7 @@ function render(){
  linkChords(document.body);
 }
 render();renderQuiz();
-window.__modes={GTR,SMP,renderRock,smpSched,ROCK,SIG,REF,LK,TONE,ROCK_ERRORS,checkRock,parseRock,synthRock,rockKey,rockAllowed,plainRock,rockTab,LEGATO,JOURNEY,CHORD_ERRORS,chordShape,checkChord,parseChord,LICK_CHORDS,spell,diatonic,MODES,spellIv,bluesScale,pentBoxes,LICKS,BLUES_LICKS,MIX_SCALE,MIX_LICK,TAB_ERRORS,modeScale,OPEN_STRINGS};
+window.__modes={GTR,SMP,AMP,BAND,renderRock,smpSched,smpLoadAll,smpReady,bandSched,rockEvents,ROCK,SIG,REF,LK,TONE,ROCK_ERRORS,checkRock,parseRock,synthRock,rockKey,rockAllowed,plainRock,rockTab,LEGATO,JOURNEY,CHORD_ERRORS,chordShape,checkChord,parseChord,LICK_CHORDS,spell,diatonic,MODES,spellIv,bluesScale,pentBoxes,LICKS,BLUES_LICKS,MIX_SCALE,MIX_LICK,TAB_ERRORS,modeScale,OPEN_STRINGS};
 </script>
 <div id="chPop" class="chpop" hidden></div>
 </body>
