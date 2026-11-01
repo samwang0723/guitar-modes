@@ -93,6 +93,18 @@ b.hl{font-weight:400;color:var(--accent)}
   header h1{font-size:1.6rem}
   .tbl.wide table{min-width:700px}
 }
+
+.chords{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:flex-end;margin:12px 0 18px}
+.chords .ccap{flex-basis:100%;font-size:14px;color:var(--text2)}
+.cbox{width:112px;background:var(--paper);border:1px solid var(--border);border-radius:10px;padding:4px 2px 0}
+.chd{display:block;width:100%;height:auto;font-family:inherit}
+.chd .c-ln{stroke:var(--text)}.chd .c-dot{fill:var(--text)}.chd .c-open{stroke:var(--text)}
+.chd .c-name{fill:var(--text)}.chd .c-pos,.chd .c-fg{fill:var(--text2)}
+.ch{border-bottom:1.5px dotted var(--purple);cursor:pointer;white-space:nowrap}
+.ch:hover,.ch:focus{color:var(--purple);outline:none}
+.chpop{position:absolute;z-index:50;width:150px;background:var(--paper);border:1px solid var(--border-strong);border-radius:12px;box-shadow:0 6px 24px rgba(0,0,0,.25);padding:6px}
+.chpop[hidden]{display:none}
+@media (max-width:640px){.cbox{width:88px}.chords{gap:6px}}
 </style>
 </head>
 <body>
@@ -155,6 +167,7 @@ b.hl{font-weight:400;color:var(--accent)}
   <div class="legend"><span style="--c:var(--orange)">根音 A</span><span style="--c:var(--teal)">其他音</span><span style="--c:var(--purple)">特色音 F#</span></div>
   <div class="figure scroll" id="lickNeck"></div>
   <div class="figure scroll narrow" id="tab"></div>
+  <div id="s5Chords"></div>
   <ul class="b">
     <li>節奏比音符重要：先用同一個音彈出有律動的節奏，再加入其他音。</li>
     <li>強拍放和弦音，弱拍放經過音，句子就會穩。</li>
@@ -164,18 +177,23 @@ b.hl{font-weight:400;color:var(--accent)}
 </section>
 
 <section id="s6"><h2>6. 和弦與調式的對應</h2>
-  <div class="tbl" id="chordModeTable"></div>
+  <div class="tbl wide" id="chordModeTable"></div>
+  <div id="cmChords"></div>
   <p id="diaText"></p>
   <div class="tbl" id="diaTable"></div>
+  <div id="diaChords"></div>
   <dl class="props" id="progProps"></dl>
-  <div class="tbl" id="progTable"></div>
+  <div class="tbl wide" id="progTable"></div>
+  <div id="progChords"></div>
 </section>
 
 <section id="s7"><h2>7. 運用到寫歌</h2>
   <ol class="steps" id="songSteps"></ol>
-  <div class="tbl" id="borrowTable"></div>
+  <div class="tbl wide" id="borrowTable"></div>
+  <div id="borrowChords"></div>
   <div class="callout"><b>範例歌曲草稿：「夏夜散步」（A 多利安，88 BPM）</b><br>主歌用 i – IV 建立多利安的帥氣小調感，副歌加入 bVII，橋段借 A 伊奧利亞的 F 製造短暫陰影，回到副歌時 D 和弦的 F# 就像天氣放晴。</div>
-  <div class="tbl" id="songTable"></div>
+  <div class="tbl wide" id="songTable"></div>
+  <div id="songChords"></div>
   <p>動手試試：用第 3 節把調式換成米索利地亞，把第 6 節的招牌進行 I – bVII – IV 彈 8 小節，再哼一句把 b7 放在長音的旋律，就是你自己的第一個調式歌曲草稿。</p>
 </section>
 
@@ -184,12 +202,46 @@ b.hl{font-weight:400;color:var(--accent)}
   <div class="callout"><b>六線譜怎麼看：</b>六條線由上到下是 e B G D A E（最細的第 1 弦在最上面），數字是格數。h = 搥弦（hammer-on）、p = 勾弦（pull-off）、/ = 往上滑音、\ = 往下滑音、7b9 = 按第 7 格推弦到第 9 格的音高（差 2 格推全音、差 1 格推半音）、~ = 揉弦（vibrato）。</div>
   <div class="seg" id="lickSeg"></div>
   <dl class="props" id="lickProps"></dl>
+  <div id="lickChords"></div>
   <div class="legend"><span style="--c:var(--orange)">根音</span><span style="--c:var(--teal)">其他音階音</span><span style="--c:var(--purple)">特色音</span></div>
   <div id="lickList"></div>
   <p class="muted">練法：① 先用 60 BPM 每拍一個音；② 能彈穩再換成八分音符；③ 最後一個音揉弦停滿兩拍，聽它跟和弦的關係；④ 自己改掉最後兩個音，變成你的版本。手機上 TAB 可以左右滑動。</p>
 </section>
 
-<section id="s9"><h2>9. 藍調音階</h2>
+<section id="s9"><h2>9. Legato 調式 Solo</h2>
+  <p>Legato（圓滑奏）就是「撥一下、彈很多音」：右手只撥每組的第一個音，其他音靠左手搥、勾、滑出來。聲音會像在唱歌一樣連在一起，特別適合抒情、有情緒起伏的 solo。這一節每個調式都有一段約 8 小節的完整 solo，結構都是 <b class="hl">動機 → 發展 → 高潮 → 解決</b>。</p>
+  <div class="tbl wide" id="legatoTechTable"></div>
+  <div class="callout"><b>練習重點：</b>① <b class="hl">左手力量</b>：每天 2 分鐘做 1-2、1-3、1-4 搥勾，每條弦 4 輪，搥出來的音量要跟撥弦一樣大。② <b class="hl">右手悶音</b>：右手掌側輕靠沒在彈的低音弦、左手沒用到的手指輕碰高音弦，連音時才不會有雜音。③ <b class="hl">節拍器</b>：先 60 BPM 八分音符，乾淨連續 3 次再加到 72 → 84 → 96。④ 錄音回聽：連音要平均，揉弦要穩。</div>
+  <div class="seg" id="legatoSeg"></div>
+  <dl class="props" id="legatoProps"></dl>
+  <div id="legatoChords"></div>
+  <p class="muted">這段 solo 用到的指板位置（數字是音程）：</p>
+  <div class="figure scroll" id="legatoNeck"></div>
+  <div class="legend"><span style="--c:var(--orange)">根音</span><span style="--c:var(--teal)">其他音階音</span><span style="--c:var(--purple)">特色音</span></div>
+  <p class="muted">TAB 上方是和弦名，直線是換和弦的小節線；「休」代表留白一拍。每一行大約 2 小節。</p>
+  <div id="legatoList"></div>
+
+  <h3>加碼：一段情緒旅程（A 伊奧利亞 → 多利安 → 弗里幾亞 → 回家）</h3>
+  <p>同一個根音 A、同一個動機，只換一兩個音，情緒就從憂傷 → 有希望 → 緊張 → 釋懷。慢慢彈，注意每次換調式時是哪一個音變了。</p>
+  <div id="journeyChords"></div>
+  <div id="journeyList"></div>
+
+  <h3>怎麼編一段動人的 Legato Solo</h3>
+  <ol class="steps" id="composeSteps"></ol>
+  <div class="callout" id="checklist"></div>
+
+  <h3>拆解範例：A 多利安 solo 是怎麼編出來的</h3>
+  <p>下面把上面的多利安 solo 一句一句拆開：先寫出「全部撥弦」的原始版本（音一樣，只是沒有連音），再看改成 legato 後多了什麼。彈彈看兩個版本，感受差別。</p>
+  <div id="workedList"></div>
+
+  <h3>練習：寫你自己的 8 小節 Legato Solo</h3>
+  <p>照下面的表一格一格填完，再寫進空白六線譜（可以印出來或抄在筆記本上）。先寫動機和結尾音，中間再補。</p>
+  <div class="tbl wide" id="templateTable"></div>
+  <div class="figure scroll" id="blankTab1"></div>
+  <div class="figure scroll" id="blankTab2"></div>
+</section>
+
+<section id="s10"><h2>10. 藍調音階</h2>
   <div class="callout"><b>一句話記住：</b>小調五聲（1 b3 4 5 b7）加上 b5 = 小調藍調音階；大調五聲（1 2 3 5 6）加上 b3 = 大調藍調音階。多出來的那個音叫「藍調音（blue note）」。</div>
   <div class="tbl wide" id="bluesFormTable"></div>
   <div class="controls">
@@ -208,6 +260,7 @@ b.hl{font-weight:400;color:var(--accent)}
   <div class="legend"><span style="--c:var(--orange)">I7</span><span style="--c:var(--teal)">IV7</span><span style="--c:#3B7DD8">V7</span></div>
   <div class="figure scroll narrow" id="twelveBar"></div>
   <div class="tbl wide" id="twelveTable"></div>
+  <div id="twelveChords"></div>
   <ol class="steps" id="bluesImprovSteps"></ol>
 
   <h3>藍調音怎麼用</h3>
@@ -227,9 +280,10 @@ b.hl{font-weight:400;color:var(--accent)}
   <p>簡單說：小調藍調 + 2 與 6 ≈ 多利安（帥氣小調、放克）；大調五聲 + 4 與 b7 = 米索利地亞（屬七和弦的家）。在 A7 伴奏上，把 A 米索利地亞和 A 小調藍調混著用，就是藍調搖滾吉他手最常用的聲音，下一節會詳細說明。</p>
 </section>
 
-<section id="s10"><h2>10. 什麼時候可以大小調混用</h2>
+<section id="s11"><h2>11. 什麼時候可以大小調混用</h2>
   <div class="callout"><b>判斷法：先看和弦的三度。</b>和弦是大三（有 3）→ 旋律長音放 3 最安全，b3 只能當經過音或推到 3；和弦是小三（有 b3）→ 不要長音停在 3；和弦是屬七（7）或在藍調裡 → b3 與 3 都可以，b3 是「藍調味」。</div>
   <div class="tbl wide" id="mixWhenTable"></div>
+  <div id="mixWhenChords"></div>
 
   <h3>大小調五聲合在一起（A 調，第 4–9 格）</h3>
   <p>把 A 大調五聲（A B C# E F#）和 A 小調五聲（A C D E G）疊在一起，就得到 8 個音：1 2 b3 3 4 5 6 b7。紫色的 C 是 b3（小調色彩），藍色的 C# 是 3（大調色彩），兩個緊貼在隔壁格，最常用的動作就是 b3 搥弦或推弦到 3。</p>
@@ -246,20 +300,28 @@ b.hl{font-weight:400;color:var(--accent)}
   <h3>寫歌：大小調互借（調式互換）</h3>
   <ol class="steps" id="mixSongSteps"></ol>
   <div class="tbl wide" id="mixBorrowTable"></div>
+  <div id="mixBorrowChords"></div>
   <h3>示範進行：「回家的路」（C 大調，借 C 小調和弦）</h3>
   <div class="tbl" id="mixProgTable"></div>
+  <div id="mixProgChords"></div>
   <p>彈彈看：第 3 小節 F 的旋律唱 A，第 4 小節換成 Fm 時把 A 降成 Ab，只差一格，情緒卻從溫暖變成懷念。這就是大小調混用在寫歌裡最好用的一招。</p>
 </section>
 
-<section id="s11"><h2>11. 六週練習計畫</h2>
+<section id="s12"><h2>12. 六週練習計畫</h2>
   <div class="tbl" id="planTable"></div>
   <p>每次練習的節奏建議：5 分鐘暖身與音階、10 分鐘聽力（drone＋特色音）、10 分鐘即興、5 分鐘錄音回聽與記下好句子。</p>
 </section>
 
-<section id="s12"><h2>12. 小測驗</h2>
+<section id="s13"><h2>13. 小測驗</h2>
   <div class="quiz" id="quiz"></div>
   <div class="score"><span id="score"></span><button class="btn" id="resetQuiz">重新作答</button></div>
 </section>
+
+<section id="s14"><h2>14. 和弦圖總表</h2>
+  <p>網站裡提到的所有和弦都在這裡（第 6、10 節換根音時，那裡的和弦圖會跟著變）。看圖方法：上面的粗線是琴枕（上弦枕），六條直線由左到右是低音 E 到高音 e；黑點是按的位置，下面的數字是手指（1 食指、2 中指、3 無名指、4 小指）；× 不彈、○ 空弦；橫條是一指按多弦（封閉和弦）；左邊數字是起始格數。文章裡有底線的和弦名，滑過或點一下也會跳出和弦圖。</p>
+  <div id="chordIndex"></div>
+</section>
+
 </div>
 
 <script>
@@ -353,14 +415,22 @@ const BLUE="#3B7DD8"; CAT.push(BLUE);
 const TAB_ERRORS=[];
 function parseTok(t){const m=/^([hp\/\\]?)([eBGDAE])(\d+)(?:b(\d+))?(~?)$/.exec(t);if(!m){TAB_ERRORS.push("bad token "+t);return null;}return{tech:m[1],s:"eBGDAE".indexOf(m[2]),f:+m[3],b:m[4]?+m[4]:null,v:!!m[5]};}
 function noteInfo(sc,s,f,ctx){const pc=(OPEN_STRINGS[s]+f)%12,i=sc.pcs.indexOf(pc);if(i<0){TAB_ERRORS.push(`${ctx}: ${"eBGDAE"[s]}${f} 不在音階內`);return{name:"?",label:"?",cat:1};}return{name:sc.names[i],label:sc.labels[i],cat:sc.cat(i)};}
-function checkTech(ns,ctx){ns.forEach((n,i)=>{if(!n||!n.tech)return;const p=ns[i-1];if(!p||p.s!==n.s){TAB_ERRORS.push(`${ctx}: ${n.tech} 需要同一條弦`);return;}const pf=p.f;if((n.tech==="h"||n.tech==="/")&&!(n.f>pf))TAB_ERRORS.push(`${ctx}: ${n.tech} 應往高把位`);if((n.tech==="p"||n.tech==="\\")&&!(n.f<pf))TAB_ERRORS.push(`${ctx}: ${n.tech} 應往低把位`);if(n.b!==null&&!(n.b-n.f>=1&&n.b-n.f<=2))TAB_ERRORS.push(`${ctx}: 推弦幅度`);});}
-function tabSVG(sc,tokens,opts){opts=opts||{};const ctx=opts.ctx||"tab",ns=tokens.map(parseTok).filter(Boolean);checkTech(ns,ctx);
- const step=96,x0=118,W=x0+(ns.length-1)*step+90,H=262,ly=i=>58+i*25;
+function checkTech(ns,ctx){ns.forEach((n,i)=>{if(!n||n.rest||!n.tech)return;const p=ns[i-1];if(!p||p.rest||p.s!==n.s){TAB_ERRORS.push(`${ctx}: ${n.tech} 需要同一條弦、且前面不能是休止`);return;}const pf=p.f;if((n.tech==="h"||n.tech==="/")&&!(n.f>pf))TAB_ERRORS.push(`${ctx}: ${n.tech} 應往高把位`);if((n.tech==="p"||n.tech==="\\")&&!(n.f<pf))TAB_ERRORS.push(`${ctx}: ${n.tech} 應往低把位`);if(n.b!==null&&!(n.b-n.f>=1&&n.b-n.f<=2))TAB_ERRORS.push(`${ctx}: 推弦幅度`);});}
+function checkStretch(ns,ctx){ns.forEach((n,i)=>{const p=ns[i-1];if(!p||p.rest||n.rest)return;const d=Math.abs(n.f-p.f);
+ if(n.tech==="/"||n.tech==="\\"){if(d>7)TAB_ERRORS.push(`${ctx}: 滑音超過 7 格`);return;}
+ if((n.tech==="h"||n.tech==="p")&&d>5)TAB_ERRORS.push(`${ctx}: 搥勾跨度超過 5 格`);
+ if(n.f>0&&p.f>0&&d>5)TAB_ERRORS.push(`${ctx}: ${"eBGDAE"[p.s]}${p.f}→${"eBGDAE"[n.s]}${n.f} 跨度超過 5 格（沒有滑音換把位）`);});}
+function parseItems(tokens){const items=[];let pend=null;tokens.forEach(t=>{if(t[0]==="@"){pend=t.slice(1);return;}if(t==="r"){items.push({rest:true,ch:pend});pend=null;return;}const n=parseTok(t);if(n){n.ch=pend;pend=null;items.push(n);}});return items;}
+function tabSVG(sc,tokens,opts){opts=opts||{};const ctx=opts.ctx||"tab",ns=parseItems(tokens);checkTech(ns,ctx);if(opts.strict)checkStretch(ns,ctx);
+ const step=opts.step||96,x0=118,W=x0+(ns.length-1)*step+90,H=262,ly=i=>58+i*25;
  let o=`<svg viewBox="0 0 ${W} ${H}" style="min-width:${Math.round(W*.74)}px;max-width:${W}px" role="img" aria-label="${esc(opts.aria||"六線譜")}">`;
  (opts.chords||[]).forEach(c=>o+=`<text class="s-txt2" x="${x0+c.i*step-14}" y="22" font-size="17">${esc(c.t)}</text>`);
  STRING_NAMES.forEach((n,i)=>o+=`<line class="s-line" x1="62" x2="${W-14}" y1="${ly(i)}" y2="${ly(i)}"/><text class="s-txt2" x="26" y="${ly(i)+5}" font-size="15">${n}</text>`);
  o+=`<line class="s-line" x1="62" x2="62" y1="${ly(0)}" y2="${ly(5)}" stroke-width="2"/>`;
- ns.forEach((n,i)=>{const x=x0+i*step,a=noteInfo(sc,n.s,n.f,ctx),t=n.b!==null?noteInfo(sc,n.s,n.b,ctx+" bend"):null;
+ ns.forEach((n,i)=>{const x=x0+i*step;
+  if(n.ch){o+=`<text class="s-txt" x="${x-14}" y="22" font-size="18">${esc(n.ch)}</text>`;if(i>0)o+=`<line class="s-line" x1="${x-step/2}" x2="${x-step/2}" y1="${ly(0)}" y2="${ly(5)}" stroke-width="2"/>`;}
+  if(n.rest){o+=`<text class="s-lbl" x="${x}" y="${ly(2)+18}" text-anchor="middle" font-size="18">休</text><text class="s-lbl" x="${x}" y="244" text-anchor="middle" font-size="15">留白</text>`;return;}
+  const a=noteInfo(sc,n.s,n.f,ctx),t=n.b!==null?noteInfo(sc,n.s,n.b,ctx+" bend"):null;
   const txt=n.f+(n.b!==null?"b"+n.b:""),bw=txt.length*10+16,cat=t&&t.cat===2?2:a.cat;
   if(n.tech)o+=`<text class="s-txt" x="${x-step/2}" y="${ly(n.s)-9}" text-anchor="middle" font-size="17">${esc(n.tech)}</text>`;
   o+=`<rect class="s-ring" x="${x-bw/2}" y="${ly(n.s)-12}" width="${bw}" height="24" rx="7" fill="${CAT[cat]}" stroke-width="2"/><text x="${x}" y="${ly(n.s)+6}" text-anchor="middle" font-size="17" fill="#fff">${txt}</text>`;
@@ -369,7 +439,114 @@ function tabSVG(sc,tokens,opts){opts=opts||{};const ctx=opts.ctx||"tab",ns=token
  return o+"</svg>";}
 function modeScale(pc,k){const cd=MODES[k].char;return{pcs:semis(k).map(x=>(pc+x)%12),names:spell(pc,k),labels:degreeLabels(k),cat:i=>i===0?0:i===cd?2:1};}
 const TECH_ZH={h:"搥弦",p:"勾弦","/":"滑音","\\":"滑音",b:"推弦","~":"揉弦"};
-function techList(tokens){const s=new Set();tokens.forEach(t=>{const n=parseTok(t);if(!n)return;if(n.tech)s.add(TECH_ZH[n.tech]);if(n.b!==null)s.add("推弦");if(n.v)s.add("揉弦");});return s.size?[...s].join("、"):"單音撥弦";}
+// ===== chord diagrams =====
+const NOTE_PC={C:0,D:2,E:4,F:5,G:7,A:9,B:11};
+const QUAL={"":[0,4,7],"m":[0,3,7],"7":[0,4,7,10],"m7":[0,3,7,10],"maj7":[0,4,7,11],"m7b5":[0,3,6,10],"dim":[0,3,6],"maj7#11":[0,4,7,11,6]};
+const CH_STR=[4,9,2,7,11,4]; // 低音 E → 高音 e
+function pcOf(l,acc){let p=NOTE_PC[l];for(const c of acc||"")p+=c==="#"?1:-1;return(p+24)%12;}
+function parseChord(n){const m=/^([A-G])((?:#|b)*)(maj7#11|maj7|m7b5|m7|7|m|dim|°)?(?:\/([A-G])((?:#|b)?))?$/.exec(n);if(!m)return null;const q=m[3]==="°"?"dim":(m[3]||"");const root=pcOf(m[1],m[2]);return{root,q,pcs:QUAL[q].map(x=>(root+x)%12),bass:m[4]?pcOf(m[4],m[5]):root};}
+const OPEN_CH={C:["x32010","x32010"],A:["x02220","x01230"],G:["320003","210003"],E:["022100","023100"],D:["xx0232","xx0132"],Am:["x02210","x02310"],Em:["022000","023000"],Dm:["xx0231","xx0231"],
+ Cmaj7:["x32000","x32000"],Am7:["x02010","x02010"],Em7:["022030","012030"],Dm7:["xx0211","xx0211"],D7:["xx0212","xx0213"],A7:["x02020","x02030"],E7:["020100","020100"],G7:["320001","320001"],C7:["x32310","x32410"],B7:["x21202","x21304"],
+ Amaj7:["x02120","x02130"],Dmaj7:["xx0222","xx0123"],Fmaj7:["xx3210","xx3210"],"Cmaj7#11":["x32002","x32001"],"E/D":["xx0454","xx0132"]};
+const X=null;
+const SHAPES={E:{"":[[0,2,2,1,0,0],[1,3,4,2,1,1]],m:[[0,2,2,0,0,0],[1,3,4,1,1,1]],"7":[[0,2,0,1,0,0],[1,3,1,2,1,1]],m7:[[0,2,0,0,0,0],[1,3,1,1,1,1]],maj7:[[0,X,1,1,0,X],[2,0,3,4,1,0]],m7b5:[[0,X,0,0,-1,X],[2,0,3,4,1,0]]},
+ A:{"":[[X,0,2,2,2,0],[0,1,2,3,4,1]],m:[[X,0,2,2,1,0],[0,1,3,4,2,1]],"7":[[X,0,2,0,2,0],[0,1,3,1,4,1]],m7:[[X,0,2,0,1,0],[0,1,3,1,2,1]],maj7:[[X,0,2,1,2,0],[0,1,3,2,4,1]],m7b5:[[X,0,1,0,1,X],[0,1,3,2,4,0]],dim:[[X,0,1,2,1,X],[0,1,2,4,3,0]]}};
+const CHORD_CACHE={};
+function chordShape(name){if(name in CHORD_CACHE)return CHORD_CACHE[name];let r=null;const c=parseChord(name);
+ if(OPEN_CH[name]){const [f,g]=OPEN_CH[name];r={frets:[...f].map(ch=>ch==="x"?-1:+ch),fingers:[...g].map(ch=>ch==="x"?0:+ch)};}
+ else if(c&&c.bass===c.root){let best=null;for(const [k,si] of [["E",0],["A",1]]){const sh=SHAPES[k][c.q];if(!sh)continue;let rf=(c.root-CH_STR[si]+12)%12;const mn=Math.min(...sh[0].filter(v=>v!==X));if(rf+mn<1)rf+=12;const frets=sh[0].map(v=>v===X?-1:rf+v);if(!best||rf<best.rf)best={rf,frets,fingers:sh[1].slice()};}if(best)r={frets:best.frets,fingers:best.fingers};}
+ if(r)r.name=name;CHORD_CACHE[name]=r;return r;}
+const CHORD_ERRORS=[];
+function checkChord(name){const c=parseChord(name),sh=chordShape(name);if(!c||!sh){CHORD_ERRORS.push(name+"：沒有指型");return false;}
+ const sound=sh.frets.map((f,i)=>f<0?null:(CH_STR[i]+f)%12),used=sound.filter(v=>v!==null),errs=[];
+ used.forEach(p=>{if(!c.pcs.includes(p)&&p!==c.bass)errs.push("多了不屬於和弦的音");});
+ c.pcs.forEach((p,i)=>{if(!used.includes(p)&&QUAL[c.q][i]!==7)errs.push("缺少和弦音");});
+ if(used[0]!==c.bass)errs.push("最低音不是根音/指定低音");
+ const fr=sh.frets.map((f,i)=>({f,g:sh.fingers[i]})).filter(o=>o.f>0);
+ fr.forEach(o=>{if(!(o.g>=1&&o.g<=4))errs.push("缺指法");});
+ sh.frets.forEach((f,i)=>{if(f<=0&&sh.fingers[i])errs.push("空弦/悶音不應有指法");});
+ const byF={};fr.forEach(o=>{(byF[o.g]=byF[o.g]||new Set()).add(o.f);});Object.values(byF).forEach(s=>{if(s.size>1)errs.push("同一指按兩個格");});
+ fr.forEach(a=>fr.forEach(b=>{if(a.g<b.g&&a.f>b.f)errs.push("手指順序不自然");}));
+ if(fr.length){const fs=fr.map(o=>o.f);if(Math.max(...fs)-Math.min(...fs)>3)errs.push("跨度超過 4 格");}
+ if(errs.length)CHORD_ERRORS.push(name+"："+[...new Set(errs)].join("、"));return !errs.length;}
+function chordSVG(name){const sh=chordShape(name);if(!sh)return"";const fr=sh.frets.filter(f=>f>0),hi=fr.length?Math.max(...fr):0,base=hi<=5?1:Math.min(...fr);
+ const x=i=>28+i*19,y0=54,g=23,yF=f=>y0+(f-base+.5)*g;let o=`<svg viewBox="0 0 150 200" class="chd" role="img" aria-label="${esc(name)} 和弦圖"><text class="c-name" x="${x(2.5)}" y="28" text-anchor="middle" font-size="25">${esc(name)}</text>`;
+ for(let k=0;k<=5;k++)o+=`<line class="c-ln" x1="${x(0)}" x2="${x(5)}" y1="${y0+k*g}" y2="${y0+k*g}" stroke-width="1.4"/>`;
+ for(let i=0;i<6;i++)o+=`<line class="c-ln" x1="${x(i)}" x2="${x(i)}" y1="${y0}" y2="${y0+5*g}" stroke-width="1.4"/>`;
+ if(base===1)o+=`<rect class="c-dot" x="${x(0)-1}" y="${y0-5}" width="${x(5)-x(0)+2}" height="6"/>`;else o+=`<text class="c-pos" x="${x(0)-8}" y="${y0+g*.5+5}" text-anchor="end" font-size="14">${base}</text>`;
+ sh.frets.forEach((f,i)=>{if(f<0)o+=`<text class="c-name" x="${x(i)}" y="${y0-10}" text-anchor="middle" font-size="15">×</text>`;else if(f===0)o+=`<circle class="c-open" cx="${x(i)}" cy="${y0-14}" r="5" fill="none" stroke-width="1.4"/>`;});
+ const byG={};sh.frets.forEach((f,i)=>{if(f>0)(byG[sh.fingers[i]+"-"+f]=byG[sh.fingers[i]+"-"+f]||[]).push(i);});
+ Object.entries(byG).forEach(([k,ss])=>{const f=+k.split("-")[1];if(ss.length>1){const a=Math.min(...ss),b=Math.max(...ss);o+=`<rect class="c-dot" x="${x(a)-7}" y="${yF(f)-6.5}" width="${x(b)-x(a)+14}" height="13" rx="6.5"/>`;}else o+=`<circle class="c-dot" cx="${x(ss[0])}" cy="${yF(f)}" r="7"/>`;});
+ sh.fingers.forEach((g2,i)=>{if(g2&&sh.frets[i]>0)o+=`<text class="c-fg" x="${x(i)}" y="${y0+5*g+21}" text-anchor="middle" font-size="14">${g2}</text>`;});
+ return o+"</svg>";}
+function chordRow(names,cap){const u=[...new Set(names)].filter(n=>chordShape(n));return `<div class="chords">${cap?`<div class="ccap">${esc(cap)}</div>`:""}${u.map(n=>`<div class="cbox">${chordSVG(n)}</div>`).join("")}</div>`;}
+// 文字裡的和弦名 → 可點擊/滑過顯示和弦圖
+const CT="[A-G](?:#|b)?(?:maj7#11|maj7|m7b5|m7|dim|7|m)?(?:\\/[A-G](?:#|b)?)?";
+const CH_LINK_RE=new RegExp(`(?<![A-Za-z0-9#/])(${CT}(?: [–|] ${CT})+)(?![A-Za-z0-9#])|(?<![A-Za-z0-9#/])([A-G](?:#|b)?(?:maj7#11|maj7|m7b5|m7|dim|7|m)(?:\\/[A-G](?:#|b)?)?)(?![A-Za-z0-9#])|^(${CT})(?=（[b#]?[ivIV]+°?7?）)`,"g");
+function linkChords(root){const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:n=>n.parentElement.closest("svg,.chords,.ch,button,select,script,style,nav,#chPop")?NodeFilter.FILTER_REJECT:NodeFilter.FILTER_ACCEPT});
+ const nodes=[];while(w.nextNode())nodes.push(w.currentNode);
+ nodes.forEach(nd=>{const t=nd.nodeValue;CH_LINK_RE.lastIndex=0;if(!CH_LINK_RE.test(t))return;CH_LINK_RE.lastIndex=0;
+  const html=esc(t).replace(CH_LINK_RE,(m)=>m.replace(new RegExp(CT,"g"),tok=>chordShape(tok)?`<span class="ch" tabindex="0" data-c="${tok}">${tok}</span>`:tok));
+  const sp=document.createElement("span");sp.innerHTML=html;nd.replaceWith(...sp.childNodes);});}
+let pinned=null;
+function showPop(el,pin){const p=$("chPop"),n=el.dataset.c;p.innerHTML=chordSVG(n);p.hidden=false;const r=el.getBoundingClientRect(),pw=150;let left=r.left+window.scrollX+r.width/2-pw/2;left=Math.max(8,Math.min(left,document.documentElement.clientWidth-pw-8));p.style.left=left+"px";p.style.top=(r.bottom+window.scrollY+6)+"px";if(pin)pinned=el;}
+function hidePop(){$("chPop").hidden=true;pinned=null;}
+document.addEventListener("click",e=>{const t=e.target.closest(".ch");if(t){if(pinned===t){hidePop();return;}showPop(t,true);}else if(!e.target.closest("#chPop"))hidePop();});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")hidePop();if(e.key==="Enter"&&e.target.classList&&e.target.classList.contains("ch"))showPop(e.target,true);});
+if(window.matchMedia("(hover:hover)").matches){document.addEventListener("mouseover",e=>{const t=e.target.closest(".ch");if(t&&!pinned)showPop(t);});document.addEventListener("mouseout",e=>{const t=e.target.closest(".ch");if(t&&!pinned)hidePop();});}
+const LICK_CHORDS=[["Gmaj7","Cmaj7"],["Am7","D7"],["Em","F"],["D","E","Dmaj7","E/D"],["A","G","D","A7"],["Am","F","G"],["Bm7b5","C"]];
+// ===== legato solos =====
+const LEGATO=[
+ {pc:7,bpm:72,mood:"晴朗的早晨，陽光照進房間；溫柔、感謝，像想對某個人說謝謝。",vamp:"Gmaj7（2 小節）– Cmaj7（2 小節）循環；最後一小節回到 Gmaj7",pos:"第 4–9 格 → 滑到第 10–15 格（高潮）",chords:["Gmaj7","Cmaj7"],phrases:[
+  {n:"動機",tokens:["@Gmaj7","G4","hG7","B7~","r","B8","pB7","G7","pG4","r"],tip:"動機只有三個音：B–D–F#（Gmaj7 的 3、5、7），停在 F# 揉弦。大七度 F# 緊貼根音 G，像一句還沒說完的話，所以溫柔。後半句 G–F#–D–B 往下回應，這就是一問一答。"},
+  {n:"發展",tokens:["@Cmaj7","G5","hG9","B8~","r","B10","pB8","G9","pG5","r"],tip:"同一個節奏、同一個指型整個往上移到 Cmaj7 的 C–E–G（模進）。耳朵認得動機，又聽到新的高度，這就是「發展」。G 弦 5→9 的搥弦要伸展四格，先慢練。"},
+  {n:"高潮",tokens:["@Gmaj7","B8","/B12","e10","he12","he14","pe12","pe10","B12","hB13","hB15","e12","he14","he15","pe14~"],tip:"從 B 弦第 8 格一口氣滑到第 12 格換到高把位，連續搥勾像波浪一樣滾動；最高的 G 勾回 F# 長音揉弦——全曲最高、最亮、也最想哭的一刻，因為 F# 還在等著回家。"},
+  {n:"解決",tokens:["@Cmaj7","e12","pe10","B12","pB10","pB8","G9","pG7","r","@Gmaj7","G4","hG7","B7","hB8~"],tip:"在 Cmaj7 上一路下行，留一拍呼吸，最後回到開頭的動機 B–D，再讓 F# 搥回 G 揉弦：導音終於回家，故事完整收尾。"}]},
+ {pc:9,bpm:80,mood:"黃昏的城市街角，帶著一點懷念，但嘴角是上揚的；酷、灑脫、有希望。",vamp:"Am7 – D7（各 1 小節）循環 4 次",pos:"第 5–9 格 → 滑到第 11–19 格（高潮）",chords:["Am7","D7"],phrases:[
+  {n:"動機",tokens:["@Am7","G5","hG7","pG5","D7","r","@D7","G7","B5","hB7~","r"],tip:"動機 C–D–C–A 是小調的「嘆氣」，第二小節在 D7 上往上爬到 F#（多利安特色音＝D7 的三度）揉弦：一句問、一句答，從小調的陰影直接看到光。"},
+  {n:"發展",tokens:["@Am7","B5","hB8","pB5","G7","r","@D7","B8","B7","e5","he7","pe5","B7~"],tip:"同一個節奏搬到高一組弦（E–G–E–D），回答變長了：A–B–A 的搥勾裝飾後再落到 F#。重複但每次多一點點，聽的人會跟著期待。"},
+  {n:"高潮",tokens:["@Am7","G9","/G14","e12","he14","he17","pe14","pe12","B13","hB15","pB13","pB12","@D7","B15","hB17","pB15","/B19~"],tip:"從 G 弦第 9 格長滑到第 14 格，整個人飛到高把位；E–F#–A 搥上去再勾回來，像滾動的浪。D7 上 D–E–D 之後滑到全曲最高的 F#，揉弦停住——特色音放在最高點，就是這段 solo 的情緒頂點。"},
+  {n:"解決",tokens:["@Am7","B17","\\B12","G14","pG12","pG11","D12","r","@D7","G11","hG12","pG11","pG9","D12","A12~"],tip:"從高處往下滑（\\）像嘆一口氣，經過 F# 兩次提醒多利安的顏色，最後落在根音 A 揉弦，下一輪 Am7 一進來就完美銜接。"}]},
+ {pc:4,bpm:76,mood:"沙漠的夜晚，佛朗明哥舞者在火光前；壓抑的熱情、神祕又危險。",vamp:"Em – F（各 1 小節）循環 4 次",pos:"第 7–10 格 → 滑到第 12–18 格（高潮）",chords:["Em","F"],phrases:[
+  {n:"動機",tokens:["@Em","A7","hA8","pA7","D7","/D9","r","@F","D10","pD9","A10","pA8~"],tip:"E–F–E 的半音搥勾就是弗里幾亞的招牌（b2 緊貼根音），接著在 F 和弦上 C–B–G–F 往下，最後停在 F 揉弦：b2 在 F 和弦上變成根音，聽起來既安定又詭異。"},
+  {n:"發展",tokens:["@Em","G9","hG10","pG9","B8","/B10","r","@F","e8","pe7","B10","pB8","G10~"],tip:"把動機搬到高八度（G 弦 E–F–E），一樣的「半音嘆息」；回答改成 C–B–A–G–F，比第一次多了兩個音，張力在累積。"},
+  {n:"高潮",tokens:["@Em","e7","/e12","he13","pe12","B15","pB13","pB12","e12","he13","he15","pe13","pe12","@F","B13","hB15","/B18~"],tip:"從 B 滑到 E 衝上第 12 格，E–F–E 在最高的弦上重複，像越來越急的舞步；最後從 D 滑到高音 F 揉弦，全曲最尖銳的 b2，最有戲劇張力。"},
+  {n:"解決",tokens:["@F","e13","pe12","B13","pB12","G14","pG12","D15","@Em","pD14~"],tip:"從高處一路勾弦下來（F–E、C–B、A–G），最後 F 勾到 E 揉弦：b2 → 1 的半音解決，就像舞者最後一個轉身停住，張力終於放下。"}]},
+ {pc:2,bpm:66,mood:"漂浮在星空裡，像電影主角第一次看見魔法世界；夢幻、透明、帶點不真實。",vamp:"D – E（各 1 小節）循環；第 7–8 小節停在 D",pos:"第 5–9 格 → 滑到第 12–16 格（高潮）",chords:["D","E"],phrases:[
+  {n:"動機",tokens:["@D","G7","hG9","B7","hB9~","r","B10","pB9","pB7","@E","G9","B9","/B12~"],tip:"D–E–F#–G# 一路往上，停在 G#（#4）揉弦：在 D 和弦上 #4 不會想解決，就這樣懸在空中，這就是「漂浮感」。到 E 和弦時從 G# 滑上 B，同一個音瞬間變得穩定明亮。"},
+  {n:"發展",tokens:["@D","B7","hB9","e5","he7~","r","e9","pe7","pe5","@E","B9","hB10","pB9","e7~"],tip:"同樣的上行動機往上搬一組弦（F#–G#–A–B），回答用 C#–B–A 往下，再用 G#–A–G# 的搥勾裝飾，像星星一閃一閃。"},
+  {n:"高潮",tokens:["@D","e9","/e14","he16","pe14","B14","hB15","pB14","G13","hG14","hG16","e14","/e16~","@E","e12","he14","he16~"],tip:"從 C# 長滑到 F#，一路衝上第 14–16 格；G#（#4）在 D 和弦上揉一次、在 E 和弦上再揉一次——同一個高音，換了和弦就換了表情，是整段最「飛」的地方。"},
+  {n:"解決",tokens:["@D","e14","pe12","pe9","B12","pB10","pB9","G11","hG13","pG11","r","D11","hD12~"],tip:"一路勾弦飄落下來，經過 G# 再輕輕碰一次，最後 C# 搥到根音 D 揉弦——像降落在雲上，輕輕的、不用力。"}]},
+ {pc:9,bpm:96,mood:"夏天的公路旅行，敞篷車、風吹在臉上；豪邁、自由、有點藍調的灑脫。",vamp:"A（1 小節）– G – D（各半小節）循環 4 次；最後一個音回到 A",pos:"第 5–10 格 → 滑到第 12–20 格（高潮）",chords:["A","G","D"],phrases:[
+  {n:"動機",tokens:["@A","G6","hG7","pG6","D7","r","@G","B7","hB8~","@D","B7","pB5","G7~"],tip:"動機 C#–D–C#–A 是大調的味道，接著在 G 和弦上搥到 G（b7）揉弦——米索利地亞的特色音在 G 和弦上變成根音，聽起來豪邁又理所當然。"},
+  {n:"發展",tokens:["@A","e9","he10","pe9","B10","r","@G","e5","he7","pe5","B8~","@D","B5","hB7~"],tip:"同一句動機往上搬一個八度（C#–D–C#–A），回答換成 A–B–A–G，又一次把 b7 放在長音上；最後在 D 和弦上停在 F#（D 的三度），留下想繼續的感覺。"},
+  {n:"高潮",tokens:["@A","B10","/B14","e12","he14","he15","pe14","pe12","B14","hB15","@G","B17","/B20~","@D","e17","pe14","B15~"],tip:"A 滑到 C# 衝上高把位，E–F#–G 連續搥弦後，在 G 和弦上從 E 長滑到全曲最高的 G（b7）揉弦——像油門踩到底的那一刻（需要 20 格以上的琴）。D 和弦上 A–F#–D 帶著餘韻落下。"},
+  {n:"解決",tokens:["@A","e15","pe14","pe12","B15","pB14","pB12","@G","G14","pG11","D12","r","@D","D11","/D14","@A","A12~"],tip:"G–F#–E、D–C#–B 兩組下行勾弦像下坡滑行，留一拍呼吸，最後 C# 滑到 E 再落到根音 A 揉弦：旅程結束，夕陽下停好車。"}]},
+ {pc:9,bpm:70,mood:"雨夜的窗邊，想起一個再也見不到的人；憂傷，但最後是溫柔的釋懷。",vamp:"Am – F – G – Am（和弦位置看 TAB 上方）",pos:"第 5–8 格 → 滑到第 12–17 格（高潮）",chords:["Am","F","G"],phrases:[
+  {n:"動機",tokens:["@Am","G5","hG7","B5","r","B6","pB5","G7~","@F","B5","hB6~"],tip:"C–D–E 往上像要開口，F–E–D 又縮回來；到了 F 和弦，E 搥到 F（b6）揉弦——b6 是自然小調最心碎的音，在 F 和弦上它是根音，所以痛得很溫柔。"},
+  {n:"發展",tokens:["@G","B8","e5","he7","pe5","B8~","@Am","e8","pe7","pe5","B6","pB5~"],tip:"在 G 和弦上把 G 放在長音（像吸一口氣），回到 Am 時 C–B–A–F–E 一路勾下來，最後 F 勾到 E 揉弦：b6 → 5 的半音嘆息。"},
+  {n:"高潮",tokens:["@F","B8","/B13","e12","he13","he15","pe13","pe12","B13","hB15","hB17","@G","e12","he13","he15~"],tip:"從 G 一口氣滑五格到 C，換到第 12 格高把位；E–F–G 的滾動搥勾越爬越高，在 G 和弦上停在最高的 G 揉弦——情緒最滿、快要哭出來的地方。"},
+  {n:"解決",tokens:["@Am","e17","pe15","pe13~","pe12","r","@F","B13","pB12","G14","pG12","@G","D14","pD12","@Am","A12~"],tip:"從最高的 A 慢慢勾下來，在 F（b6）上揉一下再落到 E，留一拍空白；最後 E–D 落回根音 A 揉弦。不是悲傷的結束，而是把眼淚擦乾的那種安靜。"}]},
+ {pc:11,bpm:63,mood:"恐怖片裡走廊盡頭的那扇門，霧裡有什麼在動；不安、懸疑、找不到地面。",vamp:"Bm7b5 – C（各 1 小節）循環 4 次",pos:"第 7–10 格 → 滑到第 12–18 格（高潮）",chords:["Bm7b5","C"],phrases:[
+  {n:"動機",tokens:["@Bm7b5","D9","hD10","pD9","A8~","r","@C","A10","pA8","pA7","E8~"],tip:"B–C–B 的半音（b2）讓根音一開始就站不穩，接著跳到 F（b5）揉弦——三全音最不和諧，也最懸疑。在 C 和弦上 G–F–E 落到 C，像暫時找到一塊地板。"},
+  {n:"發展",tokens:["@Bm7b5","G9","hG10","pG9","D10~","r","@C","e8","pe7","B8","hB10","pB8","G10~"],tip:"同一個「半音＋停住」的動機搬高（E–F–E，再停在 C），回答 C–B–G–A–G–F 最後又停在 F：每次想安定，都被 b5 拉回黑暗。"},
+  {n:"高潮",tokens:["@Bm7b5","B8","/B12","e10","he12","he13","pe12","pe10","B12","hB13","hB15","@C","e13","pe12","B13","/B18~"],tip:"滑上第 12 格，D–E–F 一路搥高、B–C–D 繼續堆疊，最後從 C 長滑到最高的 F（b5）揉弦：像尖叫一樣的高潮。"},
+  {n:"解決",tokens:["@Bm7b5","B18","pB17","pB15","G17","pG16","pG14","@C","D15","pD14","pD12","@Bm7b5","D14","\\D9~"],tip:"F–E–D、C–B–A、F–E–D 三組下行勾弦像掉進深淵，最後從 E 往下滑到根音 B 揉弦——回到 B，卻一點都不安心，這正是洛克利亞的味道。"}]}
+];
+const JOURNEY={pc:9,chords:["Am","F","Am7","D","Bb"],phrases:[
+ {n:"伊奧利亞",mode:5,tokens:["@Am","G5","hG7","B5","r","@F","B5","hB6~","pB5"],tip:"同一個動機 C–D–E，在 F 和弦上搥到 F（b6）：憂傷的起點。"},
+ {n:"多利安",mode:1,tokens:["@Am7","G5","hG7","B5","r","@D","B5","hB7~","pB5"],tip:"只把 F 換成 F#（6），背景換成 D 大三和弦，同一句話突然有了陽光——換調式就是換情緒。"},
+ {n:"弗里幾亞",mode:2,tokens:["@Am","G5","hG7","B5","r","@Bb","B6","pB5","G7","pG5","D7","hD8~","pD7"],tip:"再把 B 換成 Bb（b2），Bb 和弦一出現就變得緊張、異國；A 搥到 Bb 揉弦是整段最暗的時刻。"},
+ {n:"回到伊奧利亞",mode:5,tokens:["@Am","e8","pe5","B6","pB5","G7","pG5","D7~"],tip:"C–A–F–E–D–C–A 一路落回根音 A。走了一圈，同一個根音，心情已經不一樣了。"}]};
+const PHRASE_ZH=["① 動機（第 1–2 小節）","② 發展（第 3–4 小節）","③ 高潮（第 5–6 小節）","④ 解決（第 7–8 小節）"];
+const plainTokens=tk=>tk.map(t=>t[0]==="@"||t==="r"?t:t.replace(/^[hp\/\\]/,"").replace(/~$/,""));
+function soloDots(sc,tokensList){const seen=new Map();tokensList.flat().forEach(t=>{if(t[0]==="@"||t==="r")return;const n=parseTok(t);if(!n)return;[n.f].concat(n.b!==null?[n.b]:[]).forEach(f=>{const k=n.s+"-"+f;if(seen.has(k))return;const i=sc.pcs.indexOf((OPEN_STRINGS[n.s]+f)%12);seen.set(k,{s:n.s,f,label:i<0?"?":sc.labels[i],cat:i<0?1:sc.cat(i)});});});return[...seen.values()];}
+function phraseBlock(sc,p,title,ctx){return `<div class="lick"><h3>${esc(title)}<span class="tag">技巧：${esc(techList(p.tokens))}</span></h3><div class="figure scroll">${tabSVG(sc,p.tokens,{ctx,aria:title,step:78,strict:true})}</div><p class="muted">${esc(p.tip)}</p></div>`;}
+function blankTab(label){const W=1000;let o=`<svg viewBox="0 0 ${W} 200" style="min-width:640px" role="img" aria-label="${label}"><text class="s-txt2" x="20" y="22" font-size="16">${label}</text>`;
+ for(let b=0;b<4;b++)o+=`<text class="s-lbl" x="${72+b*230}" y="40" font-size="15">和弦：______</text>`;
+ STRING_NAMES.forEach((n,i)=>o+=`<line class="s-line" x1="62" x2="${W-10}" y1="${60+i*24}" y2="${60+i*24}"/><text class="s-txt2" x="30" y="${65+i*24}" font-size="15">${n}</text>`);
+ for(let b=0;b<=4;b++)o+=`<line class="s-line" x1="${62+b*232}" x2="${62+b*232}" y1="60" y2="180" stroke-width="2"/>`;return o+"</svg>";}
+function techList(tokens){const s=new Set();tokens.forEach(t=>{if(t[0]==="@"||t==="r")return;const n=parseTok(t);if(!n)return;if(n.tech)s.add(TECH_ZH[n.tech]);if(n.b!==null)s.add("推弦");if(n.v)s.add("揉弦");});return s.size?[...s].join("、"):"單音撥弦";}
 const stars=n=>"★".repeat(n)+"☆".repeat(3-n);
 function lickBlock(sc,l,i,ctx,chords){return `<div class="lick"><h3>Lick ${i+1}：${esc(l.t)}<span class="tag">難度 ${stars(l.lv)}</span><span class="tag">技巧：${esc(techList(l.tokens))}</span></h3><div class="figure scroll">${tabSVG(sc,l.tokens,{ctx:ctx+" lick "+(i+1),aria:l.t,chords})}</div><p class="muted">${esc(l.tip)}</p></div>`;}
 
@@ -441,7 +618,7 @@ function props(items){return items.map(([k,v])=>`<dt>${esc(k)}</dt><dd>${esc(v)}
 function seg(el,opts,val,on){el.innerHTML=opts.map(([v,l])=>`<button type="button" data-v="${v}" class="${v===val?"on":""}">${esc(l)}</button>`).join("");el.onclick=e=>{const b=e.target.closest("button");if(b)on(b.dataset.v);};}
 const $=id=>document.getElementById(id);
 
-const state={mode:1,root:2,show:"interval",white:1,answers:{},lickMode:1,bluesRoot:9,bluesType:"minBlues",bluesShow:"interval",box:1};
+const state={mode:1,root:2,show:"interval",white:1,answers:{},lickMode:1,legatoMode:1,bluesRoot:9,bluesType:"minBlues",bluesShow:"interval",box:1};
 
 // TOC
 $("toc").innerHTML=[...document.querySelectorAll("section")].map(s=>`<li><a href="#${s.id}">${esc(s.querySelector("h2").textContent)}</a></li>`).join("");
@@ -462,7 +639,7 @@ $("progTable").innerHTML=table(["調式","招牌進行","常見調的例子"],[[
 $("songSteps").innerHTML=steps([["先決定情緒，再選調式","想要帥氣小調選多利安，夢幻選利地亞，公路搖滾選米索利地亞，憂傷選伊奧利亞。"],["把中心穩住","多回到 i／I 和弦、用持續低音、段落結尾停在根音和弦，讓耳朵認定那是家。"],["特色和弦放在顯眼位置","多利安的 IV、米索利地亞的 bVII、利地亞的 II，放在第 2 小節或段落高潮。"],["避開父大調的 V7 → I","例如在 D 多利安，G7 → C 會把耳朵拉回 C 大調，調式感就消失了。"],["旋律：重拍和弦音、長音特色音","副歌高點或句尾長音放特色音，最容易讓人記住那個顏色。"],["調式互換（借和弦）","在大調歌曲裡借用平行調式的和弦，一個和弦就能改變整段情緒。"]]);
 $("borrowTable").innerHTML=table(["借來的和弦（以 C 大調為例）","來自","效果"],[["Bb（bVII）","C 米索利地亞","搖滾、豪邁，不急著解決"],["Fm（iv）","C 伊奧利亞","懷舊、感傷，常見 F → Fm → C"],["Ab（bVI）","C 伊奧利亞","史詩、電影感，Ab → Bb → C"],["D（II）","C 利地亞","夢幻、往上飄"],["Db（bII）","C 弗里幾亞","暗黑、戲劇化"]]);
 $("songTable").innerHTML=table(["段落","和弦（每格一小節）","旋律想法"],[["主歌","Am7 | D | Am7 | D","動機 E–F#–E–D｜C–A（短短短短｜短長），句尾在 D 和弦上停在 F#"],["導歌","Cmaj7 | G | Em7 | D","旋律一步步往上爬：E → F# → G → A，製造期待感"],["副歌","Am | G | D | Am","最高音落在 C 或 E；第 3 小節在 D 和弦上唱長音 F#"],["橋段","Fmaj7 | G | Am | Am","唱 F（b6）帶出陰影，最後一小節留白，再回副歌"]]);
-$("planTable").innerHTML=table(["週","主題","每天 20–30 分鐘","這週結束時能做到"],[["第 1 週","大調、音程、愛奧尼亞與伊奧利亞","A 弦上彈大調、唸音程；C 大調與 A 小調各彈一個把位；跟 drone 即興 5 分鐘","說得出任何音離根音幾格、哪個音程"],["第 2 週","多利安與米索利地亞","Am7 – D7 與 A – G – D 伴奏上各即興 10 分鐘；每天練第 8 節這兩個調式的一句 lick 並改編","聽得出 6 與 b7 的顏色"],["第 3 週","利地亞、弗里幾亞，認識洛克利亞","D – E 與 Em – F 伴奏即興；練第 8 節這三個調式的 licks；每天在指板上找出特色音","能在任一根音快速找到七個調式的特色音"],["第 4 週","寫歌與調式互換","寫 8 小節調式進行＋旋律；在一首大調歌裡加入 bVII 或 iv；錄下來回聽","完成一段主歌＋副歌的調式歌曲草稿"],["第 5 週","藍調音階與 12 小節藍調","A 小調五聲第 1、2 把位連接；跟 A 12 小節藍調伴奏即興 3 輪；練第 9 節的藍調 licks，加入 b5 經過音和推弦","能跟 12 小節藍調完整即興，換和弦時落在目標音"],["第 6 週","大小調混用","A7 上練 C 搥到 C#；12 小節裡 I7 混用大調五聲、IV7／V7 用小調五聲；寫一段借 iv 或 bVI 的和弦進行","聽得出 b3 什麼時候是藍調味、什麼時候是衝突"]]);
+$("planTable").innerHTML=table(["週","主題","每天 20–30 分鐘","這週結束時能做到"],[["第 1 週","大調、音程、愛奧尼亞與伊奧利亞","A 弦上彈大調、唸音程；C 大調與 A 小調各彈一個把位；跟 drone 即興 5 分鐘","說得出任何音離根音幾格、哪個音程"],["第 2 週","多利安與米索利地亞","Am7 – D7 與 A – G – D 伴奏上各即興 10 分鐘；每天練第 8 節這兩個調式的一句 lick 並改編","聽得出 6 與 b7 的顏色"],["第 3 週","利地亞、弗里幾亞，認識洛克利亞","D – E 與 Em – F 伴奏即興；練第 8 節這三個調式的 licks；每天在指板上找出特色音","能在任一根音快速找到七個調式的特色音"],["第 4 週","寫歌與調式互換","寫 8 小節調式進行＋旋律；在一首大調歌裡加入 bVII 或 iv；每天練第 9 節的一段 legato solo，再照教學寫自己的 8 小節 solo；錄下來回聽","完成一段主歌＋副歌的調式歌曲草稿"],["第 5 週","藍調音階與 12 小節藍調","A 小調五聲第 1、2 把位連接；跟 A 12 小節藍調伴奏即興 3 輪；練第 10 節的藍調 licks，加入 b5 經過音和推弦","能跟 12 小節藍調完整即興，換和弦時落在目標音"],["第 6 週","大小調混用","A7 上練 C 搥到 C#；12 小節裡 I7 混用大調五聲、IV7／V7 用小調五聲；寫一段借 iv 或 bVI 的和弦進行","聽得出 b3 什麼時候是藍調味、什麼時候是衝突"]]);
 // ===== new sections: static =====
 $("bluesFormTable").innerHTML=table(["音階","公式","A 調的音","從哪裡來"],Object.entries(BLUES).map(([k,b])=>[b.zh+" "+b.en,b.labels.join(" "),bluesScale(9,k).names.join(" "),{minBlues:"小調五聲 + b5（藍調音）",majBlues:"大調五聲 + b3（藍調音）",minPent:"自然小調拿掉 2 和 b6",majPent:"大調拿掉 4 和 7"}[k]]));
 $("bluesRootSel").innerHTML=ROOT_LABELS.map((l,i)=>`<option value="${i}">${l}</option>`).join("");
@@ -504,6 +681,39 @@ function renderQuiz(){
 $("quiz").onclick=e=>{const b=e.target.closest("button");if(!b)return;state.answers[Number(b.dataset.q)]=Number(b.dataset.o);renderQuiz();};
 $("resetQuiz").onclick=()=>{state.answers={};renderQuiz();};
 
+// ===== legato + chords: static =====
+$("legatoTechTable").innerHTML=table(["記號","名稱","怎麼彈","聽起來"],[["h","搥弦 hammer-on","撥前一個音後，另一指像小槌子一樣用力敲到高格","音往上連，不用再撥"],["p","勾弦 pull-off","兩指先都按好，上面的手指往下（往地板方向）勾一下弦再離開","音往下連，像嘆氣"],["/","上滑 slide up","手指不放開，壓著弦滑到高格","像人聲往上「滑」上去"],["\\","下滑 slide down","壓著弦往低格滑","像一口氣慢慢吐出來"],["h…p…（反覆）","顫音 trill","兩個音快速搥勾交替","緊張、閃爍"],["~","揉弦 vibrato","長音時把弦小幅度上下推動","讓長音有生命、有情緒"]]);
+$("composeSteps").innerHTML=steps([
+ ["選調式、選伴奏、找特色音","先決定想要的情緒（例如「懷念但有希望」→ 多利安），選一個 2 和弦伴奏（Am7 – D7），找出特色音（F#）和它出現在哪個和弦裡（D7 的三度）。高潮的最高音就留給它。"],
+ ["寫一個唱得出來的動機（2–4 個音）","先決定節奏，再決定音：例如「短短｜長～」。用嘴巴哼出來，記得住才是好動機。動機最好從和弦音出發、停在一個有味道的音上。"],
+ ["改成 legato：一條弦上連起來","把動機排在同一條弦上，3 個音一條弦最順（例如 G 弦 5h7、B 弦 5h7）。往上用 h、往下用 p，要換把位就用 / 或 \\ 滑過去，右手只撥每組第一個音。"],
+ ["發展：重複、模進、移動節奏、問答、留白","第二句不要寫新的！把動機整個往上搬（模進）、或節奏晚半拍（移位）、或前半句問、後半句答。句子之間一定要留白，聽眾才有時間感動。"],
+ ["堆張力：越爬越高、越來越密","第 5–6 小節是高潮：音域往高把位走（用長滑音換把位）、連音越來越密、句子越來越長，最高音放在特色音或和弦音上，配一個長揉弦。"],
+ ["解決：強拍落在和弦音","最後兩小節一路下行，強拍落在根音或和弦的三度，最後一個音一定要揉弦，最好呼應第一句的動機，讓故事有頭有尾。"],
+ ["用清單檢查","照下面的清單一項一項檢查，不符合就改。錄起來聽，自己會不會想再聽一次？"]]);
+$("checklist").innerHTML=`<b>編曲檢查清單：</b><br>□ 有一個 2–4 個音、記得住的動機？<br>□ 第二句是第一句的變化（模進／移位／問答），而不是全新的句子？<br>□ 每一句後面都有留白？<br>□ 特色音出現在長音或高潮最高點？<br>□ 換和弦的強拍上是和弦音？<br>□ 高潮（第 5–6 小節）是全曲最高、最密的地方？<br>□ 最後一個音落在根音或和弦音，而且有揉弦？<br>□ 所有搥勾都在同一條弦上、左手跨度不超過 5 格？`;
+{const D=LEGATO[1],sc=modeScale(D.pc,1),notes=["動機：只用 C–D–C–A 四個音，「短短短｜休」的節奏，第二小節在 D7 上停在 F#（特色音）——一問一答。原始版本每個音都撥，聽起來像在數音；改成 G 弦 5h7p5 後，三個音一口氣唱出來。",
+ "發展：同一個節奏型搬到高一組弦（E–G–E–D），回答變長（A–B–A–F#）。原始版本換成搥勾後，回答的裝飾音（5h7p5）讓它像在唱歌，而不是在彈音階。",
+ "高潮：用 G 弦 9 → 14 的長滑音換到高把位，連續 h、p 讓音像浪一樣滾，最後 /19 滑上最高的 F# 揉弦。原始版本要撥 15 下又要跳把位，改 legato 後右手只要撥 4 下，速度和情緒都出來了。",
+ "解決：\\ 下滑像嘆氣，經過兩次 F#，最後落在 A。強拍（換和弦處）都在和弦音上（Am7 的 E、D7 的 F#），最後一個音一定揉弦。"];
+ $("workedList").innerHTML=D.phrases.map((p,i)=>`<div class="lick"><h3>${PHRASE_ZH[i]}</h3><p>${esc(notes[i])}</p><p class="muted">之前：全部撥弦</p><div class="figure scroll">${tabSVG(sc,plainTokens(p.tokens),{ctx:"worked plain "+i,aria:"原始版本",step:78})}</div><p class="muted">之後：Legato 版本</p><div class="figure scroll">${tabSVG(sc,p.tokens,{ctx:"worked legato "+i,aria:"legato 版本",step:78,strict:true})}</div></div>`).join("");}
+$("templateTable").innerHTML=table(["項目","你的答案","提示"],[["調式","________","想要什麼情緒？"],["伴奏和弦","____ – ____","2 個和弦，各 1 小節"],["特色音","________","在哪個和弦上最好聽？"],["動機（2–4 個音）","____ ____ ____ ____","先哼出來"],["動機的節奏","________","例：短短｜長～"],["發展手法","模進／移位／問答","選一個"],["最高音（第 5–6 小節）","________","特色音或和弦音"],["結尾音（第 8 小節）","________","根音或三度，揉弦"]]);
+$("blankTab1").innerHTML=blankTab("第 1–4 小節：動機 → 發展");
+$("blankTab2").innerHTML=blankTab("第 5–8 小節：高潮 → 解決");
+{const sc=modeScale(JOURNEY.pc,5);$("journeyChords").innerHTML=chordRow(JOURNEY.chords,"這段用到的和弦");
+ $("journeyList").innerHTML=JOURNEY.phrases.map((p,i)=>phraseBlock(modeScale(JOURNEY.pc,p.mode),p,`${i+1}. A ${MODES[p.mode].zh}（${MODES[p.mode].en}）`,"journey "+i)).join("");}
+// 和弦圖：靜態表格旁邊
+$("s5Chords").innerHTML=chordRow(["Am7","D7"]);
+$("cmChords").innerHTML=chordRow(["Am7","D7","Am","F","G","Em","G7","Cmaj7","Fmaj7","Cmaj7#11","Bm7b5","C"]);
+$("progChords").innerHTML=chordRow(["Am","D","C","G","Em","F","Bdim"],"上表用到的和弦");
+$("borrowChords").innerHTML=chordRow(["C","Bb","Fm","Ab","D","Db","F","G"],"借用和弦（C 大調）");
+$("songChords").innerHTML=chordRow(["Am7","D","Cmaj7","G","Em7","Am","Fmaj7"],"這首歌的和弦");
+$("mixWhenChords").innerHTML=chordRow(["A7","Amaj7","Am","D7","E7","Fm"]);
+$("mixBorrowChords").innerHTML=chordRow(["C","F","Fm","Ab","Bb","Eb","Am","D","E7","A"],"借用和弦");
+$("mixProgChords").innerHTML=chordRow(["C","Am","F","Fm","Ab","Bb"],"「回家的路」和弦");
+const INDEX_GROUPS=[["大三和弦","C D E F G A Bb Ab Eb Db"],["小三和弦","Am Em Dm Fm Bm"],["屬七和弦","A7 D7 E7 G7 C7 B7"],["小七和弦","Am7 Em7 Dm7 Bm7"],["大七和弦","Cmaj7 Fmaj7 Gmaj7 Amaj7 Dmaj7 Cmaj7#11"],["半減七與減和弦","Bm7b5 Bdim"],["分割和弦","E/D"]];
+$("chordIndex").innerHTML=INDEX_GROUPS.map(([g,l])=>`<h3>${g}</h3>`+chordRow(l.split(" "))).join("");
+
 function render(){
  const k=state.mode,pc=state.root,m=MODES[k],names=spell(pc,k),labels=degreeLabels(k),sizes=stepSizes(k),chords=diatonic(pc,k);
  seg($("modeSeg"),MODES.map((mm,i)=>[String(i),mm.en]),String(k),v=>{state.mode=Number(v);render();});
@@ -543,9 +753,23 @@ function render(){
  const dom=p=>{const n=spell(p,4);return[n[0],n[2],n[4],n[6]];},mpn=bluesScale(bp,"minPent").names,Mpn=bluesScale(bp,"majPent").names,iT=dom(bp),ivT=dom((bp+5)%12),vT=dom((bp+7)%12);
  $("twelveTable").innerHTML=table(["和弦","和弦音","可以用","落點（目標音）"],[[`${I}7（I7）`,iT.join(" "),`${I} 小調藍調／${I} 大調五聲都可以（大小調混用）`,`${iT[1]}（3）或 ${iT[0]}`],[`${IV}7（IV7）`,ivT.join(" "),`${I} 小調五聲／藍調`,`${ivT[3]}（${IV}7 的 b7 = ${I} 的 b3）`],[`${V}7（V7）`,vT.join(" "),`${I} 小調五聲，加上 ${vT[1]} 當導音`,`${vT[1]}（${V}7 的 3）→ ${I}`]]);
  $("progProps").innerHTML=props([["招牌進行（級數）",m.prog.map(d=>chords[d].roman).join(" – ")],["招牌進行（目前根音）",m.prog.map(d=>chords[d].triad).join(" – ")],["特色和弦",`${chords[m.charChord].roman}（${chords[m.charChord].triad}）`]]);
+ // chords (dynamic)
+ $("diaChords").innerHTML=chordRow(chords.map(c=>c.triad),"三和弦")+chordRow(chords.map(c=>c.seventh),"七和弦");
+ $("lickChords").innerHTML=chordRow(LICK_CHORDS[state.lickMode],"伴奏和弦");
+ $("twelveChords").innerHTML=chordRow([I+"7",IV+"7",V+"7"],`${I} 藍調的三個和弦`);
+ // legato
+ seg($("legatoSeg"),MODES.map((mm,i)=>[String(i),mm.en]),String(state.legatoMode),v=>{state.legatoMode=Number(v);render();});
+ {const lk=state.legatoMode,L=LEGATO[lk],lm2=MODES[lk],sc=modeScale(L.pc,lk),ln=spell(L.pc,lk);
+  $("legatoProps").innerHTML=props([["調",`${ln[0]} ${lm2.zh}（${lm2.en}）：${ln.join(" ")}`],["情緒／畫面",L.mood],["伴奏",L.vamp],["把位",L.pos],["速度",`先 60 BPM 慢練，目標 ${L.bpm} BPM（八分音符）`],["特色音",`${degreeLabels(lk)[lm2.char]}（${ln[lm2.char]}）——紫色方塊`]]);
+  $("legatoChords").innerHTML=chordRow(L.chords,"伴奏和弦");
+  const dots=soloDots(sc,L.phrases.map(p=>p.tokens)),mx=Math.max(...dots.map(d=>d.f));
+  $("legatoNeck").innerHTML=neck(dots,Math.max(12,mx+1),"這段 solo 用到的音");
+  $("legatoList").innerHTML=L.phrases.map((p,i)=>phraseBlock(sc,p,PHRASE_ZH[i],lm2.en+" solo "+i)).join("");}
+ linkChords(document.body);
 }
 render();renderQuiz();
-window.__modes={spell,diatonic,MODES,spellIv,bluesScale,pentBoxes,LICKS,BLUES_LICKS,MIX_SCALE,MIX_LICK,TAB_ERRORS,modeScale,OPEN_STRINGS};
+window.__modes={LEGATO,JOURNEY,CHORD_ERRORS,chordShape,checkChord,parseChord,LICK_CHORDS,spell,diatonic,MODES,spellIv,bluesScale,pentBoxes,LICKS,BLUES_LICKS,MIX_SCALE,MIX_LICK,TAB_ERRORS,modeScale,OPEN_STRINGS};
 </script>
+<div id="chPop" class="chpop" hidden></div>
 </body>
 </html>
