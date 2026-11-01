@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>調式音階・即興・寫歌：一步一步學</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Iansui&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f7f5f1; --paper:#ffffff; --text:#22201c; --text2:#5b5650; --text3:#8f8981;
+  --border:#e4dfd8; --border-strong:#b9b2a8; --fill2:#efebe5; --accent:#1F9C8C;
+  --orange:#E8893B; --teal:#1F9C8C; --purple:#7A5BD6; --success:#2e8b57; --danger:#c8463d;
+  --nut:#22201c; --inlay:#d6d0c7;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#151413; --paper:#1e1d1b; --text:#f1ede6; --text2:#c2bcb3; --text3:#8d877f;
+    --border:#34312d; --border-strong:#5d5852; --fill2:#2a2825; --nut:#f1ede6; --inlay:#46423d;
+    --success:#5cc08a; --danger:#ef7a70;
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body,button,select,input,svg,svg text{font-family:'Iansui',sans-serif}
+body{margin:0;background:var(--bg);color:var(--text);font-size:18px;line-height:1.75}
+.wrap{max-width:1180px;margin:0 auto;padding:32px 20px 80px}
+header h1{font-size:2.1rem;line-height:1.3;margin:0 0 10px;font-weight:400}
+header p{color:var(--text2);margin:0 0 24px;font-size:1.1rem}
+nav.toc{background:var(--paper);border:1px solid var(--border);border-radius:16px;padding:16px 22px;margin-bottom:28px}
+nav.toc .tt{color:var(--text3);font-size:.9rem;margin-bottom:6px}
+nav.toc ol{margin:0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:6px 22px}
+nav.toc a{color:var(--text);text-decoration:none;border-bottom:1px dashed var(--border-strong)}
+nav.toc a:hover{color:var(--accent)}
+section{background:var(--paper);border:1px solid var(--border);border-radius:16px;padding:24px 26px;margin-bottom:24px;scroll-margin-top:16px}
+section > h2{font-size:1.55rem;font-weight:400;margin:0 0 14px}
+p{margin:12px 0}
+.muted{color:var(--text2)}
+.figure{border:1px solid var(--border);border-radius:12px;padding:12px;margin:14px 0;background:var(--paper)}
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.scroll svg{min-width:880px}
+.scroll.narrow svg{min-width:560px}
+svg{display:block;width:100%;height:auto}
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:.95rem;color:var(--text2);margin:10px 0 4px}
+.legend span::before{content:"";display:inline-block;width:14px;height:14px;border-radius:50%;margin-right:6px;vertical-align:-2px;background:var(--c)}
+table{border-collapse:collapse;width:100%;font-size:1rem}
+.tbl{overflow-x:auto;margin:14px 0}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:top}
+th{color:var(--text2);font-weight:400;border-bottom:1px solid var(--border-strong);white-space:nowrap}
+td:first-child{white-space:nowrap}
+.callout{background:var(--fill2);border-radius:12px;padding:14px 18px;margin:14px 0}
+.callout b{font-weight:400;color:var(--accent)}
+.controls{display:flex;flex-wrap:wrap;gap:12px 18px;align-items:flex-end;margin:6px 0 8px}
+.seg{display:flex;flex-wrap:wrap;gap:4px;background:var(--fill2);padding:4px;border-radius:12px}
+.seg button{border:0;background:transparent;color:var(--text2);padding:6px 12px;border-radius:9px;font-size:1rem;cursor:pointer}
+.seg button.on{background:var(--paper);color:var(--text);box-shadow:0 1px 3px rgba(0,0,0,.15)}
+label.sel{display:flex;flex-direction:column;font-size:.85rem;color:var(--text3)}
+select{font-size:1rem;padding:6px 10px;border-radius:9px;border:1px solid var(--border-strong);background:var(--paper);color:var(--text)}
+dl.props{display:grid;grid-template-columns:max-content 1fr;gap:6px 20px;margin:14px 0}
+dl.props dt{color:var(--text2)} dl.props dd{margin:0}
+ol.steps{list-style:none;counter-reset:s;padding:0;margin:14px 0}
+ol.steps li{counter-increment:s;position:relative;padding:0 0 14px 46px}
+ol.steps li::before{content:counter(s);position:absolute;left:0;top:2px;width:30px;height:30px;border-radius:50%;background:var(--teal);color:#fff;text-align:center;line-height:30px;font-size:.95rem}
+ol.steps li::after{content:"";position:absolute;left:14.5px;top:36px;bottom:4px;width:1px;background:var(--border-strong)}
+ol.steps li:last-child::after{display:none}
+ol.steps .st{display:block}
+ol.steps .sd{display:block;color:var(--text2);font-size:.95rem}
+ul.b{padding-left:22px}
+.quiz .q{margin:0 0 26px}
+.quiz .qt{margin-bottom:8px}
+.quiz .opts{display:flex;flex-wrap:wrap;gap:8px}
+.btn{border:1px solid var(--border-strong);background:var(--paper);color:var(--text);padding:7px 14px;border-radius:10px;font-size:1rem;cursor:pointer}
+.btn:hover{border-color:var(--accent)}
+.btn.picked{background:var(--teal);border-color:var(--teal);color:#fff}
+.fb{margin-top:8px;color:var(--text2);font-size:.98rem}
+.pill{display:inline-block;padding:1px 10px;border-radius:999px;color:#fff;margin-right:8px;font-size:.9rem}
+.pill.ok{background:var(--success)} .pill.no{background:var(--danger)}
+.score{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+/* svg classes */
+.s-inlay{fill:var(--inlay)} .s-fret{stroke:var(--border-strong);stroke-width:1.5}
+.s-str{stroke:var(--text3)} .s-nut{fill:var(--nut)} .s-lbl{fill:var(--text3)} .s-txt{fill:var(--text)} .s-txt2{fill:var(--text2)}
+.s-grid{stroke:var(--border)} .s-line{stroke:var(--border-strong)} .s-ring{stroke:var(--paper)}
+.s-white{fill:#fbfaf7;stroke:#b9b2a8} .s-black{fill:#22201c} .s-keytxt{fill:#22201c} .s-cell{fill:var(--fill2);stroke:var(--border)}
+@media (max-width:640px){
+  body{font-size:17px}
+  .wrap{padding:20px 12px 60px}
+  section{padding:18px 14px}
+  header h1{font-size:1.6rem}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>調式音階・即興・寫歌：一步一步學</h1>
+  <p>從全音半音開始，看懂七個調式的聲音與指板位置，再一步步用它們即興、寫出有個性的和弦進行與旋律。</p>
+</header>
+<nav class="toc"><div class="tt">目錄</div><ol id="toc"></ol></nav>
+
+<section id="s0"><h2>0. 先備知識：全音、半音、大調、音程</h2>
+  <p>吉他上最好算：同一條弦上移動 1 格 = 半音，2 格 = 全音。大調音階的排列永遠是「全 全 半 全 全 全 半」。下圖是在 A 弦上從第 3 格的 C 彈到第 15 格的 C。</p>
+  <div class="figure scroll" id="singleString"></div>
+  <p>兩個陷阱：E 和 F 之間、B 和 C 之間沒有升降音，只差 1 格（半音）；其他相鄰的自然音都差 2 格。下圖把整個指板上的 E、B（橘）和 F、C（綠）標出來，每一對都緊貼在隔壁格。</p>
+  <div class="legend"><span style="--c:var(--orange)">E、B</span><span style="--c:var(--teal)">F、C</span></div>
+  <div class="figure scroll" id="halfNeck"></div>
+  <div class="tbl" id="intervalTable"></div>
+  <p>本頁的公式都用「跟大調比」的寫法：1 2 3 4 5 6 7 是大調，前面加 b 表示降半音（少 1 格）、加 # 表示升半音（多 1 格）。</p>
+</section>
+
+<section id="s1"><h2>1. 什麼是調式？</h2>
+  <div class="callout"><b>一句話記住：</b>調式 = 同一組音 + 不同的中心音（家）。C 大調的七個白鍵，從不同的鍵當作「家」，就得到七種不同的聲音。</div>
+  <div class="seg" id="whiteSeg"></div>
+  <div class="figure scroll" id="keyboard"></div>
+  <p id="whiteText"></p>
+  <p>重點不是「從哪個音開始彈」，而是「哪個音聽起來像家」。要讓 D 聽起來像家，伴奏就要停在 D（例如低音一直彈 D，或和弦一直回到 Dm）。這也是之後即興和寫歌的關鍵。</p>
+</section>
+
+<section id="s2"><h2>2. 七個調式一覽（由亮到暗）</h2>
+  <div class="legend"><span style="--c:var(--orange)">根音</span><span style="--c:var(--teal)">其他音階音</span><span style="--c:var(--purple)">特色音</span></div>
+  <div class="figure scroll" id="ladder"></div>
+  <p>由上往下，每往下一個調式就多一個降記號，聲音逐漸變暗；利地亞比大調還多一個 #4，所以最亮。</p>
+  <div class="tbl" id="ladderTable"></div>
+</section>
+
+<section id="s3"><h2>3. 互動指板</h2>
+  <div class="controls">
+    <div class="seg" id="modeSeg"></div>
+    <label class="sel">根音<select id="rootSel"></select></label>
+    <div class="seg" id="showSeg"></div>
+  </div>
+  <div class="legend"><span style="--c:var(--orange)">根音</span><span style="--c:var(--teal)">其他音階音</span><span style="--c:var(--purple)">特色音</span></div>
+  <div class="figure scroll" id="mainNeck"></div>
+  <div class="figure scroll narrow" id="stepStrip"></div>
+  <dl class="props" id="modeProps"></dl>
+  <p class="muted">手機上指板可以左右滑動，或把螢幕轉橫來看。建議練法：先找出所有橘色根音，再在根音附近把整個把位彈熟，最後特別去聽紫色的特色音。</p>
+</section>
+
+<section id="s4"><h2>4. 每個調式的「特色音」</h2>
+  <div class="tbl" id="charTable"></div>
+  <p id="charText"></p>
+  <div class="legend"><span style="--c:var(--orange)">根音</span><span style="--c:var(--purple)">特色音</span></div>
+  <div class="figure scroll" id="charNeck"></div>
+  <ol class="steps" id="hearSteps"></ol>
+</section>
+
+<section id="s5"><h2>5. 即興入門：一步一步來</h2>
+  <ol class="steps" id="improvSteps"></ol>
+  <p>示範樂句：A 多利安，伴奏 Am7 – D7（各兩拍）。紫色的 F# 是特色音，同時也是 D7 的三度，所以聽起來特別「對」。先看它在指板上的位置（第 5–7 格），再看下面的 TAB 彈奏順序。</p>
+  <div class="legend"><span style="--c:var(--orange)">根音 A</span><span style="--c:var(--teal)">其他音</span><span style="--c:var(--purple)">特色音 F#</span></div>
+  <div class="figure scroll" id="lickNeck"></div>
+  <div class="figure scroll narrow" id="tab"></div>
+  <ul class="b">
+    <li>節奏比音符重要：先用同一個音彈出有律動的節奏，再加入其他音。</li>
+    <li>強拍放和弦音，弱拍放經過音，句子就會穩。</li>
+    <li>從特色音出發的推弦或滑音，最能凸顯調式的顏色。</li>
+    <li>一個把位彈熟再換下一個，不要一次背整個指板。</li>
+  </ul>
+</section>
+
+<section id="s6"><h2>6. 和弦與調式的對應</h2>
+  <div class="tbl" id="chordModeTable"></div>
+  <p id="diaText"></p>
+  <div class="tbl" id="diaTable"></div>
+  <dl class="props" id="progProps"></dl>
+  <div class="tbl" id="progTable"></div>
+</section>
+
+<section id="s7"><h2>7. 運用到寫歌</h2>
+  <ol class="steps" id="songSteps"></ol>
+  <div class="tbl" id="borrowTable"></div>
+  <div class="callout"><b>範例歌曲草稿：「夏夜散步」（A 多利安，88 BPM）</b><br>主歌用 i – IV 建立多利安的帥氣小調感，副歌加入 bVII，橋段借 A 伊奧利亞的 F 製造短暫陰影，回到副歌時 D 和弦的 F# 就像天氣放晴。</div>
+  <div class="tbl" id="songTable"></div>
+  <p>動手試試：用第 3 節把調式換成米索利地亞，把第 6 節的招牌進行 I – bVII – IV 彈 8 小節，再哼一句把 b7 放在長音的旋律，就是你自己的第一個調式歌曲草稿。</p>
+</section>
+
+<section id="s8"><h2>8. 四週練習計畫</h2>
+  <div class="tbl" id="planTable"></div>
+  <p>每次練習的節奏建議：5 分鐘暖身與音階、10 分鐘聽力（drone＋特色音）、10 分鐘即興、5 分鐘錄音回聽與記下好句子。</p>
+</section>
+
+<section id="s9"><h2>9. 小測驗</h2>
+  <div class="quiz" id="quiz"></div>
+  <div class="score"><span id="score"></span><button class="btn" id="resetQuiz">重新作答</button></div>
+</section>
+</div>
+
+<script>
+"use strict";
+const ORANGE="#E8893B", TEAL="#1F9C8C", PURPLE="#7A5BD6";
+const CAT=[ORANGE,TEAL,PURPLE];
+const MODES=[
+ {id:"ionian",zh:"愛奧尼亞",en:"Ionian",char:6,mood:"明亮、穩定、快樂",bright:2,charChord:4,prog:[0,3,4,0],example:"多數大調流行歌，例：Let It Be（The Beatles）",compare:"對照利地亞：4 是自然 4；對照米索利地亞：7 是大七度",hear:"大七度 7 緊貼根音，有強烈「想回家」的導音拉力"},
+ {id:"dorian",zh:"多利安",en:"Dorian",char:5,mood:"小調但帶希望、帥氣、放克／靈魂",bright:4,charChord:3,prog:[0,3,0,3],example:"Oye Como Va（Santana）、So What（Miles Davis）、Scarborough Fair",compare:"對照伊奧利亞：b6 變成 6",hear:"在小和弦上停在大六度 6，小調瞬間變亮、變帥"},
+ {id:"phrygian",zh:"弗里幾亞",en:"Phrygian",char:1,mood:"異國、緊張、西班牙／金屬",bright:6,charChord:1,prog:[0,1,2,1],example:"佛朗明哥、許多金屬 riff",compare:"對照伊奧利亞：2 變成 b2",hear:"b2 往 1 半音下滑，立刻有西班牙、暗黑的味道"},
+ {id:"lydian",zh:"利地亞",en:"Lydian",char:3,mood:"夢幻、漂浮、電影感",bright:1,charChord:1,prog:[0,1,0,1],example:"The Simpsons 主題曲、Flying in a Blue Dream（Joe Satriani）",compare:"對照愛奧尼亞：4 變成 #4",hear:"大和弦上長音停在 #4，聲音像浮在空中"},
+ {id:"mixolydian",zh:"米索利地亞",en:"Mixolydian",char:6,mood:"陽光搖滾、藍調味、豪邁",bright:3,charChord:6,prog:[0,6,3,0],example:"Sweet Home Alabama（Lynyrd Skynyrd）、Norwegian Wood（The Beatles）",compare:"對照愛奧尼亞：7 變成 b7",hear:"大和弦上的 b7，搖滾和藍調的招牌聲音"},
+ {id:"aeolian",zh:"伊奧利亞",en:"Aeolian",char:5,mood:"憂傷、抒情（自然小調）",bright:5,charChord:5,prog:[0,5,6,0],example:"All Along the Watchtower（Bob Dylan，Jimi Hendrix 翻唱版）",compare:"對照多利安：6 變成 b6",hear:"b6 往 5 半音下行，帶出典型的憂傷感"},
+ {id:"locrian",zh:"洛克利亞",en:"Locrian",char:4,mood:"不穩定、黑暗、懸疑",bright:7,charChord:4,prog:[0,1,0,1],example:"很少整首歌使用，多見於金屬 riff 片段",compare:"對照弗里幾亞：5 變成 b5",hear:"連根音和弦都是減和弦，聽起來永遠「站不穩」"}
+];
+const LETTERS=["C","D","E","F","G","A","B"], LPC=[0,2,4,5,7,9,11], ION=[0,2,4,5,7,9,11];
+const ROMAN=["I","II","III","IV","V","VI","VII"];
+const ROOT_CANDIDATES=[[0],[1,0],[1],[2,1],[2],[3],[3,4],[4],[5,4],[5],[6,5],[6]];
+const ROOT_LABELS=["C","C#／Db","D","D#／Eb","E","F","F#／Gb","G","G#／Ab","A","A#／Bb","B"];
+const OPEN_STRINGS=[4,11,7,2,9,4], STRING_NAMES=["e","B","G","D","A","E"];
+
+function semis(k){return ION.map((_,i)=>(ION[(i+k)%7]-ION[k]+12)%12);}
+function accStr(a){return a>0?"#".repeat(a):"b".repeat(-a);}
+function spell(pc,k){const s=semis(k);let best=[],bs=999;for(const l of ROOT_CANDIDATES[pc]){let sc=0;const n=s.map((x,i)=>{const L=(l+i)%7;let a=(((pc+x)%12)-LPC[L]+12)%12;if(a>6)a-=12;sc+=Math.abs(a)+(Math.abs(a)>=2?10:0);return LETTERS[L]+accStr(a);});if(sc<bs){bs=sc;best=n;}}return best;}
+function degreeLabels(k){const s=semis(k);return s.map((x,i)=>{const d=x-ION[i];return(d<0?"b":d>0?"#":"")+(i+1);});}
+function stepSizes(k){const s=semis(k);return s.map((x,i)=>i<6?s[i+1]-x:12-x);}
+const stepWord=n=>n===2?"全":"半";
+function diatonic(pc,k){const s=semis(k),names=spell(pc,k),labels=degreeLabels(k),cd=MODES[k].char;
+ return s.map((x,i)=>{const rel=j=>(s[(i+j)%7]-x+12)%12;const th=rel(2),fi=rel(4),sv=rel(6);let ts,ss;
+  if(th===4&&fi===7){ts="";ss=sv===11?"maj7":"7";}else if(th===3&&fi===7){ts="m";ss=sv===10?"m7":"m(maj7)";}else{ts="dim";ss="m7b5";}
+  const acc=labels[i].length>1?labels[i][0]:"";let num=ROMAN[i];if(ts!=="")num=num.toLowerCase();if(ts==="dim")num+="°";
+  const mem=[i,(i+2)%7,(i+4)%7,(i+6)%7];return{roman:acc+num,triad:names[i]+ts,seventh:names[i]+ss,hasChar:mem.includes(cd)};});}
+const esc=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;");
+
+function scaleDots(pc,k,show,maxFret,onlyRC){const s=semis(k),names=spell(pc,k),labels=degreeLabels(k),cd=MODES[k].char,out=[];
+ OPEN_STRINGS.forEach((open,si)=>{for(let f=0;f<=maxFret;f++){const deg=s.indexOf((open+f-pc+120)%12);if(deg<0)continue;const cat=deg===0?0:deg===cd?2:1;if(onlyRC&&cat===1)continue;out.push({s:si,f,label:show==="interval"?labels[deg]:names[deg],cat});}});return out;}
+function halfStepDots(){const want={4:"E",5:"F",11:"B",0:"C"},out=[];OPEN_STRINGS.forEach((open,si)=>{for(let f=0;f<=12;f++){const n=want[(open+f)%12];if(!n)continue;out.push({s:si,f,label:n,cat:(n==="E"||n==="B")?0:1});}});return out;}
+const LICK=[{s:1,f:5,n:"E",iv:"5"},{s:1,f:7,n:"F#",iv:"6"},{s:0,f:5,n:"A",iv:"1"},{s:1,f:7,n:"F#",iv:"6"},{s:1,f:5,n:"E",iv:"5"},{s:2,f:7,n:"D",iv:"4"},{s:2,f:5,n:"C",iv:"b3"},{s:3,f:7,n:"A",iv:"1"}];
+function lickDots(){const seen={},out=[];LICK.forEach(n=>{const k=n.s+"-"+n.f;if(seen[k])return;seen[k]=1;out.push({s:n.s,f:n.f,label:n.n,cat:n.iv==="1"?0:n.iv==="6"?2:1});});return out;}
+
+function neck(dots,maxFret,label){
+ const nutX=96,endX=1215,fw=(endX-nutX)/maxFret,top=30,gap=44,y=i=>top+i*gap,x=f=>f===0?nutX-36:nutX+(f-.5)*fw,r=Math.min(18,fw*.36+4);
+ let o=`<svg viewBox="0 0 1240 300" role="img" aria-label="${label}">`;
+ const mid=(y(2)+y(3))/2;
+ [3,5,7,9,15].filter(f=>f<=maxFret).forEach(f=>o+=`<circle class="s-inlay" cx="${x(f)}" cy="${mid}" r="9"/>`);
+ if(maxFret>=12)o+=`<circle class="s-inlay" cx="${x(12)}" cy="${(y(1)+y(2))/2}" r="9"/><circle class="s-inlay" cx="${x(12)}" cy="${(y(3)+y(4))/2}" r="9"/>`;
+ for(let f=1;f<=maxFret;f++)o+=`<line class="s-fret" x1="${nutX+f*fw}" x2="${nutX+f*fw}" y1="${y(0)}" y2="${y(5)}"/>`;
+ STRING_NAMES.forEach((n,i)=>o+=`<line class="s-str" x1="${nutX}" x2="${endX}" y1="${y(i)}" y2="${y(i)}" stroke-width="${1+i*.3}"/><text class="s-lbl" x="8" y="${y(i)+5}" font-size="14">${n}</text>`);
+ o+=`<rect class="s-nut" x="${nutX-5}" y="${y(0)-4}" width="10" height="${y(5)-y(0)+8}" rx="2"/>`;
+ for(let f=1;f<=maxFret;f++)o+=`<text class="s-lbl" x="${x(f)}" y="${y(5)+38}" text-anchor="middle" font-size="16">${f}</text>`;
+ dots.forEach(d=>o+=`<circle class="s-ring" cx="${x(d.f)}" cy="${y(d.s)}" r="${r}" fill="${CAT[d.cat]}" stroke-width="2"/><text x="${x(d.f)}" y="${y(d.s)+5.5}" text-anchor="middle" font-size="${d.label.length>2?13:15}" fill="#fff">${esc(d.label)}</text>`);
+ return o+"</svg>";}
+
+function stepStrip(pc,k){const sizes=stepSizes(k),names=spell(pc,k),labels=degreeLabels(k),unit=1160/12;let cum=0;
+ const cells=sizes.map((n,i)=>{const x=40+cum*unit;cum+=n;return{x,w:n*unit,n,i};});
+ let o=`<svg viewBox="0 0 1240 130" role="img" aria-label="全音半音排列">`;
+ cells.forEach(c=>o+=`<rect ${c.n===2?'class="s-cell"':`fill="${TEAL}"`} x="${c.x+2}" y="46" width="${c.w-4}" height="40" rx="8"/><text ${c.n===2?'class="s-txt"':'fill="#fff"'} x="${c.x+c.w/2}" y="72" text-anchor="middle" font-size="17">${stepWord(c.n)}</text>`);
+ names.concat([names[0]]).forEach((n,i)=>{const x=i<7?cells[i].x:1200;o+=`<text class="s-txt" x="${x}" y="30" text-anchor="middle" font-size="16">${esc(n)}</text><text class="s-lbl" x="${x}" y="112" text-anchor="middle" font-size="14">${i<7?labels[i]:"8"}</text>`;});
+ return o+"</svg>";}
+
+function ladder(){const order=MODES.map((m,k)=>({m,k})).sort((a,b)=>a.m.bright-b.m.bright),colX=p=>300+p*72;
+ let o=`<svg viewBox="0 0 1240 420" role="img" aria-label="七個調式由亮到暗">`;
+ for(let p=0;p<=12;p++)o+=`<line class="s-grid" x1="${colX(p)}" x2="${colX(p)}" y1="40" y2="400"/><text class="s-lbl" x="${colX(p)}" y="26" text-anchor="middle" font-size="13">${p}</text>`;
+ o+=`<text class="s-lbl" x="20" y="26" font-size="13">距離根音的半音數（格數）</text>`;
+ order.forEach((o2,row)=>{const yy=66+row*50,s=semis(o2.k),labels=degreeLabels(o2.k);
+  o+=`<text class="s-txt" x="20" y="${yy+6}" font-size="17">${row+1}. ${o2.m.zh}</text><text class="s-txt2" x="160" y="${yy+6}" font-size="14">${o2.m.en}</text><line class="s-line" x1="${colX(0)}" x2="${colX(12)}" y1="${yy}" y2="${yy}"/>`;
+  s.concat([12]).forEach((p,i)=>{const cat=(i===0||i===7)?0:i===o2.m.char?2:1;o+=`<circle class="s-ring" cx="${colX(p)}" cy="${yy}" r="18" fill="${CAT[cat]}" stroke-width="2"/><text x="${colX(p)}" y="${yy+5}" text-anchor="middle" font-size="14" fill="#fff">${i===7?"8":labels[i]}</text>`;});});
+ return o+"</svg>";}
+
+function keyboard(start){const kw=80,x0=20,labels=degreeLabels(start),sizes=stepSizes(start);
+ let o=`<svg viewBox="0 0 1240 250" role="img" aria-label="鋼琴白鍵上的調式">`;
+ for(let i=0;i<15;i++){const inR=i>=start&&i<=start+7,isR=i===start||i===start+7;
+  o+=`<rect ${inR?`fill="${isR?ORANGE:TEAL}" class="s-line"`:'class="s-white"'} x="${x0+i*kw}" y="10" width="${kw}" height="170" rx="6"/>`;
+  o+=`<text ${inR?'fill="#fff"':'class="s-keytxt"'} x="${x0+i*kw+kw/2}" y="165" text-anchor="middle" font-size="18">${LETTERS[i%7]}</text>`;
+  if(inR)o+=`<text class="s-txt2" x="${x0+i*kw+kw/2}" y="204" text-anchor="middle" font-size="15">${i===start+7?"8":labels[i-start]}</text>`;}
+ for(let i=0;i<14;i++)if([0,1,3,4,5].includes(i%7))o+=`<rect class="s-black" x="${x0+(i+1)*kw-22}" y="10" width="44" height="105" rx="4"/>`;
+ sizes.forEach((n,j)=>o+=`<text class="${n===1?'s-txt':'s-lbl'}" x="${x0+(start+j+1)*kw}" y="238" text-anchor="middle" font-size="16">${stepWord(n)}</text>`);
+ return o+"</svg>";}
+
+function singleString(){const frets=[3,5,7,8,10,12,14,15],names=["C","D","E","F","G","A","B","C"],nutX=96,fw=(1215-nutX)/15,fx=f=>nutX+(f-.5)*fw;
+ let o=`<svg viewBox="0 0 1240 150" role="img" aria-label="A 弦上的 C 大調">`;
+ for(let f=1;f<=15;f++)o+=`<line class="s-fret" x1="${nutX+f*fw}" x2="${nutX+f*fw}" y1="70" y2="110"/><text class="s-lbl" x="${fx(f)}" y="140" text-anchor="middle" font-size="15">${f}</text>`;
+ o+=`<line class="s-str" x1="${nutX}" x2="1215" y1="90" y2="90" stroke-width="2"/><rect class="s-nut" x="${nutX-5}" y="66" width="10" height="48" rx="2"/><text class="s-txt2" x="8" y="96" font-size="15">A 弦</text>`;
+ frets.forEach((f,i)=>{const isR=i===0||i===7;o+=`<circle class="s-ring" cx="${fx(f)}" cy="90" r="18" fill="${isR?ORANGE:TEAL}" stroke-width="2"/><text x="${fx(f)}" y="96" text-anchor="middle" font-size="15" fill="#fff">${names[i]}</text>`;});
+ frets.slice(0,7).forEach((f,i)=>{const nx=frets[i+1],half=nx-f===1;o+=`<text class="${half?'s-txt':'s-txt2'}" x="${(fx(f)+fx(nx))/2}" y="45" text-anchor="middle" font-size="15">${half?"半（1 格）":"全（2 格）"}</text>`;});
+ return o+"</svg>";}
+
+function tab(){const ly=i=>40+i*24,nx=i=>150+i*135;
+ let o=`<svg viewBox="0 0 1240 260" role="img" aria-label="A 多利安示範樂句 TAB"><text class="s-lbl" x="150" y="20" font-size="15">Am7</text><text class="s-lbl" x="${150+4*135}" y="20" font-size="15">D7</text>`;
+ STRING_NAMES.forEach((n,i)=>o+=`<line class="s-line" x1="80" x2="1200" y1="${ly(i)}" y2="${ly(i)}"/><text class="s-txt2" x="40" y="${ly(i)+5}" font-size="14">${n}</text>`);
+ LICK.forEach((n,i)=>{const cat=n.iv==="1"?0:n.iv==="6"?2:1;o+=`<rect x="${nx(i)-15}" y="${ly(n.s)-11}" width="30" height="22" rx="6" fill="${CAT[cat]}"/><text x="${nx(i)}" y="${ly(n.s)+5}" text-anchor="middle" font-size="16" fill="#fff">${n.f}</text><text class="s-txt" x="${nx(i)}" y="208" text-anchor="middle" font-size="17">${n.n}</text><text class="s-lbl" x="${nx(i)}" y="234" text-anchor="middle" font-size="14">${n.iv}</text>`;});
+ return o+"</svg>";}
+
+function table(cols,rows){return `<table><thead><tr>${cols.map(c=>`<th>${esc(c)}</th>`).join("")}</tr></thead><tbody>${rows.map(r=>`<tr>${r.map(c=>`<td>${esc(c)}</td>`).join("")}</tr>`).join("")}</tbody></table>`;}
+function steps(arr){return arr.map(([t,d])=>`<li><span class="st">${esc(t)}</span><span class="sd">${esc(d)}</span></li>`).join("");}
+function props(items){return items.map(([k,v])=>`<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join("");}
+function seg(el,opts,val,on){el.innerHTML=opts.map(([v,l])=>`<button type="button" data-v="${v}" class="${v===val?"on":""}">${esc(l)}</button>`).join("");el.onclick=e=>{const b=e.target.closest("button");if(b)on(b.dataset.v);};}
+const $=id=>document.getElementById(id);
+
+const state={mode:1,root:2,show:"interval",white:1,answers:{}};
+
+// TOC
+$("toc").innerHTML=[...document.querySelectorAll("section")].map(s=>`<li><a href="#${s.id}">${esc(s.querySelector("h2").textContent)}</a></li>`).join("");
+
+// static
+$("singleString").innerHTML=singleString();
+$("halfNeck").innerHTML=neck(halfStepDots(),12,"E–F 與 B–C 在指板上的位置");
+$("intervalTable").innerHTML=table(["格數（半音數）","音程名稱","記號","從 C 開始"],[["0","完全一度（根音）","1","C"],["1","小二度","b2","Db"],["2","大二度","2","D"],["3","小三度","b3","Eb"],["4","大三度","3","E"],["5","完全四度","4","F"],["6","增四度／減五度（三全音）","#4／b5","F#／Gb"],["7","完全五度","5","G"],["8","小六度","b6","Ab"],["9","大六度","6","A"],["10","小七度","b7","Bb"],["11","大七度","7","B"],["12","八度","8","C"]]);
+$("ladder").innerHTML=ladder();
+$("ladderTable").innerHTML=table(["亮度","調式","公式","特色音","情緒","代表例子"],MODES.map((m,i)=>({m,i})).sort((a,b)=>a.m.bright-b.m.bright).map(({m,i})=>[String(m.bright),m.zh+" "+m.en,degreeLabels(i).join(" "),degreeLabels(i)[m.char],m.mood,m.example]));
+$("charTable").innerHTML=table(["調式","特色音","跟誰比較","特色和弦","聽起來"],MODES.map((m,i)=>[m.zh+" "+m.en,degreeLabels(i)[m.char],m.compare,diatonic(0,i)[m.charChord].roman,m.hear]));
+$("hearSteps").innerHTML=steps([["放一個根音 drone","用一條空弦當持續低音（例如 A 弦空弦），或找 YouTube 上的「A drone」。"],["彈 1 → 特色音 → 1","例如 A 多利安：A → F#（6）→ A，慢慢彈、讓每個音響滿。"],["跟平行調式對照","把 F# 換成 F（b6）就是 A 伊奧利亞，來回切換，耳朵會記住差別。"],["用唱的","跟著彈唱 1 – 3 – 5 – 特色音，能唱出來才真的聽懂了。"]]);
+$("improvSteps").innerHTML=steps([["準備伴奏：一個和弦就好","先用單一和弦或 drone 循環（例如 Am7，80 BPM），讓耳朵確定「家」在哪。"],["只用三個音：1、3（或 b3）、5","先只彈和弦音，練習每一句都「落」在和弦音上，這是好聽的基礎。"],["加入特色音","把特色音當作經過音或長音，然後解決到旁邊的和弦音（A 多利安：F# → E 或 F# → A）。"],["用動機（motif）說話","做一個 2–4 個音的小短句，重複它、改節奏、改最後一個音，比一直跑音階好聽很多。"],["問答句（call & response）","2 小節「問」停在不穩定的音（2、4、6），2 小節「答」回到根音或 5。"],["瞄準換和弦的目標音","換和弦前一拍，往新和弦的三度走。Am7 → D7 時，瞄準 D7 的三度 F#。"],["留白與錄音回放","每句之間留 1–2 拍空白；每次練習錄 2 分鐘，回聽挑出一個最喜歡的句子記下來。"]]);
+$("lickNeck").innerHTML=neck(lickDots(),9,"A 多利安示範樂句的指板位置");
+$("tab").innerHTML=tab();
+$("chordModeTable").innerHTML=table(["和弦類型","例子","首選調式","原因"],[["m7（不當成 vi）","Am7 – D7","多利安 Dorian","大六度讓小和弦更亮，i – IV 進行最常見"],["m7（小調 i 或 vi）","Am – F – G","伊奧利亞 Aeolian","b6 對應 F 和弦，抒情憂傷"],["m7 / sus(b9) 帶 b2 色彩","Em – F","弗里幾亞 Phrygian","b2 對應 bII 和弦，西班牙／金屬感"],["7（屬七但不解決）","G7 一直循環","米索利地亞 Mixolydian","b7 是和弦本身的音，搖滾藍調"],["maj7","Cmaj7 – Fmaj7","愛奧尼亞 Ionian","標準大調色彩"],["maj7#11","Cmaj7#11","利地亞 Lydian","#11 = #4，就是利地亞特色音"],["m7b5","Bm7b5","洛克利亞 Locrian","b5 是和弦本身的音"]]);
+$("progTable").innerHTML=table(["調式","招牌進行","常見調的例子"],[["多利安 Dorian","i – IV","Am – D（A 多利安）"],["米索利地亞 Mixolydian","I – bVII – IV","D – C – G（D 米索利地亞）"],["利地亞 Lydian","I – II","C – D（C 利地亞）"],["弗里幾亞 Phrygian","i – bII","Em – F（E 弗里幾亞）"],["伊奧利亞 Aeolian","i – bVI – bVII","Am – F – G（A 伊奧利亞）"],["愛奧尼亞 Ionian","I – IV – V","C – F – G（C 大調）"],["洛克利亞 Locrian","i° – bII","Bdim – C（B 洛克利亞）"]]);
+$("songSteps").innerHTML=steps([["先決定情緒，再選調式","想要帥氣小調選多利安，夢幻選利地亞，公路搖滾選米索利地亞，憂傷選伊奧利亞。"],["把中心穩住","多回到 i／I 和弦、用持續低音、段落結尾停在根音和弦，讓耳朵認定那是家。"],["特色和弦放在顯眼位置","多利安的 IV、米索利地亞的 bVII、利地亞的 II，放在第 2 小節或段落高潮。"],["避開父大調的 V7 → I","例如在 D 多利安，G7 → C 會把耳朵拉回 C 大調，調式感就消失了。"],["旋律：重拍和弦音、長音特色音","副歌高點或句尾長音放特色音，最容易讓人記住那個顏色。"],["調式互換（借和弦）","在大調歌曲裡借用平行調式的和弦，一個和弦就能改變整段情緒。"]]);
+$("borrowTable").innerHTML=table(["借來的和弦（以 C 大調為例）","來自","效果"],[["Bb（bVII）","C 米索利地亞","搖滾、豪邁，不急著解決"],["Fm（iv）","C 伊奧利亞","懷舊、感傷，常見 F → Fm → C"],["Ab（bVI）","C 伊奧利亞","史詩、電影感，Ab → Bb → C"],["D（II）","C 利地亞","夢幻、往上飄"],["Db（bII）","C 弗里幾亞","暗黑、戲劇化"]]);
+$("songTable").innerHTML=table(["段落","和弦（每格一小節）","旋律想法"],[["主歌","Am7 | D | Am7 | D","動機 E–F#–E–D｜C–A（短短短短｜短長），句尾在 D 和弦上停在 F#"],["導歌","Cmaj7 | G | Em7 | D","旋律一步步往上爬：E → F# → G → A，製造期待感"],["副歌","Am | G | D | Am","最高音落在 C 或 E；第 3 小節在 D 和弦上唱長音 F#"],["橋段","Fmaj7 | G | Am | Am","唱 F（b6）帶出陰影，最後一小節留白，再回副歌"]]);
+$("planTable").innerHTML=table(["週","主題","每天 20–30 分鐘","這週結束時能做到"],[["第 1 週","大調、音程、愛奧尼亞與伊奧利亞","A 弦上彈大調、唸音程；C 大調與 A 小調各彈一個把位；跟 drone 即興 5 分鐘","說得出任何音離根音幾格、哪個音程"],["第 2 週","多利安與米索利地亞","Am7 – D7 與 G – F – C 伴奏上各即興 10 分鐘；練第 5 節的 TAB 樂句並改編","聽得出 6 與 b7 的顏色"],["第 3 週","利地亞、弗里幾亞，認識洛克利亞","C – D 與 Em – F 伴奏即興；每天在指板上找出三個調式的特色音","能在任一根音快速找到七個調式的特色音"],["第 4 週","寫歌與調式互換","寫 8 小節調式進行＋旋律；在一首大調歌裡加入 bVII 或 iv；錄下來回聽","完成一段主歌＋副歌的調式歌曲草稿"]]);
+$("rootSel").innerHTML=ROOT_LABELS.map((l,i)=>`<option value="${i}">${l}</option>`).join("");
+$("rootSel").onchange=e=>{state.root=Number(e.target.value);render();};
+
+const QUIZ=[
+ {q:"1. D 多利安（Dorian）由哪些音組成？",o:["D E F G A B C","D E F# G A B C#","D E F G A Bb C"],a:0,e:"D 多利安就是 C 大調的白鍵音，從 D 開始：D E F G A B C。"},
+ {q:"2. 哪個調式的特色音是 #4？",o:["米索利地亞 Mixolydian","利地亞 Lydian","洛克利亞 Locrian"],a:1,e:"利地亞 = 大調把 4 升高成 #4，夢幻、漂浮。"},
+ {q:"3. 伴奏一直重複 Am7 – D7，最適合用哪個調式即興？",o:["A 伊奧利亞 Aeolian","A 弗里幾亞 Phrygian","A 多利安 Dorian"],a:2,e:"D7 含有 F#，就是 A 多利安的特色音 6；i–IV 是多利安的招牌進行。"},
+ {q:"4. 米索利地亞跟大調（愛奧尼亞）差在哪個音？",o:["7 變成 b7","3 變成 b3","4 變成 #4"],a:0,e:"米索利地亞 = 大調 + b7，大和弦上的 b7 是搖滾藍調味。"},
+ {q:"5. G 米索利地亞的音是？",o:["G A B C D E F#","G A B C D E F","G A Bb C D E F"],a:1,e:"G 米索利地亞 = C 大調的音從 G 開始：G A B C D E F。"},
+ {q:"6. E 弗里幾亞（Phrygian）的特色和弦 bII 是？",o:["F#m","F","D"],a:1,e:"E 弗里幾亞：E F G A B C D，b2 是 F，所以 bII = F 大三和弦（Em – F）。"},
+ {q:"7. 七個調式中，哪個聽起來最「亮」？",o:["愛奧尼亞 Ionian","利地亞 Lydian","米索利地亞 Mixolydian"],a:1,e:"由亮到暗：利地亞 > 愛奧尼亞 > 米索利地亞 > 多利安 > 伊奧利亞 > 弗里幾亞 > 洛克利亞。"},
+ {q:"8. 在吉他同一條弦上，一個全音是幾格？",o:["1 格","2 格","3 格"],a:1,e:"一格 = 半音，兩格 = 全音。"},
+ {q:"9. C 愛奧尼亞和 A 伊奧利亞的關係是？",o:["音完全不同","同一組音，不同的中心音","A 伊奧利亞多一個升記號"],a:1,e:"兩者都是白鍵音，差別只在「家」是 C 還是 A。這就是調式的核心概念。"}
+];
+function renderQuiz(){
+ $("quiz").innerHTML=QUIZ.map((q,qi)=>{const p=state.answers[qi],done=p!==undefined,ok=done&&p===q.a;
+  return `<div class="q"><div class="qt">${esc(q.q)}</div><div class="opts">${q.o.map((o,oi)=>`<button type="button" class="btn${done&&oi===p?" picked":""}" data-q="${qi}" data-o="${oi}">${esc(o)}</button>`).join("")}</div>${done?`<div class="fb"><span class="pill ${ok?"ok":"no"}">${ok?"答對了":"再想想"}</span>${esc(ok?q.e:"正確答案："+q.o[q.a]+"。"+q.e)}</div>`:""}</div>`;}).join("");
+ const score=QUIZ.reduce((s,q,i)=>s+(state.answers[i]===q.a?1:0),0);
+ $("score").textContent=`得分：${score} / ${QUIZ.length}（已作答 ${Object.keys(state.answers).length} 題）`;}
+$("quiz").onclick=e=>{const b=e.target.closest("button");if(!b)return;state.answers[Number(b.dataset.q)]=Number(b.dataset.o);renderQuiz();};
+$("resetQuiz").onclick=()=>{state.answers={};renderQuiz();};
+
+function render(){
+ const k=state.mode,pc=state.root,m=MODES[k],names=spell(pc,k),labels=degreeLabels(k),sizes=stepSizes(k),chords=diatonic(pc,k);
+ seg($("modeSeg"),MODES.map((mm,i)=>[String(i),mm.en]),String(k),v=>{state.mode=Number(v);render();});
+ seg($("showSeg"),[["interval","顯示音程"],["name","顯示音名"]],state.show,v=>{state.show=v;render();});
+ seg($("whiteSeg"),MODES.map((mm,i)=>[String(i),LETTERS[i]+" 起："+mm.en]),String(state.white),v=>{state.white=Number(v);render();});
+ $("rootSel").value=String(pc);
+ const ws=state.white,wm=MODES[ws];
+ $("keyboard").innerHTML=keyboard(ws);
+ $("whiteText").textContent=`目前：從 ${LETTERS[ws]} 開始 = ${LETTERS[ws]} ${wm.zh}（${wm.en}）。全半音排列變成「${stepSizes(ws).map(stepWord).join(" ")}」，公式是 ${degreeLabels(ws).join(" ")}。半音的位置一移動，聲音的情緒就跟著改變。`;
+ $("mainNeck").innerHTML=neck(scaleDots(pc,k,state.show,15,false),15,"互動吉他指板");
+ $("stepStrip").innerHTML=stepStrip(pc,k);
+ const parent=names[(7-k)%7];
+ $("modeProps").innerHTML=props([["調式",`${names[0]} ${m.zh}（${m.en}）`],["音名",names.join(" ")],["公式",labels.join(" ")],["全半音",sizes.map(stepWord).join(" ")],["特色音",`${labels[m.char]}（${names[m.char]}）`],["情緒",m.mood],["同一組音的大調",k===0?`就是 ${names[0]} 大調本身`:`${parent} 大調（從 ${parent} 大調的第 ${k+1} 個音開始）`]]);
+ $("charText").textContent=`特色音就是讓一個調式「不像別的調式」的那個音。下圖只留根音和特色音（目前是 ${names[0]} ${m.zh}，特色音 ${labels[m.char]} = ${names[m.char]}，可在第 3 節切換），先把這兩種位置的關係記熟。`;
+ $("charNeck").innerHTML=neck(scaleDots(pc,k,"name",12,true),12,"根音與特色音的位置");
+ $("diaText").textContent=`順階和弦（目前選擇：${names[0]} ${m.zh} ${m.en}，可在第 3 節切換）。含特色音的和弦最能代表這個調式。`;
+ $("diaTable").innerHTML=table(["級數","三和弦","七和弦","含特色音"],chords.map((c,i)=>[c.roman,c.triad,c.seventh,c.hasChar?(i===m.charChord?"是（特色和弦）":"是"):""]));
+ $("progProps").innerHTML=props([["招牌進行（級數）",m.prog.map(d=>chords[d].roman).join(" – ")],["招牌進行（目前根音）",m.prog.map(d=>chords[d].triad).join(" – ")],["特色和弦",`${chords[m.charChord].roman}（${chords[m.charChord].triad}）`]]);
+}
+render();renderQuiz();
+window.__modes={spell,diatonic,MODES};
+</script>
+</body>
+</html>
