@@ -26,7 +26,8 @@
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body,button,select,input,svg,svg text{font-family:'Iansui',sans-serif}
+@font-face{font-family:'GDigits';src:url(vendor/noto-sans-digits.woff) format('woff');unicode-range:U+0030-0039;font-display:swap}
+body,button,select,input,svg,svg text{font-family:'GDigits','Iansui',sans-serif}
 body{margin:0;background:var(--bg);color:var(--text);font-size:18px;line-height:1.75}
 .wrap{max-width:1180px;margin:0 auto;padding:32px 20px 80px}
 header h1{font-size:2.1rem;line-height:1.3;margin:0 0 10px;font-weight:400}
@@ -132,7 +133,11 @@ g.rn.on rect{stroke:var(--text);stroke-width:3}
 .ptab svg text{fill:var(--text);stroke:none}.ptab svg .vf-tabnote rect{fill:var(--paper);stroke:none}
 .ptab svg .vf-tabnote text{font-size:12.5px}@media (max-width:560px){.ptab{padding:8px 4px 2px}.ptab svg .vf-tabnote text{font-size:14px}}.ptab svg .ptab-ch{font-size:15px;font-weight:700;fill:var(--text)}
 .ptab-teach{margin:-6px 0 12px}.ptab-teach>summary{cursor:pointer;color:var(--muted);font-size:.92em;padding:4px 2px}.ptab-teach[open]>summary{margin-bottom:4px}
-.ptab-note{margin:0 0 6px;font-size:.88em;color:var(--muted)}.ptab svg .ptab-tup path{fill:none!important;stroke:var(--text);stroke-width:1}.ptab svg .ptab-tup text{font-size:12px;font-style:italic;font-weight:700}.ptab svg .ptab-fx{font-style:italic;font-weight:400;font-size:13px}.ptab svg .ptab-hk{fill:none!important;stroke:var(--orange)!important;stroke-width:1.5}.ptab svg .ptab-hkt{font-size:12px;fill:var(--orange)!important}
+.ptab-note{margin:0 0 6px;font-size:.88em;color:var(--muted)}.ptab svg .ptab-tup path{fill:none!important;stroke:var(--text);stroke-width:1}.ptab svg .ptab-tup text{font-size:12px;font-style:italic;font-weight:700}.ptab svg .ptab-gr text{font-size:10px}
+.ptab svg .ptab-gr rect{fill:var(--paper)!important;stroke:none!important}
+.ptab svg .ptab-grs{fill:none!important;stroke:var(--text);stroke-width:.8}
+.ptab svg .ptab-tt{font-size:11px;font-style:italic}
+.ptab svg .ptab-fx{font-style:italic;font-weight:400;font-size:13px}.ptab svg .ptab-hk{fill:none!important;stroke:var(--orange)!important;stroke-width:1.5}.ptab svg .ptab-hkt{font-size:12px;fill:var(--orange)!important}
 .pscore:not([data-ok]){min-height:170px}.ptab-play{margin:4px 0 2px}
 .ptab g.rn.on path,.ptab g.rn.on text{fill:var(--orange);stroke:var(--orange)}.ptab g.rn.on text{stroke:none;font-weight:700}
 details.basic{margin:22px 0;border:1px solid var(--border);border-radius:12px;padding:6px 14px}
@@ -1750,11 +1755,11 @@ function proBuildBar(VF,BU,ok,tabIds,phIdx,ctx,bi,st){const sn=[],tn=[];
      else if(n.kind==="t")a.addModifier(new VF.Annotation("tr").setVerticalJustification(VF.Annotation.VerticalJustify.TOP),0);
      if(n.tech==="R")ph=[{type:D,text:"放"}];
      if(ph&&j===ns.findIndex(x=>x.kind===n.kind&&x.t-x.f===n.t-n.f))b.addModifier(new VF.Bend(null,null,ph),j);
-     if(n.tech==="<"||n.tech===">")a.addModifier(new VF.Annotation(n.tech==="<"?"滑入":"滑出").setFont("Arial",9).setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM),0);});
+     if(n.tech==="<"||n.tech===">"){const A=new VF.Annotation(n.tech==="<"?"滑入":"滑出").setFont("Arial",9).setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);if(b instanceof VF.TabNote)b.addModifier(A,j);else a.addModifier(A,0);}});
     if(it.vib)a.addModifier(new VF.Vibrato(),0);
     if(e.gr){const gn=e.gr.it.notes||[];st.graces++;
      a.addModifier(new VF.GraceNoteGroup([new VF.GraceNote({keys:gn.map(n=>proPitch(ok,n.s,n.f)),duration:"8",slash:true})],true),0);
-     if(b instanceof VF.TabNote)b.addModifier(new VF.GraceNoteGroup([new VF.GraceTabNote({positions:gn.map(n=>({str:n.s+1,fret:String(n.f)})),duration:"8"})]),0);}}}
+     if(b instanceof VF.TabNote)b.__grace=gn;}}}
   if(u.dots)VF.Dot.buildAndAttach([a],{all:true});
   a.__e=e;a.__u=u;b.__e=e;b.__u=u;u.a=a;u.b=b;
   if(!e.pad){const tid=tabIds[phIdx.indexOf(e.pi)];a.__rn={tab:tid,i:e.i};if(!(b instanceof VF.GhostNote))b.__rn={tab:tid,i:e.i};if(e.gr)a.__rg=e.gr.i;}
@@ -1780,8 +1785,12 @@ function proDrawLink(VF,c,K,sysOf){const sa=sysOf.get(K.a),sb=sysOf.get(K.b);if(
   else{new VF.StaveTie({first_note:K.a.a,last_note:null,first_indices:i1,last_indices:i1}).setContext(K.a.ca).draw();new VF.StaveTie({first_note:null,last_note:K.b.a,first_indices:i2,last_indices:i2}).setContext(c).draw();}
   return 1;}
  if(sa!==sb)return;const ta=K.a.b,tb=K.b.b;
- if(K.t==="H"||K.t==="P"){if(ta instanceof VF.TabNote&&tb instanceof VF.TabNote)new VF.TabTie({first_note:ta,last_note:tb,first_indices:[K.i1],last_indices:[0]},K.t).setContext(c).draw();new VF.Curve(K.a.a,K.b.a,{}).setContext(c).draw();}
- else if(K.t==="/"||K.t==="\\"){if(ta instanceof VF.TabNote&&tb instanceof VF.TabNote)new VF.TabSlide({first_note:ta,last_note:tb,first_indices:[K.i1],last_indices:[0]},K.t==="/"?VF.TabSlide.SLIDE_UP:VF.TabSlide.SLIDE_DOWN).setContext(c).draw();new VF.Curve(K.a.a,K.b.a,{}).setContext(c).draw();}
+ if(K.t==="H"||K.t==="P"||K.t==="/"||K.t==="\\"){const both=ta instanceof VF.TabNote&&tb instanceof VF.TabNote,sl=K.t!=="H"&&K.t!=="P";
+  if(both){const T=sl?new VF.TabSlide({first_note:ta,last_note:tb,first_indices:[K.i1],last_indices:[0]},K.t==="/"?VF.TabSlide.SLIDE_UP:VF.TabSlide.SLIDE_DOWN):new VF.TabTie({first_note:ta,last_note:tb,first_indices:[K.i1],last_indices:[0]},"");T.text="";T.setContext(c).draw();
+   // 搥／勾／滑的字放在 TAB 上方固定一條線（比推弦字低），不再畫在兩行譜中間
+   const st=ta.checkStave(),x=(ta.getAbsoluteX()+tb.getAbsoluteX())/2+4,y=st.getYForLine(0)-9,svg=c.svg||c.element,t=document.createElementNS("http://www.w3.org/2000/svg","text");
+   t.setAttribute("x",x);t.setAttribute("y",y);t.setAttribute("text-anchor","middle");t.setAttribute("class","ptab-tt");t.textContent=sl?"sl.":K.t;(svg.tagName==="svg"?svg:svg.ownerSVGElement||svg).appendChild(t);}
+  new VF.Curve(K.a.a,K.b.a,{}).setContext(c).draw();}
  else if(K.t==="slur")new VF.Curve(K.a.a,K.b.a,{}).setContext(c).draw();}
 // ---- 4. 自我檢查：譜上時值＝播放引擎、每小節拍數、音高＝弦／格 ----
 function proCheck(VF,lay,built,ctx,ok){const err=m=>PRO_ERRORS.push(ctx+"："+m),Q=VF.RESOLUTION/4;const got=new Map();let n=0;
@@ -1803,13 +1812,16 @@ function proPrepare(VF,solo,phIdx,opts,ctx,tabIds){const key=rockKey(solo,solo.p
  const units=BUs.flatMap(BU=>BU.U),links=proLinks(lay.ev,units);
  const n=proCheck(VF,lay,built,ctx,ok);st.checked+=n;st.units+=units.length;st.bars+=lay.bars.length;st.scores++;
  return{key,ok,ks,lay,BUs,built,links};}
+// 推弦字（預推全…）很寬，小節寬度要留給它，不然後面的音會被擠出小節線
+function proBendW(u){const b=u.b;if(!u.head||!b||!b.modifiers)return 0;let w=0;b.modifiers.forEach(m=>{if(m.getCategory&&m.getCategory()==="Bend"){const t=(m.phrase||[]).map(p=>p.text||"").join("");w=Math.max(w,t.length*11+(m.phrase.length>1?10:0)-8);}});return Math.max(0,w);}
 // ---- 5. 排版與繪圖 ----
 function proTab(el,solo,phIdx,tabIds,opts){opts=opts||{};const ctx=opts.ctx||"proTab";el.classList.add("ptab");
  if(!el.querySelector(".ptab-sys"))el.innerHTML=`<p class="muted ptab-wait">樂譜載入中…</p>`;
  const draw=VF=>{if(!el.isConnected)return [];const t0=performance.now(),P=proPrepare(VF,solo,phIdx,opts,ctx,tabIds);if(!P)throw new Error("節奏無法轉成正式譜");
   const {ks,lay,BUs,built,links}=P,bars=lay.bars,b0=(opts.bar0||1)-1;
   const cs=getComputedStyle(el),W=Math.max(240,Math.floor((el.clientWidth||700)-(parseFloat(cs.paddingLeft)||0)-(parseFloat(cs.paddingRight)||0)))||700,mob=W<560,nw=mob?[30,25,21,17]:[34,30,26,20];
-  const need=bi=>Math.max(mob?150:100,36+BUs[bi].U.reduce((a,u)=>a+(u.nv>=PT?nw[0]:u.nv>=PT/2?nw[1]:u.nv>=PT/4?nw[2]:nw[3])+(u.head&&u.e.gr?16:0),0));
+  const minW=BUs.map((_,bi)=>{try{const Bt=built[bi],nb=Bt.nb,v2=new VF.Voice({num_beats:nb,beat_value:4}).setMode(VF.Voice.Mode.SOFT).addTickables(Bt.tn);return new VF.Formatter().joinVoices([v2]).preCalculateMinTotalWidth([v2]);}catch(e){return 0;}});
+  const need=bi=>Math.max(minW[bi]+50,mob?150:100,36+BUs[bi].U.reduce((a,u)=>a+(u.nv>=PT?nw[0]:u.nv>=PT/2?nw[1]:u.nv>=PT/4?nw[2]:nw[3])+(u.head&&u.e.gr?16:0)+proBendW(u),0));
   const tsAt=bi=>bi===0||bars[bi].len!==bars[bi-1].len,head=(bi,first)=>(first?62:0)+(tsAt(bi)?30:0);
   const sys=[];let cur=null;bars.forEach((B,bi)=>{const w=need(bi)+head(bi,!cur);
    if(cur&&cur.w+need(bi)+(tsAt(bi)?30:0)<=W-12){cur.bars.push(bi);cur.ws.push(need(bi)+(tsAt(bi)?30:0));cur.w+=need(bi)+(tsAt(bi)?30:0);}else{cur={bars:[bi],ws:[w],w};sys.push(cur);}});
@@ -1838,7 +1850,7 @@ function proTab(el,solo,phIdx,tabIds,opts){opts=opts||{};const ctx=opts.ctx||"pr
     VF.Accidental.applyAccidentals([nv],ks);
     const beams=VF.Beam.generateBeams(Bt.sn.filter(n=>!n.isRest()),{groups:[new VF.Fraction(1,4)],beam_rests:false,maintain_stem_directions:false});
     new VF.Formatter().joinVoices([nv]).joinVoices([tv]).format([nv,tv],w-(sx-x)-14);
-    nv.draw(c,ns);tv.draw(c,ts);beams.forEach(bm=>bm.setContext(c).draw());Bt.tups.forEach(([tp])=>{const ns=tp.getNotes();let y=ns[0].checkStave().getYForLine(0)-10;ns.forEach(n=>{y=Math.min(y,Math.min(...n.getYs())-14);if(n.hasStem()&&n.getStemDirection()===1&&!n.isRest())y=Math.min(y,n.getStemExtents().topY-8);});
+    nv.draw(c,ns);tv.draw(c,ts);proGraceTab(svg,ts,Bt.tn);beams.forEach(bm=>bm.setContext(c).draw());Bt.tups.forEach(([tp])=>{const ns=tp.getNotes();let y=ns[0].checkStave().getYForLine(0)-10;ns.forEach(n=>{y=Math.min(y,Math.min(...n.getYs())-14);if(n.hasStem()&&n.getStemDirection()===1&&!n.isRest())y=Math.min(y,n.getStemExtents().topY-8);});
      const x0=ns[0].getAbsoluteX()-2,x1=ns[ns.length-1].getAbsoluteX()+12,xm=(x0+x1)/2,lab=String(tp.getNoteCount());const g=document.createElementNS("http://www.w3.org/2000/svg","g");g.setAttribute("class","ptab-tup");
      g.innerHTML=`<path d="M${x0} ${y+4}v-4H${xm-9}M${xm+9} ${y}H${x1}v4" fill="none"/><text x="${xm}" y="${y+4}" text-anchor="middle">${lab}</text>`;svg.appendChild(g);});
     Bt.sn.forEach(n=>{sysOf.set(n.__u,si);n.__u.ca=c;});
@@ -1848,12 +1860,57 @@ function proTab(el,solo,phIdx,tabIds,opts){opts=opts||{};const ctx=opts.ctx||"pr
     x+=w;});
    links.forEach(K=>{if(sysOf.get(K.b)===si&&proDrawLink(VF,c,K,sysOf)===1)PRO_STAT.ties++;});
    if(si===0&&wah){const t=document.createElementNS("http://www.w3.org/2000/svg","text");t.setAttribute("x",opts.tempo?190:70);t.setAttribute("y",opts.tempo?chY-22:14);t.setAttribute("class","ptab-ch ptab-fx");t.textContent="w/ wah";svg.appendChild(t);}
-   if(hasHk){const y=H-10;hk.forEach(h=>{const r=document.createElementNS("http://www.w3.org/2000/svg","path");r.setAttribute("d",`M${h.x0-4} ${y-10}v-5H${h.x1+14}v5`);r.setAttribute("class","ptab-hk");svg.appendChild(r);const t=document.createElementNS("http://www.w3.org/2000/svg","text");t.setAttribute("x",h.x0);t.setAttribute("y",y+2);t.setAttribute("class","ptab-hkt");t.textContent="主題 "+h.lab;svg.appendChild(t);});}});
+   if(hasHk){const y=H-10;hk.forEach(h=>{const r=document.createElementNS("http://www.w3.org/2000/svg","path");r.setAttribute("d",`M${h.x0-4} ${y-10}v-5H${h.x1+14}v5`);r.setAttribute("class","ptab-hk");svg.appendChild(r);const t=document.createElementNS("http://www.w3.org/2000/svg","text");t.setAttribute("x",h.x0);t.setAttribute("y",y+2);t.setAttribute("class","ptab-hkt");t.textContent="主題 "+h.lab;svg.appendChild(t);});}
+   proLiftTT(svg);proLiftHeads(svg,tw,H,nY);});
   el.dataset.bars=bars.length;el.dataset.sys=sys.length;PRO_STAT.ms+=performance.now()-t0;return all;};
  const run=()=>loadVF().then(VF=>{if(!el.isConnected)return;try{draw(VF);el.dataset.ok="1";}catch(e){PRO_ERRORS.push(ctx+"："+e.message);console.error(e);el.dataset.ok="0";el.innerHTML=`<p class="muted">（正式樂譜畫不出來，請看下面的教學版 TAB）</p>`;}})
   .catch(e=>{PRO_ERRORS.push(ctx+"："+e.message);el.innerHTML=`<p class="muted">（樂譜元件載入失敗，請看下面的教學版 TAB）</p>`;});
  if(!el.__pro){el.__pro=1;let lw=0,tm=0;const ro=new ResizeObserver(()=>{const w=Math.floor(el.clientWidth);if(!lw){lw=w;return;}if(Math.abs(w-lw)<24)return;lw=w;clearTimeout(tm);tm=setTimeout(run,150);});ro.observe(el);}
  el.__ready=run();return el.__ready;}
+// TAB 上的倚音：小一號的格數，畫在主音左邊（VexFlow 的 GraceTabNote 會跟主音疊在一起）
+function proGraceTab(svg,ts,tn){tn.forEach(b=>{if(!b.__grace)return;const x=b.getAbsoluteX(),NS="http://www.w3.org/2000/svg",g=document.createElementNS(NS,"g");g.setAttribute("class","ptab-gr");
+ b.__grace.forEach(n=>{const y=ts.getYForLine(n.s),s=String(n.f),w=s.length*6+2,r=document.createElementNS(NS,"rect"),t=document.createElementNS(NS,"text");
+  r.setAttribute("x",x-12-w);r.setAttribute("y",y-5);r.setAttribute("width",w);r.setAttribute("height",10);t.setAttribute("x",x-11-w/2);t.setAttribute("y",y+3.5);t.setAttribute("text-anchor","middle");t.textContent=s;g.appendChild(r);g.appendChild(t);
+  const pth=document.createElementNS(NS,"path");pth.setAttribute("d",`M${x-12-w/2} ${y-6}Q${x-6} ${y-12} ${x+1} ${y-6}`);pth.setAttribute("fill","none");pth.setAttribute("class","ptab-grs");g.appendChild(pth);});
+ svg.appendChild(g);});}
+// 搥勾滑的字撞到推弦字：往上挪
+function proLiftTT(svg){const bb=e=>{const b=e.getBBox();return {x0:b.x,x1:b.x+b.width,y0:b.y,y1:b.y+b.height};};const O=[...svg.querySelectorAll(".vf-tabnote text,.vf-annotation text,.ptab-gr text")].map(bb);
+ svg.querySelectorAll("text.ptab-tt").forEach(t=>{for(let k=0;k<4;k++){const b=bb(t),o=O.find(o=>o.x0<b.x1&&o.x1>b.x0&&o.y0<b.y1&&o.y1>b.y0);if(!o)break;t.setAttribute("y",(+t.getAttribute("y")-(b.y1-o.y0)-1).toFixed(1));}});}
+// 和弦名不可以壓到音符（高音的符桿、揉弦、連音記號）：撞到就往上抬，必要時把畫布往上加高
+function proLiftHeads(svg,tw,H,nY){const CH=[...svg.querySelectorAll("text.ptab-ch:not(.ptab-fx)")];if(!CH.length)return;
+ const bb=e=>{try{const b=e.getBBox();return b.width||b.height?{x0:b.x,x1:b.x+b.width,y0:b.y,y1:b.y+b.height}:null;}catch(_){return null;}};
+ const obs=[...svg.querySelectorAll(".vf-stavenote,.vf-beam,.vf-stem,.ptab-tup,.vf-stavetie,.vf-curve,.vf-annotation,.vf-ornament,.vf-vibrato")].map(bb).filter(b=>b&&b.y0<nY+40),
+  fixed=[...svg.querySelectorAll("text")].filter(t=>!t.classList.contains("ptab-ch")||t.classList.contains("ptab-fx")).map(bb).filter(b=>b&&b.y1<nY+2);
+ let top=0;const placed=[];
+ CH.forEach(t=>{const b=bb(t);if(!b)return;const h=b.y1-b.y0,y0=+t.getAttribute("y");let y=y0;const hit=(o,yy)=>o.x0<b.x1+2&&o.x1>b.x0-2&&o.y0<yy+(b.y1-y0)+1&&o.y1>yy-(y0-b.y0)-1;
+  for(let k=0;k<12;k++){const o=[...obs,...fixed,...placed].find(o=>hit(o,y));if(!o)break;y=o.y0-(b.y1-y0)-2;}
+  if(y!==y0){t.setAttribute("y",y.toFixed(1));}placed.push({x0:b.x0,x1:b.x1,y0:y-(y0-b.y0),y1:y+(b.y1-y0)});top=Math.min(top,y-(y0-b.y0)-3);});
+ if(top<0){svg.setAttribute("viewBox",`0 ${top.toFixed(1)} ${tw} ${(H-top).toFixed(1)}`);}}
+// ---- 5b. 自動檢查：TAB 數字字型（0–22 格）----
+async function proGlyphCheck(show){const VF=await loadVF();await document.fonts.load("14px GDigits","0123456789");
+ const box=document.createElement("div");box.className="ptab pscore";box.id="glyphTest";box.style.cssText=show?"width:1000px;background:var(--card,#fff)":"position:absolute;left:-9999px;top:0;width:1000px";document.body.appendChild(box);
+ const R=new VF.Renderer(box,VF.Renderer.Backends.SVG);R.resize(1000,130);const c=R.getContext(),st=new VF.TabStave(6,10,988);st.addClef("tab").setContext(c).draw();
+ const fr=[...Array(23).keys()],ns=fr.map(f=>new VF.TabNote({positions:[{str:1+f%6,fret:String(f)}],duration:"8"}));
+ VF.Formatter.FormatAndDraw(c,st,ns);const T=[...box.querySelectorAll(".vf-tabnote text")],bad=[];
+ const fam=T.length?getComputedStyle(T[0]).fontFamily:"";if(!/^"?GDigits/.test(fam))bad.push("字型不是 GDigits："+fam);
+ if(!document.fonts.check("14px GDigits","9"))bad.push("GDigits 沒載入");
+ const got=T.map(t=>t.textContent);if(got.join()!==fr.join())bad.push("文字不符："+got.join());
+ // 字形：數字等寬（tabular），9 的寬度要跟其他數字一樣，而且不是 q 的寬度
+ const cv=document.createElement("canvas").getContext("2d");cv.font="14px GDigits, Iansui";const w=[..."0123456789"].map(d=>cv.measureText(d).width);
+ if(Math.max(...w)-Math.min(...w)>0.6)bad.push("數字不等寬："+w.map(x=>x.toFixed(1)).join());
+ const mt=(f,ch)=>{cv.font="40px "+f;const m=cv.measureText(ch);return {d:m.actualBoundingBoxDescent,a:m.actualBoundingBoxAscent};},n9=mt("GDigits, Iansui","9"),n8=mt("GDigits, Iansui","8"),i9=mt("Iansui","9");
+ const px=(f,ch)=>{const C=document.createElement("canvas");C.width=C.height=64;const g=C.getContext("2d");g.font="48px "+f;g.textBaseline="alphabetic";g.fillText(ch,8,52);return g.getImageData(0,0,64,64).data;},
+  diff=(A,B)=>{let d=0,t=0;for(let i=3;i<A.length;i+=4){if(A[i]>127||B[i]>127)t++;if((A[i]>127)!==(B[i]>127))d++;}return t?d/t:1;};
+ // 畫面上用的字型（CSS 字型堆疊）畫出的每個數字，要跟「只用 GDigits」一模一樣，而且要跟 Iansui 的寫法不同
+ const svgFam=fam.replace(/"/g,"");[..."0123456789"].forEach(ch=>{const a=px(svgFam,ch),g=px("GDigits",ch);if(diff(a,g)>0.02)bad.push(ch+" 不是用 GDigits 畫的");});
+ const q9=diff(px(svgFam,"9"),px("Iansui","q"));if(q9<0.3)bad.push("9 跟 Iansui 的 q 太像："+q9.toFixed(2));
+ // 9 要坐在基線上、跟 8 一樣高（Iansui 的 9 會掉到基線下面，看起來像 q）
+ if(n9.d>1.5||Math.abs(n9.a-n8.a)>1.5)bad.push("9 的字形不對（下伸 "+n9.d.toFixed(1)+"）");
+ const wq=+i9.d.toFixed(2);
+ const bb=T.map(t=>t.getBBox().width),one=T.filter((t,i)=>fr[i]<10).map(t=>t.getBBox().width),two=T.filter((t,i)=>fr[i]>=10).map(t=>t.getBBox().width);
+ if(Math.max(...one)-Math.min(...one)>0.6)bad.push("一位數寬度不一："+one.map(x=>x.toFixed(1)).join());
+ if(Math.min(...two)<Math.max(...one)*1.7)bad.push("兩位數太窄");
+ if(!show)box.remove();return {n:T.length,family:fam,widths:w.map(x=>+x.toFixed(2)),nine:{desc:+n9.d.toFixed(2),asc:+n9.a.toFixed(2),eightAsc:+n8.a.toFixed(2)},iansui9desc:wq,nineVsQ:+q9.toFixed(2),bad};}
 // ---- 6. 延遲繪圖：捲到附近才畫（IntersectionObserver）----
 function psReg(){return window.__PS||(window.__PS={m:new Map(),n:0,io:null});}
 function proFig(solo,phIdx,tabIds,opts,teach){const R=psReg(),k="ps"+(++R.n);R.m.set(k,{solo,phIdx,tabIds,opts});
@@ -2134,7 +2191,7 @@ function render(){
  linkChords(document.body);
 }
 render();renderQuiz();
-window.__modes={DMP,PRO_ERRORS,PRO_STAT,proTab,loadVF,proAllSpecs,proCheckAll,psAll,freeRock,END_ERRORS,END_REPORT,checkAllEndings,HOOK_ERRORS,HOOK_REPORT,checkHooks,hookStatements,FRET_ERRORS,FRET_REPORT,checkFrets,get HOOK_DEMO(){return window.HOOK_DEMO;},GTR,SMP,AMP,BAND,renderRock,smpSched,smpLoadAll,smpReady,bandSched,rockEvents,ROCK,SIG,REF,LK,TONE,ROCK_ERRORS,checkRock,parseRock,synthRock,rockKey,rockAllowed,plainRock,rockTab,LEGATO,JOURNEY,CHORD_ERRORS,chordShape,checkChord,parseChord,LICK_CHORDS,spell,diatonic,MODES,spellIv,bluesScale,pentBoxes,LICKS,BLUES_LICKS,MIX_SCALE,MIX_LICK,TAB_ERRORS,modeScale,OPEN_STRINGS};
+window.__modes={DMP,proGlyphCheck,PRO_ERRORS,PRO_STAT,proTab,loadVF,proAllSpecs,proCheckAll,psAll,freeRock,END_ERRORS,END_REPORT,checkAllEndings,HOOK_ERRORS,HOOK_REPORT,checkHooks,hookStatements,FRET_ERRORS,FRET_REPORT,checkFrets,get HOOK_DEMO(){return window.HOOK_DEMO;},GTR,SMP,AMP,BAND,renderRock,smpSched,smpLoadAll,smpReady,bandSched,rockEvents,ROCK,SIG,REF,LK,TONE,ROCK_ERRORS,checkRock,parseRock,synthRock,rockKey,rockAllowed,plainRock,rockTab,LEGATO,JOURNEY,CHORD_ERRORS,chordShape,checkChord,parseChord,LICK_CHORDS,spell,diatonic,MODES,spellIv,bluesScale,pentBoxes,LICKS,BLUES_LICKS,MIX_SCALE,MIX_LICK,TAB_ERRORS,modeScale,OPEN_STRINGS};
 </script>
 <div id="chPop" class="chpop" hidden></div>
 </body>
